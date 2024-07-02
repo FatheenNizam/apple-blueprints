@@ -182,7 +182,9 @@ body {
   cursor: pointer;
 }
 
-.product-item-text {
+.product-item-text,
+#last-updated,
+.source-link-text {
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: var(--underline);
@@ -424,10 +426,6 @@ ul {
   text-decoration: none;
 }
 .source-link-text {
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: var(--underline);
-  text-underline-offset: 4px;
   margin-right: 6px;
 }
 .source-link-text:hover {
