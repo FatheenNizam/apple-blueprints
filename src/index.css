@@ -16,6 +16,9 @@
   --button-background: rgba(0, 0, 0, 0.05);
   --button-background-hover: rgba(255, 204, 0, 0.1);
   --button-border-hover: rgb(133, 119, 0);
+
+  --button-border-hover: rgba(204, 143, 0, 1);
+
   --footer-text-hover: var(--button-border-hover);
   --footer-background: rgb(245, 245, 247);
   --underline: rgb(169, 169, 169);
@@ -460,7 +463,7 @@ ul {
   opacity: 0;
   cursor: pointer;
   animation-name: fadeIn;
-  animation-duration: 200ms;
+  /* animation-duration: 200ms; */
   animation-fill-mode: forwards;
 }
 
