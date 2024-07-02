@@ -16,12 +16,7 @@ export function LastUpdated({ lastUpdated }) {
   };
 
   return (
-    <div
-      id="last-updated"
-      onClick={handleClick}
-      style={containerStyle}
-      title={showRelativeTime ? actualDate : "Click to toggle"}
-    >
+    <div id="last-updated" onClick={handleClick} style={containerStyle} title="Click to toggle">
       {showRelativeTime ? `Last updated: ${relativeTime}` : `Last updated: ${actualDate}`}
     </div>
   );
