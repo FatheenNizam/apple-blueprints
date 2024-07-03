@@ -76,6 +76,7 @@ body {
   right: 42px;
   text-align: center;
   background-color: var(--navbar-background);
+  color: black;
   -webkit-backdrop-filter: saturate(200%) blur(var(--blur-value));
   backdrop-filter: saturate(200%) blur(var(--blur-value));
   border-radius: 12px;
