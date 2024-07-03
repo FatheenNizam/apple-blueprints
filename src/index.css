@@ -182,7 +182,6 @@ body {
   text-decoration: none;
   padding: 6px 8px;
   translate: -8px 0;
-  line-height: 1.4;
 }
 .product-item:hover {
   translate: 0 0;
