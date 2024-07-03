@@ -31,7 +31,7 @@ export function App() {
         <div id="footer">
           <div id="footer-button-container">
             <a
-              href="mailto:appleblueprints@gmail.com?subject=Suggest an edit&body=What would you like to change?"
+              href="mailto:appleblueprints@gmail.com?subject=Edit request: [Product name]&body=What would you like to change?"
               target="_blank"
               className="footer-button"
               id="suggest-button"
