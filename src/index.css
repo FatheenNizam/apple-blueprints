@@ -184,7 +184,6 @@ body {
 }
 
 .product-item-text,
-#last-updated,
 .source-link-text {
   text-decoration: underline;
   text-decoration-style: dotted;
@@ -492,7 +491,7 @@ ul {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 12px;
+  margin: 0 12px 12px 12px;
 }
 
 .footer-button {
@@ -513,9 +512,10 @@ ul {
   color: var(--button-highlight-hover);
 }
 
-#last-updated {
+#footer-text {
+  margin: 18px;
   font-size: 1em;
-  margin-top: 12px;
+  text-align: center;
   color: var(--text-secondary);
   border-radius: var(--border-radius);
   transition: var(--transition-time);

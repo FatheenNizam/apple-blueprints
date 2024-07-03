@@ -13,11 +13,18 @@ export function LastUpdated({ lastUpdated }) {
 
   const containerStyle = {
     cursor: "pointer",
+    textDecoration: "underline",
+    textDecorationStyle: "dotted",
+    textDecorationDolor: "var(--underline)",
+    textUnderlineOffset: "4px",
   };
 
   return (
-    <div id="last-updated" onClick={handleClick} style={containerStyle} title="Click to toggle">
-      {showRelativeTime ? `Last updated: ${relativeTime}` : `Last updated: ${actualDate}`}
+    <div id="footer-text">
+      Page under construction. Information may be inaccurate.
+      <div id="footer-text" onClick={handleClick} style={containerStyle} title="Click to toggle">
+        {showRelativeTime ? `Last updated: ${relativeTime}` : `Last updated: ${actualDate}`}
+      </div>
     </div>
   );
 }
