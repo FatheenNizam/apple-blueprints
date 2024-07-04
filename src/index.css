@@ -271,6 +271,11 @@ body {
 .product-container-content {
   padding: 32px;
 }
+@media (max-width: 600px) {
+  .product-container-content {
+    padding-top: 16px;
+  }
+}
 
 @media (max-width: 600px) {
   .product-container {
@@ -282,7 +287,6 @@ body {
     transform: translate(0%, 0%);
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
-    gap: 0;
   }
 }
 
@@ -409,13 +413,6 @@ body {
 
 .close-button:hover {
   color: var(--text-primary);
-}
-
-@media (max-width: 600px) {
-  .close-button {
-    height: 32px;
-    width: 32px;
-  }
 }
 
 .product-description {
