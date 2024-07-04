@@ -31,6 +31,8 @@ export function Footer({ lastUpdated }) {
   );
 }
 
+const footerText = "Yo";
+
 function LastUpdated({ lastUpdated }) {
   console.log(lastUpdated);
   const [showRelativeTime, setShowRelativeTime] = useState(true);
@@ -43,7 +45,7 @@ function LastUpdated({ lastUpdated }) {
 
   return (
     <div className="footer-text-container">
-      <div className="footer-text">Page under construction. Information may be inaccurate.</div>
+      <div className="footer-text">{}Page under construction. Information may be inaccurate.</div>
       <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
         Last updated: <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
       </div>

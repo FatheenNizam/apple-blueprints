@@ -16,7 +16,7 @@
   --button-background: rgba(0, 0, 0, 0.05);
   --button-background-hover: rgba(255, 204, 0, 0.1);
   --button-highlight-hover: rgba(204, 143, 0, 1);
-  --footer-background: #171716;
+  --footer-background: rgb(240, 240, 242);
   --underline: rgb(169, 169, 169);
   --blur-value: 12px;
   --border-radius: 18px;
@@ -61,7 +61,8 @@ body {
     --button-background: rgba(255, 255, 255, 0.05);
     --button-background-hover: rgba(255, 204, 0, 0.05);
     --button-highlight-hover: rgba(255, 204, 0, 1);
-    --footer-background: rgb(20, 20, 20);
+    --footer-background: rgb(23, 23, 22);
+
     --underline: rgb(86, 86, 86);
   }
 }
@@ -194,6 +195,7 @@ body {
   padding: 6px 8px;
   translate: -8px 0;
   text-wrap: pretty;
+  line-height: 1.3;
 }
 .product-item:hover {
   translate: 0 0;
