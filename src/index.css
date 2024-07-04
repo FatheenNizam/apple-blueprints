@@ -16,11 +16,11 @@
   --button-background: rgba(0, 0, 0, 0.05);
   --button-background-hover: rgba(255, 204, 0, 0.1);
   --button-highlight-hover: rgba(204, 143, 0, 1);
-  --footer-background: rgb(245, 245, 247);
+  --footer-background: rgb(240, 240, 242);
   --underline: rgb(169, 169, 169);
   --blur-value: 12px;
   --border-radius: 18px;
-  --transition-time: 100ms;
+  --transition-time: 200ms;
   --mobile-viewport: 600px;
   --content-section-gap: 24px;
   --site-width: 1500px;
@@ -51,7 +51,7 @@ body {
     --text-primary: white;
     --text-secondary: rgb(158, 158, 158);
     --text-tertiary: rgb(64, 64, 64);
-    --month-card-background: rgb(29, 29, 31);
+    --month-card-background: rgb(31, 30, 28);
     --border: rgb(64, 64, 64);
     --counter-background: rgba(255, 255, 255, 0.05);
     --released-product: rgb(76, 175, 79);
@@ -136,8 +136,7 @@ body {
   }
 }
 
-.monthCard {
-  min-width: 256px;
+.month-card {
   padding: 12px 18px;
   margin: 12px;
   border: 1px solid var(--border);
@@ -151,6 +150,11 @@ body {
   flex-direction: column;
   align-items: start;
   gap: 6px;
+}
+@media (min-width: 400px) {
+  .month-card {
+    min-width: 256px;
+  }
 }
 
 .month-label {
@@ -169,6 +173,7 @@ body {
 .product-list-container {
   display: flex;
   flex-direction: column;
+  align-items: start;
 }
 
 .product-item {
@@ -201,7 +206,7 @@ body {
 
 .product-item-icon {
   align-self: start;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .counter {
@@ -481,14 +486,14 @@ ul {
 }
 
 #footer {
-  width: 100%;
   margin-top: 24px;
-  padding: 24px 0;
+  padding: 32px 12px;
   background-color: var(--footer-background);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 32px;
 }
 
 #footer-button-container {
@@ -496,11 +501,10 @@ ul {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 0 12px 12px 12px;
+  gap: 12px;
 }
 
 .footer-button {
-  margin: 6px;
   background-color: var(--footer-background);
   border: 1px solid var(--border);
   font-size: 1em;
@@ -517,13 +521,26 @@ ul {
   color: var(--button-highlight-hover);
 }
 
-#footer-text {
-  margin: 18px;
+.footer-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--content-section-gap) / 2);
+}
+
+.footer-text {
   font-size: 1em;
   text-align: center;
   color: var(--text-secondary);
   border-radius: var(--border-radius);
   transition: var(--transition-time);
+}
+
+.last-updated-time {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 4px;
 }
 
 ::selection {

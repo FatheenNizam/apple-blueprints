@@ -6,7 +6,7 @@ export function MonthCard({ month, products }) {
     return null;
   }
   return (
-    <ul className="monthCard">
+    <ul className="month-card">
       <h3 className="month-label">{month}</h3>
       {/* <span className="counter">{products.length}</span> */}
       <div className="product-list-container">

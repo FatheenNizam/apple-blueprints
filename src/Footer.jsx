@@ -1,24 +1,7 @@
 import React, { useState } from "react";
-import moment from "moment";
+import { formatDistanceToNow, format } from "date-fns";
 
 export function Footer({ lastUpdated }) {
-  const [showRelativeTime, setShowRelativeTime] = useState(true);
-  const formattedDate = moment(lastUpdated);
-  const relativeTime = formattedDate.fromNow();
-  const actualDate = formattedDate.format("MMMM D, YYYY, h:mm A");
-
-  const handleClick = () => {
-    setShowRelativeTime(!showRelativeTime);
-  };
-
-  const containerStyle = {
-    cursor: "pointer",
-    textDecoration: "underline",
-    textDecorationStyle: "dotted",
-    textDecorationColor: "var(--underline)",
-    textUnderlineOffset: "4px",
-  };
-
   return (
     <div id="footer">
       <div id="footer-button-container">
@@ -42,14 +25,28 @@ export function Footer({ lastUpdated }) {
           <i className="far fa-grin"></i>&nbsp;&nbsp;Donate
         </a>
       </div>
-      {lastUpdated && (
-        <div id="footer-text">
-          Page under construction. Information may be inaccurate.
-          <div id="footer-text" onClick={handleClick} title="Click to toggle">
-            Last updated: <span style={containerStyle}>{showRelativeTime ? relativeTime : actualDate}</span>
-          </div>
-        </div>
-      )}
+
+      {lastUpdated && <LastUpdated lastUpdated={lastUpdated} />}
+    </div>
+  );
+}
+
+function LastUpdated({ lastUpdated }) {
+  console.log(lastUpdated);
+  const [showRelativeTime, setShowRelativeTime] = useState(true);
+  const relativeTime = formatDistanceToNow(lastUpdated, { addSuffix: true }).replace("about ", "");
+  const actualDate = format(new Date(lastUpdated), "MMMM d, yyyy, h:mm a");
+
+  const handleClick = () => {
+    setShowRelativeTime(!showRelativeTime);
+  };
+
+  return (
+    <div className="footer-text-container">
+      <div className="footer-text">Page under construction. Information may be inaccurate.</div>
+      <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
+        Last updated: <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
+      </div>
     </div>
   );
 }
