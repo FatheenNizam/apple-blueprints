@@ -31,7 +31,7 @@ export function Footer({ lastUpdated }) {
   );
 }
 
-const footerText = "Yo";
+const footerText = "Page under construction. Information may be inaccurate.";
 
 function LastUpdated({ lastUpdated }) {
   console.log(lastUpdated);
@@ -45,7 +45,7 @@ function LastUpdated({ lastUpdated }) {
 
   return (
     <div className="footer-text-container">
-      <div className="footer-text">{}Page under construction. Information may be inaccurate.</div>
+      <div className="footer-text">{footerText}</div>
       <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
         Last updated: <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
       </div>

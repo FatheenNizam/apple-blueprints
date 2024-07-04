@@ -61,84 +61,87 @@ export function ProductContainer({ product, onDismiss }) {
 
   return (
     <div className="product-container" ref={productContainerRef}>
-      <div className="top-section">
-        <div className="product-info">
-          <div className="titlebar">
-            <div
-              className={"product-status " + updatedProduct.fields.status + "-product"}
-              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
-            >
-              <i className={statusIcons[updatedProduct.fields.status]} /> {statusLabels[updatedProduct.fields.status]}
+      <button className="fa-solid fa-xmark close-button" onClick={onDismiss} />
+
+      <div className="product-container-content">
+        <div className="top-section">
+          <div className="product-info">
+            <div className="titlebar">
+              <div
+                className={"product-status " + updatedProduct.fields.status + "-product"}
+                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
+              >
+                <i className={statusIcons[updatedProduct.fields.status]} /> {statusLabels[updatedProduct.fields.status]}
+              </div>
+              <div
+                className="product-name"
+                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
+              >
+                {updatedProduct.fields.productName}
+              </div>
             </div>
             <div
-              className="product-name"
-              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
+              className="product-description"
+              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "description" })}
             >
-              {updatedProduct.fields.productName}
+              {updatedProduct.fields.description}
             </div>
-            {/* <button className="fa-solid fa-xmark close-button" onClick={onDismiss} /> */}
           </div>
-          <div
-            className="product-description"
-            {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "description" })}
-          >
-            {updatedProduct.fields.description}
-          </div>
+          {images && (
+            <div
+              className="product-image-container"
+              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
+            >
+              {images.map((image) => (
+                <img
+                  key={image.fields.file.url}
+                  className="product-image"
+                  src={image.fields.file.url}
+                  alt={image.fields.description}
+                />
+              ))}
+            </div>
+          )}
         </div>
-        {images && (
+
+        {updatedProduct.fields.features && (
           <div
-            className="product-image-container"
-            {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
+            className="product-header"
+            {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "features" })}
           >
-            {images.map((image) => (
-              <img
-                key={image.fields.file.url}
-                className="product-image"
-                src={image.fields.file.url}
-                alt={image.fields.description}
-              />
-            ))}
+            What's new:
+            <ul className="product-features">
+              {updatedProduct.fields.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {sources && (
+          <div className="product-header sources-header">
+            Sources:
+            <ul
+              className="product-sources"
+              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
+            >
+              {sources.map((source) => (
+                <li key={source} className="source-link">
+                  <a
+                    href={source.fields.url}
+                    target="_blank"
+                    className="source-link"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  >
+                    <span className={`source-link-text ${isHovered ? "hovered-text" : ""}`}>{source.fields.title}</span>
+                    <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
-
-      {updatedProduct.fields.features && (
-        <div
-          className="product-header"
-          {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "features" })}
-        >
-          What's new:
-          <ul className="product-features">
-            {updatedProduct.fields.features.map((feature) => (
-              <li key={feature}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {sources && (
-        <div className="product-header sources-header">
-          Sources:
-          <ul
-            className="product-sources"
-            {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
-          >
-            {sources.map((source) => (
-              <li key={source} className="source-link">
-                <a
-                  href={source.fields.url}
-                  target="_blank"
-                  className="source-link"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <span className={`source-link-text ${isHovered ? "hovered-text" : ""}`}>{source.fields.title}</span>
-                  <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }
