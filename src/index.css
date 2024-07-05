@@ -1,29 +1,29 @@
 :root {
-  --site-background: rgb(250, 250, 250);
-  --navbar-background: rgba(255, 204, 0, 0.8);
+  --site-bg: rgb(250, 250, 250);
+  --navbar-bg: rgba(255, 204, 0, 0.8);
   --text-primary: black;
   --text-secondary: rgb(97, 97, 97);
   --text-tertiary: rgb(191, 191, 191);
-  --month-card-background: rgb(255, 255, 255);
+  --month-card-bg: rgb(255, 255, 255);
   --border: rgb(200, 200, 200);
-  --counter-background: rgba(0, 0, 0, 0.05);
+  --counter-bg: rgba(0, 0, 0, 0.05);
   --released-product: rgb(8, 127, 6);
   --announced-product: rgb(230, 125, 6);
   --rumoured-product: grey;
   --link: rgb(18, 116, 224);
   --overlay: rgb(0, 0, 0);
-  --product-container-background: rgb(255, 255, 255);
-  --button-background: rgba(0, 0, 0, 0.05);
-  --button-background-hover: rgba(255, 204, 0, 0.1);
+  --button-bg: rgba(0, 0, 0, 0.05);
+  --button-bg-hover: rgba(255, 204, 0, 0.1);
   --button-highlight-hover: rgba(204, 143, 0, 1);
-  --footer-background: rgb(240, 240, 242);
+  --close-button-bg: rgb(232, 232, 238);
+  --footer-bg: rgb(240, 240, 242);
   --underline: rgb(169, 169, 169);
   --blur-value: 12px;
   --border-radius: 18px;
   --transition-time: 200ms;
   --mobile-viewport: 600px;
   --content-section-gap: 24px;
-  --site-width: 1500px;
+  --site-width: 1400px;
   --header-letter-spacing: -1px;
   --product-list-letter-spacing: -0.5px;
 }
@@ -39,7 +39,7 @@ h3 {
 
 body {
   margin: 0;
-  background-color: var(--site-background);
+  background-color: var(--site-bg);
   color: var(--text-primary);
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial",
     "sans-serif";
@@ -47,21 +47,22 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --site-background: rgb(10, 10, 10);
+    --site-bg: rgb(10, 10, 10);
+    --site-bg: rgb(16, 16, 10);
     --text-primary: white;
     --text-secondary: rgb(158, 158, 158);
     --text-tertiary: rgb(64, 64, 64);
-    --month-card-background: rgb(31, 30, 28);
+    --month-card-bg: rgb(31, 30, 28);
     --border: rgb(64, 64, 64);
-    --counter-background: rgba(255, 255, 255, 0.05);
+    --counter-bg: rgba(255, 255, 255, 0.05);
     --released-product: rgb(76, 175, 79);
     --announced-product: rgb(224, 120, 0);
     --overlay: rgb(255, 255, 255);
-    --product-container-background: rgb(14, 14, 14);
-    --button-background: rgba(255, 255, 255, 0.05);
-    --button-background-hover: rgba(255, 204, 0, 0.05);
+    --button-bg: rgba(255, 255, 255, 0.05);
+    --button-bg-hover: rgba(255, 204, 0, 0.05);
     --button-highlight-hover: rgba(255, 204, 0, 1);
-    --footer-background: rgb(23, 23, 22);
+    --close-button-bg: rgb(36, 36, 30);
+    --footer-bg: rgb(23, 23, 22);
 
     --underline: rgb(86, 86, 86);
   }
@@ -76,7 +77,7 @@ body {
   left: 42px;
   right: 42px;
   text-align: center;
-  background-color: var(--navbar-background);
+  background-color: var(--navbar-bg);
   color: black;
   -webkit-backdrop-filter: saturate(200%) blur(var(--blur-value));
   backdrop-filter: saturate(200%) blur(var(--blur-value));
@@ -150,7 +151,7 @@ body {
   padding: 12px 18px;
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
-  background-color: var(--month-card-background);
+  background-color: var(--month-card-bg);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -225,7 +226,7 @@ body {
   margin: 12px;
   box-sizing: border-box;
   border-radius: 100px;
-  background-color: var(--counter-background);
+  background-color: var(--counter-bg);
   color: var(--text-secondary);
   font-size: 0.7em;
   font-weight: 500;
@@ -255,21 +256,20 @@ body {
 .product-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
+  max-height: 80%;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--product-container-background);
+  background-color: var(--site-bg);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   overflow: scroll;
-  max-height: 80%;
   border-radius: var(--border-radius);
 }
-
 .product-container-content {
-  padding: 32px;
+  padding: 32px 42px;
 }
 @media (max-width: 600px) {
   .product-container-content {
@@ -388,7 +388,7 @@ body {
 
 .product-image {
   max-width: 100%;
-  height: auto;
+  max-height: 300px;
   display: block;
   object-fit: cover; /* Maintains aspect ratio and covers the container */
 }
@@ -398,7 +398,7 @@ body {
   width: 36px;
   font-size: 20px;
   text-align: center;
-  background-color: #e8e8ee;
+  background-color: var(--close-button-bg);
   color: var(--text-secondary);
   cursor: pointer;
   border-radius: 9999px;
@@ -499,7 +499,7 @@ ul {
 #footer {
   margin-top: 24px;
   padding: 56px 18px;
-  background-color: var(--footer-background);
+  background-color: var(--footer-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -516,7 +516,7 @@ ul {
 }
 
 .footer-button {
-  background-color: var(--footer-background);
+  background-color: var(--footer-bg);
   border: 1px solid var(--border);
   font-size: 1em;
   color: var(--text-secondary);
@@ -527,7 +527,7 @@ ul {
 }
 
 .footer-button:hover {
-  background-color: var(--button-background-hover);
+  background-color: var(--button-bg-hover);
   border-color: var(--button-highlight-hover);
   color: var(--button-highlight-hover);
 }

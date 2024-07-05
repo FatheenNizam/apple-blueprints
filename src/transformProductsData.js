@@ -36,7 +36,5 @@ export function transformProductsData(data) {
     .sort((a, b) => a.getTime() - b.getTime())
     .pop();
 
-  // const slugs = data.items.map((item) => item.fields.slug);
-  // console.log({ data, slugs });
   return { productsByYear, unknownProducts, lastUpdated };
 }
