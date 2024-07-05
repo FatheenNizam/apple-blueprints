@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, format } from "date-fns";
+import { fetchSiteContentData } from "./fetchSiteContentData";
 
 export function Footer({ lastUpdated }) {
   return (
@@ -31,27 +32,6 @@ export function Footer({ lastUpdated }) {
   );
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const spaceId = "1zn4b0ow3sim";
-  const accessToken = "xkzA96ThdMaC5DW91RubOhJhrMi8ZHPrxCCWZ7DbZek";
-  const apiUrl = `https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=siteContent`;
-
-  fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) throw new Error("Network response was not ok");
-      return response.json();
-    })
-    .then((data) => {
-      const footerText = data.items.map((item) => item.fields["contentText"]).join(" ");
-      renderReactComponent(footerText);
-    })
-    .catch((error) => console.error("Error fetching data from Contentful:", error));
-
-  function renderReactComponent(footerText) {
-    ReactDOM.render(<LastUpdated lastUpdated={new Date()} footerText={footerText} />, document.getElementById("root"));
-  }
-});
-
 function LastUpdated({ lastUpdated }) {
   const [showRelativeTime, setShowRelativeTime] = useState(true);
   const relativeTime = formatDistanceToNow(lastUpdated, { addSuffix: true }).replace("about ", "");
@@ -61,11 +41,17 @@ function LastUpdated({ lastUpdated }) {
     setShowRelativeTime(!showRelativeTime);
   };
 
-  const footerText = "Page under construction. Information may be inaccurate.";
+  const [siteContentData, setSiteContentData] = useState(null);
+
+  useEffect(() => {
+    fetchSiteContentData().then((data) => setSiteContentData(data));
+  }, []);
+
+  console.log({ siteContentData });
 
   return (
     <div className="footer-text-container">
-      <div className="footer-text disclaimer-text">{footerText}</div>
+      <div className="footer-text disclaimer-text">{siteContentData?.fields.footerText}</div>
       <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
         Last updated: <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
       </div>

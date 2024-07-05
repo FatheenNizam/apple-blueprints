@@ -484,6 +484,19 @@ ul {
   font-size: 13px;
 }
 
+/* Optional: Some basic styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: var(--text-secondary);
+}
+
 .overlay {
   position: fixed;
   display: inline-block;

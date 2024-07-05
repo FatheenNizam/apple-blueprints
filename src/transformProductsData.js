@@ -3,15 +3,15 @@ export function transformProductsData(data) {
   const unknownProducts = [];
 
   data.items.forEach((item) => {
-    if (!item.fields.date) {
+    if (!item.fields.releasedDate) {
       unknownProducts.push(item);
       return;
     }
 
-    const date = new Date(item.fields.date);
-    const year = date.getUTCFullYear();
-    const monthIndex = date.getUTCMonth();
-    const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(date);
+    const releasedDate = new Date(item.fields.releasedDate);
+    const year = releasedDate.getUTCFullYear();
+    const monthIndex = releasedDate.getUTCMonth();
+    const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(releasedDate);
 
     let productsForYear = productsByYear.find((yearObject) => yearObject.yearName === year);
     if (!productsForYear) {

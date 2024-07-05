@@ -5,6 +5,7 @@ import { ProductsDataContext } from "./ProductsDataContext";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import { router } from "./router";
+import { format } from "date-fns";
 
 export function ProductContainer({ product, onDismiss }) {
   const [isHovered, setIsHovered] = useState(false); // State for hover effect
@@ -12,7 +13,7 @@ export function ProductContainer({ product, onDismiss }) {
   const sortedProductSlugs = useMemo(
     () =>
       productsData.items
-        .toSorted((a, b) => new Date(a.fields.date).getTime() - new Date(b.fields.date).getTime())
+        .toSorted((a, b) => new Date(a.fields.releasedDate).getTime() - new Date(b.fields.releasedDate).getTime())
         .map((item) => item.fields.slug),
     [productsData]
   );
@@ -103,7 +104,6 @@ export function ProductContainer({ product, onDismiss }) {
             </div>
           )}
         </div>
-
         {updatedProduct.fields.features && (
           <div
             className="product-header"
@@ -141,6 +141,34 @@ export function ProductContainer({ product, onDismiss }) {
             </ul>
           </div>
         )}
+        <table>
+          <tbody>
+            <tr>
+              <td>Rumoured</td>
+              <td>
+                {updatedProduct?.fields.rumouredDate
+                  ? format(new Date(updatedProduct.fields.rumouredDate), "MMMM d, yyyy")
+                  : null}
+              </td>
+            </tr>
+            <tr>
+              <td>Announced</td>
+              <td>
+                {updatedProduct?.fields.announcedDate
+                  ? format(new Date(updatedProduct.fields.announcedDate), "MMMM d, yyyy")
+                  : null}
+              </td>{" "}
+            </tr>
+            <tr>
+              <td>Released</td>
+              <td>
+                {updatedProduct?.fields.releasedDate
+                  ? format(new Date(updatedProduct.fields.releasedDate), "MMMM d, yyyy")
+                  : null}
+              </td>{" "}
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

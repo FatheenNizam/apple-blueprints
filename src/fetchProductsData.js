@@ -3,6 +3,6 @@ export async function fetchProductsData() {
   const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
   const apiUrl = `https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}&content_type=product`;
   const data = await fetch(apiUrl).then((res) => res.json());
-
+  console.log({ data });
   return data;
 }
