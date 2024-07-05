@@ -12,9 +12,9 @@
   --rumoured-product: grey;
   --link: rgb(18, 116, 224);
   --overlay: rgb(0, 0, 0);
-  --button-bg: rgba(0, 0, 0, 0.05);
-  --button-bg-hover: rgba(255, 204, 0, 0.1);
-  --button-highlight-hover: rgba(204, 143, 0, 1);
+  --footer-button-bg: rgba(0, 0, 0, 0.05);
+  --footer-button-bg-hover: rgba(255, 204, 0, 0.1);
+  --footer-button-highlight-hover: rgba(204, 143, 0, 1);
   --close-button-bg: rgb(232, 232, 238);
   --footer-bg: rgb(240, 240, 242);
   --underline: rgb(169, 169, 169);
@@ -58,9 +58,9 @@ body {
     --released-product: rgb(76, 175, 79);
     --announced-product: rgb(224, 120, 0);
     --overlay: rgb(255, 255, 255);
-    --button-bg: rgba(255, 255, 255, 0.05);
-    --button-bg-hover: rgba(255, 204, 0, 0.05);
-    --button-highlight-hover: rgba(255, 204, 0, 0.8);
+    --footer-button-bg: rgba(255, 255, 255, 0.05);
+    --footer-button-bg-hover: rgba(255, 204, 0, 0.05);
+    --footer-button-highlight-hover: rgba(255, 204, 0, 0.8);
     --close-button-bg: rgb(36, 36, 30);
     --footer-bg: rgb(23, 23, 22);
 
@@ -537,9 +537,9 @@ ul {
 }
 
 .footer-button:hover {
-  background-color: var(--button-bg-hover);
-  border-color: var(--button-highlight-hover);
-  color: var(--button-highlight-hover);
+  background-color: var(--footer-button-bg-hover);
+  border-color: var(--footer-button-highlight-hover);
+  color: var(--footer-button-highlight-hover);
 }
 
 .footer-text-container {
