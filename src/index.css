@@ -283,9 +283,7 @@ body {
 }
 @media (max-width: 600px) {
   .product-container-content {
-    padding-top: 16px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 16px 32px;
   }
 }
 
