@@ -82,6 +82,7 @@ body {
   -webkit-backdrop-filter: saturate(200%) blur(var(--blur-value));
   backdrop-filter: saturate(200%) blur(var(--blur-value));
   border-radius: 12px;
+  z-index: 1000;
 }
 
 @media (max-width: 600px) {
