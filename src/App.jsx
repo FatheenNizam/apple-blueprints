@@ -5,6 +5,7 @@ import { ProductsDataContext } from "./ProductsDataContext";
 import { transformProductsData } from "./transformProductsData";
 import { fetchProductsData } from "./fetchProductsData";
 import { Footer } from "./Footer";
+import { Navbar } from "./Navbar";
 
 export function App() {
   const [productsData, setProductsData] = useState(null);
@@ -21,6 +22,7 @@ export function App() {
 
   return (
     <div className="app">
+      <Navbar />
       <ProductsDataContext.Provider value={productsData}>
         <div className="year-list">
           {productsByYear &&

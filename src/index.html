@@ -91,48 +91,10 @@
   </head>
 
   <body>
-    <div id="navbar">
-      <h1>[ apple blueprints ]</h1>
-    </div>
-
     <div id="spacer"></div>
-
     <div class="wrapper"></div>
     <div id="modal-container"></div>
 
     <script type="module" src="./index.jsx"></script>
-
-    <script>
-      let lastTop = 0;
-      let lastScrollPosition = 0;
-      const navbar = document.querySelector("#navbar");
-      const navbarTravel = navbar.clientHeight + 26;
-
-      window.addEventListener(
-        "scroll",
-        function () {
-          // Credit: Neil Philip Whitehead https://stackoverflow.com/a/17698713
-
-          const maxScrollPosition =
-            Math.max(
-              document.body.scrollHeight,
-              document.body.offsetHeight,
-              document.documentElement.clientHeight,
-              document.documentElement.scrollHeight,
-              document.documentElement.offsetHeight
-            ) - window.innerHeight;
-
-          const scrollPosition = window.pageYOffset;
-          const delta = scrollPosition - lastScrollPosition;
-          const newTop = scrollPosition <= 0 ? 0 : Math.max(0, Math.min(navbarTravel, lastTop + delta));
-
-          navbar.style.transform = `translateY(-${newTop}px)`;
-
-          lastTop = newTop;
-          lastScrollPosition = scrollPosition;
-        },
-        false
-      );
-    </script>
   </body>
 </html>

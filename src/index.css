@@ -131,6 +131,9 @@ body {
     font-size: 48px;
   }
 }
+.past-date {
+  color: var(--text-secondary);
+}
 
 .container {
   margin: 0 42px;
