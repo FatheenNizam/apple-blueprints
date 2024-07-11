@@ -29,7 +29,6 @@ export function App() {
             productsByYear.map(({ yearName, months }) => <YearCard key={yearName} year={yearName} months={months} />)}
           {unknownProducts?.length > 0 && <YearCard key="unknown" year="unknown" months={unknownMonths} />}
         </div>
-
         <Footer lastUpdated={lastUpdated} />
         <Outlet />
       </ProductsDataContext.Provider>

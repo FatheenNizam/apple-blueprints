@@ -6,7 +6,8 @@ export function YearCard({ months, year }) {
   const isPastYear = year < currentYear;
 
   const yearLabelRef = useRef(null);
-  const [isScrollingProgrammatically, setIsScrollingProgrammatically] = useState(false);
+  const [isScrollingProgrammatically] = useState(false);
+  const [showPastYears, setShowPastYears] = useState(false);
 
   useEffect(() => {
     let lastTop = 0;
@@ -19,15 +20,6 @@ export function YearCard({ months, year }) {
 
     const handleScroll = () => {
       if (!isScrollingProgrammatically) {
-        const maxScrollPosition =
-          Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.clientHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-          ) - window.innerHeight;
-
         const scrollPosition = window.pageYOffset;
         const delta = scrollPosition - lastScrollPosition;
         const newTop = scrollPosition <= 0 ? 0 : Math.max(0, Math.min(navbarTravel, lastTop + delta));
@@ -47,27 +39,23 @@ export function YearCard({ months, year }) {
   }, [isScrollingProgrammatically]);
 
   useEffect(() => {
-    if (year === currentYear) {
-      const offset = -140; // Adjust this value as needed
-      const element = yearLabelRef.current;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const button = document.getElementById("prev-years-button");
+    const handleClick = () => setShowPastYears((prevState) => !prevState);
+    button.addEventListener("click", handleClick);
 
-      setIsScrollingProgrammatically(true);
-      window.scrollTo({
-        top: elementPosition + offset,
-        behavior: "auto", // Ensure no scrolling animation
-      });
+    return () => {
+      button.removeEventListener("click", handleClick);
+    };
+  }, []);
 
-      // Disable the programmatic scroll flag after a short delay to avoid conflicts
-      setTimeout(() => {
-        setIsScrollingProgrammatically(false);
-      }, 100); // Adjust the delay as needed
-    }
-  }, [currentYear, year]);
+  // Render nothing if the year is in the past and showPastYears is false
+  if (isPastYear && !showPastYears) {
+    return null;
+  }
 
   return (
-    <div className="yearCard">
-      <h2 ref={yearLabelRef} className={`year-label ${isPastYear ? "past-date" : ""}`}>
+    <div className="year-card">
+      <h2 id={year} className={`year-label ${isPastYear ? "past-date" : ""}`}>
         {year}
       </h2>
       <div className="container">
