@@ -13,7 +13,7 @@ export function YearCard({ months, year }) {
     let lastTop = 0;
     let lastScrollPosition = 0;
     const navbar = document.querySelector("#navbar");
-    const navbarTravel = navbar.clientHeight + 25;
+    const navbarTravel = navbar.clientHeight + 100;
 
     // Set navbar to visible initially
     navbar.style.transform = `translateY(0)`;
