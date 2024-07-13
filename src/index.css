@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Beiruti:wght@200..900&display=swap");
+
 :root {
   --apple-system-blue-light: #007aff;
   --apple-system-gray-light: #828282;
@@ -17,6 +19,7 @@
   --text-tertiary: rgb(191, 191, 191);
   --month-card-bg: rgb(255, 255, 255);
   --border: rgb(200, 200, 200);
+  --border: rgb(233, 235, 237);
   --counter-bg: rgba(0, 0, 0, 0.05);
   --released-product: rgb(8, 127, 6);
   --released-product: var(--apple-system-green-light);
@@ -48,7 +51,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --apple-system-blue-dark: #0b84ff;
-    --apple-system-gray-dark: #636366;
+    --apple-system-gray-dark: #7f7f82;
     --apple-system-green-dark: #30d158;
     --apple-system-red-dark: #ff453a;
     --apple-system-yellow-dark: #ffd60a;
@@ -57,8 +60,7 @@
     --apple-system-pink-dark: #ff375f;
     --apple-system-teal-dark: #64d2ff;
 
-    --site-bg: rgb(16, 16, 10);
-    --site-bg: rgb(16, 16, 16);
+    --site-bg: #0a0a08;
     --navbar-bg: var(--apple-system-blue-dark);
     --text-primary: rgb(245, 245, 247);
     --text-secondary: rgb(158, 158, 158);
@@ -103,7 +105,6 @@ button {
   font: inherit;
   color: inherit;
   cursor: pointer;
-  outline: none; /* Optional: removes outline when button is focused */
 }
 
 body {
@@ -112,7 +113,7 @@ body {
   background-color: var(--site-bg);
   color: var(--text-primary);
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
-  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  /* font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; */
 }
 
 body::before {
@@ -244,7 +245,7 @@ body::before {
 
 .month-card {
   padding: 12px 18px;
-  /* border: 1px solid var(--border); */
+  border: 1px solid var(--border);
   border-radius: var(--border-radius);
   background-color: var(--month-card-bg);
   position: relative;
@@ -625,6 +626,11 @@ td {
 
 .footer-wrapper {
   margin: 32px 42px;
+}
+@media (max-width: 600px) {
+  .footer-wrapper {
+    margin: 32px 18px;
+  }
 }
 
 .footer {
