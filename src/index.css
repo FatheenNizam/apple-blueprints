@@ -12,14 +12,20 @@
   --apple-system-teal-light: #5ac8fa;
 
   --site-bg: rgb(245, 245, 247);
+  --site-bg: rgb(240, 240, 255);
+
   --navbar-bg: rgba(255, 204, 0, 0.8);
   --navbar-bg: var(--apple-system-blue-light);
   --text-primary: rgb(29, 29, 31);
   --text-secondary: rgb(97, 97, 97);
   --text-tertiary: rgb(191, 191, 191);
+
   --month-card-bg: rgb(255, 255, 255);
+  --month-card-bg: rgb(250, 250, 255);
+
   --border: rgb(200, 200, 200);
   --border: rgb(220, 220, 220);
+
   --counter-bg: rgba(0, 0, 0, 0.05);
   --released-product: rgb(8, 127, 6);
   --released-product: var(--apple-system-green-light);
@@ -62,12 +68,16 @@
     --apple-system-teal-dark: #64d2ff;
 
     --site-bg: #0a0a08;
-    /* --navbar-bg: var(--apple-system-blue-dark); */
+    --site-bg: rgb(15, 15, 0);
+
+    --navbar-bg: var(--apple-system-blue-dark);
     --text-primary: rgb(245, 245, 247);
     --text-secondary: rgb(158, 158, 158);
     --text-tertiary: rgb(64, 64, 64);
-    --month-card-bg: rgb(31, 30, 28);
     --month-card-bg: rgb(30, 30, 30);
+
+    --month-card-bg: rgb(30, 30, 40);
+
     --border: rgb(64, 64, 64);
     --counter-bg: rgba(255, 255, 255, 0.05);
     --released-product: rgb(76, 175, 79);
