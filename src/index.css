@@ -19,7 +19,7 @@
   --text-tertiary: rgb(191, 191, 191);
   --month-card-bg: rgb(255, 255, 255);
   --border: rgb(200, 200, 200);
-  --border: rgb(233, 235, 237);
+  --border: rgb(220, 220, 220);
   --counter-bg: rgba(0, 0, 0, 0.05);
   --released-product: rgb(8, 127, 6);
   --released-product: var(--apple-system-green-light);
@@ -35,6 +35,7 @@
   --close-button-bg: rgb(232, 232, 238);
   --footer-bg: white;
   --underline: rgb(169, 169, 169);
+  --text-highlight: var(--apple-system-blue-light);
 
   --blur-value: 12px;
   --border-radius: 18px;
@@ -61,7 +62,7 @@
     --apple-system-teal-dark: #64d2ff;
 
     --site-bg: #0a0a08;
-    --navbar-bg: var(--apple-system-blue-dark);
+    /* --navbar-bg: var(--apple-system-blue-dark); */
     --text-primary: rgb(245, 245, 247);
     --text-secondary: rgb(158, 158, 158);
     --text-tertiary: rgb(64, 64, 64);
@@ -81,6 +82,7 @@
     --close-button-bg: rgb(36, 36, 30);
     --footer-bg: rgb(23, 23, 22);
     --underline: rgb(86, 86, 86);
+    --text-highlight: var(--apple-system-blue-dark);
   }
 }
 
@@ -151,7 +153,6 @@ body::before {
   z-index: 1000;
   padding: 0 24px;
   box-sizing: border-box;
-  box-shadow: var(--box-shadow);
 }
 
 #navbar a {
@@ -185,6 +186,7 @@ body::before {
 #prev-years-button {
   margin: 0 42px;
   background: var(--apple-system-blue-light);
+  background: var(--navbar-bg);
 }
 
 .year-list {
@@ -213,6 +215,7 @@ body::before {
 
 @media (prefers-color-scheme: dark) {
   .year-label {
+    color: var(--text-primary);
     color: var(--apple-system-blue-dark);
   }
 }
@@ -275,6 +278,10 @@ body::before {
   }
 }
 
+.current-month {
+  color: var(--text-highlight);
+}
+
 .product-list-container {
   display: flex;
   flex-direction: column;
@@ -314,7 +321,7 @@ body::before {
 
 .product-item-icon {
   align-self: start;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .counter {
@@ -673,9 +680,12 @@ td {
 }
 
 .footer-button:hover {
-  background-color: var(--footer-button-bg-hover);
+  /* background-color: var(--footer-button-bg-hover); */
   border-color: var(--footer-button-highlight-hover);
   color: var(--footer-button-highlight-hover);
+
+  border-color: var(--apple-system-blue-light);
+  color: var(--apple-system-blue-light);
 }
 
 .footer-text-container {
