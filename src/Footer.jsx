@@ -55,7 +55,8 @@ function LastUpdated({ lastUpdated }) {
     <div className="footer-text-container">
       <div className="footer-text disclaimer-text">{siteContentData?.fields.footerText}</div>
       <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
-        Last updated: <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
+        Last updated{!showRelativeTime && ":"}{" "}
+        <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
       </div>
     </div>
   );
