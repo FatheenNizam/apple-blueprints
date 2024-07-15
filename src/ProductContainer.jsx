@@ -148,7 +148,7 @@ export function ProductContainer({ product, onDismiss }) {
               <td>
                 {updatedProduct?.fields.rumouredDate
                   ? format(new Date(updatedProduct.fields.rumouredDate), "MMMM d, yyyy")
-                  : null}
+                  : "N/A"}
               </td>
             </tr>
             <tr>
@@ -156,7 +156,7 @@ export function ProductContainer({ product, onDismiss }) {
               <td>
                 {updatedProduct?.fields.announcedDate
                   ? format(new Date(updatedProduct.fields.announcedDate), "MMMM d, yyyy")
-                  : null}
+                  : "N/A"}
               </td>{" "}
             </tr>
             <tr>
@@ -164,7 +164,7 @@ export function ProductContainer({ product, onDismiss }) {
               <td>
                 {updatedProduct?.fields.releasedDate
                   ? format(new Date(updatedProduct.fields.releasedDate), "MMMM d, yyyy")
-                  : null}
+                  : "N/A"}
               </td>{" "}
             </tr>
           </tbody>
