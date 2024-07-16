@@ -202,6 +202,7 @@ body::before {
   background: var(--navbar-bg);
   padding: 6px 12px;
   border-radius: var(--border-radius-button);
+  color: white;
 }
 
 .year-list {
@@ -525,6 +526,12 @@ body::before {
   max-height: 300px;
   display: block;
   object-fit: cover; /* Maintains aspect ratio and covers the container */
+}
+@media (max-width: 600px) {
+  .product-image {
+    width: 100%;
+    max-height: inherit;
+  }
 }
 
 .close-button {
