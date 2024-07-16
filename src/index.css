@@ -397,22 +397,13 @@ body::before {
   background-color: var(--site-bg);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   box-shadow: var(--box-shadow);
-
   overflow: scroll;
   border-radius: var(--border-radius);
 }
-.product-container-content {
-  padding: 32px 42px;
-}
-@media (max-width: 600px) {
-  .product-container-content {
-    padding: 16px 32px 32px 32px;
-  }
-}
-
 @media (max-width: 600px) {
   .product-container {
     width: inherit;
+    max-height: 90%;
     top: inherit;
     bottom: 0;
     left: 0;
@@ -420,6 +411,14 @@ body::before {
     transform: translate(0%, 0%);
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+}
+.product-container-content {
+  padding: 32px 42px;
+}
+@media (max-width: 600px) {
+  .product-container-content {
+    padding: 16px 32px 32px 32px;
   }
 }
 
