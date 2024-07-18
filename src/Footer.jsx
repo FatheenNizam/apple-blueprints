@@ -36,7 +36,7 @@ export function Footer({ lastUpdated }) {
 
 function LastUpdated({ lastUpdated }) {
   const [showRelativeTime, setShowRelativeTime] = useState(true);
-  const relativeTime = formatDistanceToNow(lastUpdated, { addSuffix: true }).replace("about ", "");
+  const relativeTime = formatDistanceToNow(lastUpdated, { addSuffix: true });
   const actualDate = format(new Date(lastUpdated), "MMMM d, yyyy, h:mm a");
 
   const handleClick = () => {
@@ -55,7 +55,7 @@ function LastUpdated({ lastUpdated }) {
     <div className="footer-text-container">
       <div className="footer-text disclaimer-text">{siteContentData?.fields.footerText}</div>
       <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
-        Last updated{!showRelativeTime && ":"}{" "}
+        Last updated{!showRelativeTime}{" "}
         <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
       </div>
     </div>

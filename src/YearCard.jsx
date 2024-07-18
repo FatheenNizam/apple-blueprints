@@ -40,13 +40,19 @@ export function YearCard({ months, year }) {
 
   useEffect(() => {
     const button = document.getElementById("prev-years-button");
-    const handleClick = () => setShowPastYears((prevState) => !prevState);
+
+    const handleClick = () => {
+      setShowPastYears((prevState) => !prevState);
+      // Toggle button text
+      button.textContent = showPastYears ? "Show previous years" : "Hide previous years";
+    };
+
     button.addEventListener("click", handleClick);
 
     return () => {
       button.removeEventListener("click", handleClick);
     };
-  }, []);
+  }, [showPastYears]);
 
   // Render nothing if the year is in the past and showPastYears is false
   if (isPastYear && !showPastYears) {
