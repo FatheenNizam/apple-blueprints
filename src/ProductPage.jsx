@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { router } from "./router";
 import { ProductsDataContext } from "./ProductsDataContext";
 import { Modal } from "./Modal";
-import { ProductContainer } from "./ProductContainer";
+import { ProductContainer } from "./ProductCard";
 
 export function ProductPage() {
   const productsData = useContext(ProductsDataContext);

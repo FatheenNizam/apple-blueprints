@@ -411,7 +411,7 @@ body::before {
 }
 
 .product-container-wrapper {
-  width: 100%;
+  width: 90%;
   max-width: 1000px;
   max-height: 90%;
   display: flex;
@@ -426,7 +426,7 @@ body::before {
 
 @media screen and (max-width: 600px) {
   .product-container-wrapper {
-    width: inherit;
+    width: 100%;
     max-height: 90%;
     top: inherit;
     bottom: 0;
@@ -435,6 +435,7 @@ body::before {
     transform: translate(0%, 0%);
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
+    gap: 0;
   }
 }
 
@@ -454,9 +455,7 @@ body::before {
 }
 @media (max-width: 600px) {
   .product-container {
-    width: inherit;
     max-height: 90%;
-    top: inherit;
     bottom: 0;
     left: 0;
     right: 0;
@@ -464,16 +463,6 @@ body::before {
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
-}
-.prev-next-button-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  /* position: absolute; */
-  /* margin-top: 24px;
-  margin-left: 24px;
-  gap: 8px; */
 }
 
 .product-navigation-button {
@@ -489,6 +478,11 @@ body::before {
 .product-navigation-button:hover {
   opacity: 0.8;
   transition: var(--transition-time) ease opacity;
+}
+@media (max-width: 600px) {
+  .product-navigation-button {
+    display: none;
+  }
 }
 #previous-button {
   left: 20px;
