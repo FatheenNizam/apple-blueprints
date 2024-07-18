@@ -169,6 +169,9 @@ export function ProductContainer({ product, onDismiss }) {
             </tr>
           </tbody>
         </table>
+        <div className="product-container-last-updated-text">
+          Last updated: {format(new Date(updatedProduct?.sys.updatedAt), "MMMM d, yyyy, h:mm a")}
+        </div>
       </div>
     </div>
   );
