@@ -446,7 +446,7 @@ body::before {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--site-bg);
+  background-color: var(--month-card-bg);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   box-shadow: var(--box-shadow);
   overflow: scroll;
@@ -480,7 +480,6 @@ body::before {
   height: 36px;
   width: 36px;
   background-color: white;
-  /* border: 1px solid var(--border); */
   color: black;
   border-radius: 9999px;
   margin: 0;
@@ -489,7 +488,7 @@ body::before {
 }
 .product-navigation-button:hover {
   opacity: 0.8;
-  transition: 200ms ease opacity;
+  transition: var(--transition-time) ease opacity;
 }
 #previous-button {
   left: 20px;
@@ -625,8 +624,7 @@ body::before {
   width: 36px;
   font-size: 20px;
   text-align: center;
-  background-color: white;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   cursor: pointer;
   border-radius: 9999px;
   transition: var(--transition-time);
@@ -788,7 +786,6 @@ td {
 }
 
 .product-container-button {
-  /* background-color: var(--footer-button-bg); */
   margin: 0 auto;
 }
 
