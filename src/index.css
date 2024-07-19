@@ -35,7 +35,7 @@
   --announced-product: var(--apple-system-orange-light);
   --rumoured-product: grey;
   --rumoured-product: var(--apple-system-gray-light);
-  --link: rgb(18, 116, 224);
+  --link: var(--apple-system-blue-light);
   --overlay: rgb(0, 0, 0);
   --footer-button-bg: rgba(0, 0, 0, 0.05);
   --footer-button-bg-hover: rgba(255, 204, 0, 0.1);
@@ -90,6 +90,7 @@
     --released-product: var(--apple-system-green-dark);
     --announced-product: var(--apple-system-orange-dark);
     --rumoured-product: var(--apple-system-gray-dark);
+    --link: var(--apple-system-blue-dark);
     --overlay: rgb(255, 255, 255);
     --footer-button-bg: rgba(255, 255, 255, 0.05);
     --footer-button-bg-hover: rgba(255, 204, 0, 0.05);
@@ -217,12 +218,17 @@ body::before {
 
 #prev-years-button {
   margin: 0 42px;
-  background: var(--apple-system-blue-light);
-  background: var(--navbar-bg);
+  background: var(--footer-button-bg);
+  border: 1px solid var(--border);
   padding: 6px 12px;
   border-radius: var(--border-radius-button);
-  color: white;
+  color: var(--text-primary);
   box-sizing: border-box;
+}
+#prev-years-button:hover {
+  background-color: var(--footer-button-bg-hover);
+  color: var(--footer-button-highlight-hover);
+  border: 1px solid var(var(--footer-button-highlight-hover));
 }
 @media (max-width: 600px) {
   #prev-years-button {
@@ -402,8 +408,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  overflow-y: auto; /* Allows modal scrolling */
-  z-index: 1000; /* Adjust z-index as needed */
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 #modal-container > * {
@@ -572,7 +578,7 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: top;
-  gap: var(--content-section-gap);
+  gap: calc(var(--content-section-gap) * 2);
 }
 @media (max-width: 600px) {
   .top-section {
@@ -720,15 +726,8 @@ td {
   background-color: var(--overlay);
   opacity: 0;
   cursor: pointer;
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
-  z-index: 900;
-}
-
-@keyframes fadeIn {
-  100% {
-    opacity: 0.2;
-  }
+  opacity: 0.2;
+  z-index: 999;
 }
 
 .footer-wrapper {
