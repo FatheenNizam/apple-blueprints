@@ -59,6 +59,7 @@
   --footer-bg: white;
   --underline: rgb(169, 169, 169);
   --text-highlight: var(--apple-system-blue-light);
+  --focus-color: rgb(255, 153, 0);
 
   --blur-value: 12px;
   --border-radius: 18px;
@@ -833,6 +834,18 @@ td {
   text-decoration-style: dotted;
   text-decoration-color: var(--underline);
   text-underline-offset: 4px;
+}
+
+:focus {
+  outline: 3px solid var(--focus-color);
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 ::selection {
