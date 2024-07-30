@@ -103,6 +103,17 @@ export function ProductContainer({ product, onDismiss }) {
                 {images.map((image) => (
                   <ProductImage image={image} />
                 ))}
+                {updatedProduct?.fields.imagesSource && (
+                  <a
+                    className="product-image-caption source-link-text"
+                    href={updatedProduct.fields.imagesSource}
+                    target="_blank"
+                  >
+                    {updatedProduct.fields.imagesSource.replace(/^(?:https?:\/\/)?(?:www\.)?/, "")}
+                    {"  "}
+                    <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                )}
               </div>
             )}
           </div>

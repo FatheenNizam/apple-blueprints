@@ -240,11 +240,14 @@ body::before {
   color: var(--text-primary);
   box-sizing: border-box;
 }
-#prev-years-button:hover {
-  background-color: var(--footer-button-bg-hover);
-  color: var(--footer-button-highlight-hover);
-  border: 1px solid var(var(--footer-button-highlight-hover));
+@media (min-width: 600px) {
+  #prev-years-button:hover {
+    background-color: var(--footer-button-bg-hover);
+    color: var(--footer-button-highlight-hover);
+    border: 1px solid var(var(--footer-button-highlight-hover));
+  }
 }
+
 @media (max-width: 600px) {
   #prev-years-button {
     margin: 12px 0;
@@ -620,12 +623,14 @@ body::before {
 
 .product-image-container {
   display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
   justify-content: space-between;
   overflow-x: hidden;
   max-width: 50%;
   margin-bottom: var(--content-section-gap);
   border-radius: var(--border-radius-button);
-  /* background-color: white; */
 }
 @media (max-width: 600px) {
   .product-image-container {
@@ -646,6 +651,13 @@ body::before {
     width: 100%;
     max-height: inherit;
   }
+}
+
+.product-image-caption {
+  font-size: 12px;
+  text-align: center;
+  color: var(--link);
+  text-decoration: 10px solid var(--underline);
 }
 
 .close-button {
