@@ -478,6 +478,10 @@ body::before {
   border-radius: var(--border-radius);
   pointer-events: auto;
 }
+.product-container:focus {
+  outline: none;
+}
+
 @media (max-width: 600px) {
   .product-container {
     max-height: 90%;
