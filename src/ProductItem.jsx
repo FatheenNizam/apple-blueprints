@@ -19,14 +19,6 @@ export function ProductItem({ product }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* <i
-        // className={`${statusIcons[updatedProduct.fields.status]} product-item-icon`}
-        className={`${
-          productIcons[updatedProduct.metadata.tags.length > 0 ? updatedProduct.metadata.tags[0].sys.id : ""]
-        } product-item-icon`}
-        {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
-      /> */}
-
       <span
         className={`material-symbols-rounded product-item-icon ${
           updatedProduct.metadata.tags.length > 0 &&
