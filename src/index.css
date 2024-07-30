@@ -4,6 +4,19 @@
     url("src/resources/fonts/test-soehne-buch.otf") format("opentype");
 }
 
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 200, "opsz" 24;
+}
+
+.material-symbols-rounded-no-fill {
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 24;
+}
+
+.material-symbols-rounded-rotate {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
 :root {
   --apple-system-blue-light: #007aff;
   --apple-system-gray-light: #828282;
@@ -39,7 +52,7 @@
   --overlay: rgb(0, 0, 0);
   --footer-button-bg: rgba(0, 0, 0, 0.05);
   --footer-button-bg-hover: rgba(255, 204, 0, 0.1);
-  --footer-button-bg-hover: rgba(0, 122, 255, 0.1);
+  --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
   --footer-button-highlight-hover: rgba(204, 143, 0, 1);
   --footer-button-highlight-hover: var(--apple-system-blue-light);
   --close-button-bg: rgb(232, 232, 238);
@@ -61,9 +74,11 @@
 
   --box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 
+  --current-font: "Soehne Buch", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue",
+    "Arial", sans-serif;
+
   --current-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial",
     sans-serif;
-  /* --current-font: "Soehne Buch", "Helvetica Neue", "Arial", sans-serif; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -199,13 +214,12 @@ body::before {
   }
 }
 
-#spacer {
-  height: 118px;
+#wrapper {
+  padding-top: 118px;
 }
-
 @media (max-width: 600px) {
-  #spacer {
-    height: 90px;
+  #wrapper {
+    padding-top: 90px;
   }
 }
 
@@ -363,13 +377,17 @@ body::before {
   text-decoration-color: var(--underline);
   text-underline-offset: 4px;
 }
-.hovered-text {
+
+.source-link:hover .source-link-text {
   text-decoration: none !important;
 }
+/* .hovered-text {
+  text-decoration: none !important;
+} */
 
 .product-item-icon {
   align-self: start;
-  margin-top: 3px;
+  /* margin-top: 3px; */
 }
 
 .counter {
@@ -428,6 +446,7 @@ body::before {
   z-index: 1000;
   gap: 24px;
   justify-content: center;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -458,6 +477,7 @@ body::before {
   box-shadow: var(--box-shadow);
   overflow: scroll;
   border-radius: var(--border-radius);
+  pointer-events: auto;
 }
 @media (max-width: 600px) {
   .product-container {
@@ -480,6 +500,7 @@ body::before {
   margin: 0;
   flex-shrink: 0;
   box-shadow: var(--box-shadow);
+  pointer-events: auto;
 }
 .product-navigation-button:hover {
   opacity: 0.8;
@@ -599,6 +620,7 @@ body::before {
   max-width: 50%;
   margin-bottom: var(--content-section-gap);
   border-radius: var(--border-radius-button);
+  /* background-color: white; */
 }
 @media (max-width: 600px) {
   .product-image-container {
@@ -610,7 +632,9 @@ body::before {
   max-width: 100%;
   max-height: 300px;
   display: block;
-  object-fit: cover; /* Maintains aspect ratio and covers the container */
+  object-fit: contain;
+  object-position: right;
+  border-radius: inherit;
 }
 @media (max-width: 600px) {
   .product-image {

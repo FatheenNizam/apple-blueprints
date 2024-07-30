@@ -6,5 +6,5 @@ import { router } from "./router";
 
 ContentfulLivePreview.init({ locale: navigator.language });
 
-const root = createRoot(document.querySelector(".wrapper"));
+const root = createRoot(document.querySelector("#wrapper"));
 root.render(<RouterProvider router={router} />);

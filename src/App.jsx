@@ -23,6 +23,9 @@ export function App() {
   return (
     <div className="app">
       <Navbar />
+      <div id="prev-years-button-wrapper">
+        <button id="prev-years-button">Show previous years</button>
+      </div>
       <ProductsDataContext.Provider value={productsData}>
         <div className="year-list">
           {productsByYear &&

@@ -1,4 +1,3 @@
-// hooks/useFocusOnUpdate.js
 import { useEffect, useRef } from "react";
 
 export function useFocusOnUpdate() {
@@ -15,7 +14,6 @@ export function useFocusOnUpdate() {
 
       return () => clearTimeout(timeoutId);
     }
-  }, []); // Empty dependency array ensures focus is set on initial render and updates
-
+  }, []); // No dependencies, so this effect runs on every render
   return ref;
 }

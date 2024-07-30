@@ -17,7 +17,11 @@ export function ProductPage() {
 
   return (
     <Modal onDismiss={closeModal}>
-      {product ? <ProductContainer product={product} onDismiss={closeModal} /> : <div>Loading...</div>}
+      {product ? (
+        <ProductContainer key={product.sys.id} product={product} onDismiss={closeModal} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </Modal>
   );
 }
