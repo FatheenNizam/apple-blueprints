@@ -12,11 +12,6 @@
   font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 24;
 }
 
-.material-symbols-rounded-rotate {
-  display: inline-block;
-  transform: rotate(90deg);
-}
-
 :root {
   --apple-system-blue-light: #007aff;
   --apple-system-gray-light: #828282;

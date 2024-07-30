@@ -26,10 +26,6 @@ export function ProductItem({ product }) {
           updatedProduct.metadata.tags[0].sys.id === "accessory"
             ? "material-symbols-rounded-no-fill"
             : ""
-        } ${
-          updatedProduct.metadata.tags.length > 0 && updatedProduct.metadata.tags[0].sys.id === "ipad"
-            ? "material-symbols-rounded-rotate"
-            : ""
         }`}
       >
         {productIcons[updatedProduct.metadata.tags.length > 0 ? updatedProduct.metadata.tags[0].sys.id : ""]}
