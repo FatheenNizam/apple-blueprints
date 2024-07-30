@@ -1,6 +1,7 @@
 import React, { useContext, useMemo, useState, useEffect } from "react";
 import { statusLabels } from "./statusLabels";
 import { statusIcons } from "./statusIcons";
+import { productIcons } from "./productIcons";
 import { ProductsDataContext } from "./ProductsDataContext";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
@@ -75,9 +76,10 @@ export function ProductContainer({ product, onDismiss }) {
                   className={"product-status " + updatedProduct.fields.status + "-product"}
                   {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
                 >
-                  <i className={statusIcons[updatedProduct.fields.status]} />{" "}
-                  {statusLabels[updatedProduct.fields.status]}
+                  <i className={`product-status-icon ${statusIcons[updatedProduct.fields.status]}`} />
+                  <div className="product-status-text">{statusLabels[updatedProduct.fields.status]}</div>
                 </div>
+
                 <div
                   className="product-name"
                   id="product-title"

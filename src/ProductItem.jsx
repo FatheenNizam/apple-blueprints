@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { statusIcons } from "./statusIcons";
 import { productIcons } from "./productIcons";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
@@ -21,8 +20,10 @@ export function ProductItem({ product }) {
     >
       <span
         className={`material-symbols-rounded product-item-icon ${
-          updatedProduct.metadata.tags.length > 0 &&
-          (updatedProduct.metadata.tags[0].sys.id === "mac" || updatedProduct.metadata.tags[0].sys.id === "vision")
+          (updatedProduct.metadata.tags.length > 0 &&
+            (updatedProduct.metadata.tags[0].sys.id === "mac" ||
+              updatedProduct.metadata.tags[0].sys.id === "vision")) ||
+          updatedProduct.metadata.tags[0].sys.id === "accessory"
             ? "material-symbols-rounded-no-fill"
             : ""
         } ${
