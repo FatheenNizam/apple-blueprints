@@ -1,6 +1,8 @@
 export const productIcons = {
   iphone: "smartphone",
-  mac: "laptop_windows",
+  mac: "storage",
+  macbook: "laptop_mac",
+  imac: "desktop_mac",
   watch: "watch",
   ipad: "tablet",
   airpods: "headphones",

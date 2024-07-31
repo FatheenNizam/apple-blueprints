@@ -619,7 +619,7 @@ body::before {
 .product-image-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
   align-items: center;
   justify-content: space-between;
   overflow-x: hidden;
@@ -638,7 +638,7 @@ body::before {
   max-height: 300px;
   display: block;
   object-fit: contain;
-  object-position: right;
+  object-position: center;
   border-radius: inherit;
 }
 @media (max-width: 600px) {
@@ -650,7 +650,6 @@ body::before {
 
 .product-image-caption {
   font-size: 12px;
-  text-align: center;
   color: var(--link);
   text-decoration: 10px solid var(--underline);
 }

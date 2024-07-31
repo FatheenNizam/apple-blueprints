@@ -22,6 +22,8 @@ export function ProductItem({ product }) {
         className={`material-symbols-rounded product-item-icon ${
           (updatedProduct.metadata.tags.length > 0 &&
             (updatedProduct.metadata.tags[0].sys.id === "mac" ||
+              updatedProduct.metadata.tags[0].sys.id === "macbook" ||
+              updatedProduct.metadata.tags[0].sys.id === "imac" ||
               updatedProduct.metadata.tags[0].sys.id === "vision")) ||
           updatedProduct.metadata.tags[0].sys.id === "accessory"
             ? "material-symbols-rounded-no-fill"

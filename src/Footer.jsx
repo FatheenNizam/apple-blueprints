@@ -49,8 +49,6 @@ function LastUpdated({ lastUpdated }) {
     fetchSiteContentData().then((data) => setSiteContentData(data));
   }, []);
 
-  console.log({ siteContentData });
-
   return (
     <div className="footer-text-container">
       <div className="footer-text disclaimer-text">{siteContentData?.fields.footerText}</div>
