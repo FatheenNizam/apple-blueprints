@@ -49,6 +49,27 @@ export function ProductContainer({ product, onDismiss }) {
 
   const productContainerRef = useFocusOnUpdate();
 
+  const generation = updatedProduct.fields.generation;
+  let displayGeneration = "";
+
+  if (generation && generation > 1) {
+    let suffix = "th";
+
+    if (generation % 10 === 1 && generation % 100 !== 11) {
+      suffix = "st";
+    } else if (generation % 10 === 2 && generation % 100 !== 12) {
+      suffix = "nd";
+    } else if (generation % 10 === 3 && generation % 100 !== 13) {
+      suffix = "rd";
+    }
+
+    displayGeneration = `(${generation}${suffix} generation)`;
+  }
+
+  const displayName = `${updatedProduct.fields.productName} ${
+    updatedProduct.fields.spec ? `(${updatedProduct.fields.spec})` : displayGeneration
+  }`;
+
   return (
     <div className="product-container-wrapper">
       <div className="button-container">
@@ -85,7 +106,7 @@ export function ProductContainer({ product, onDismiss }) {
                   id="product-title"
                   {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
                 >
-                  {updatedProduct.fields.productName}
+                  {displayName}
                 </div>
               </div>
               <div
