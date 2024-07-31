@@ -63,7 +63,7 @@ export function ProductContainer({ product, onDismiss }) {
       <div
         className="product-container"
         ref={productContainerRef}
-        tabIndex="-1" // Ensure this is set
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="product-title"
       >
@@ -171,6 +171,7 @@ export function ProductContainer({ product, onDismiss }) {
             Last updated {format(new Date(updatedProduct?.sys.updatedAt), "MMMM d, yyyy, h:mm a")} (
             {formatDistanceToNow(new Date(updatedProduct?.sys.updatedAt))} ago)
           </div>
+
           <div>
             <a
               href={`mailto:appleblueprints@gmail.com?subject=Edit%20request:%20${updatedProduct.fields.productName}&body=Please%20provide%20details%20of%20the%20edit%20you%20would%20like%20to%20make.`}

@@ -504,8 +504,8 @@ body::before {
   pointer-events: auto;
 }
 .product-navigation-button:hover {
-  opacity: 0.8;
-  transition: var(--transition-time) ease opacity;
+  background-color: rgb(220, 220, 220);
+  transition: var(--transition-time) ease background-color;
 }
 @media (max-width: 600px) {
   .product-navigation-button {
