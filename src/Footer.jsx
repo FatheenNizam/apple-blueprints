@@ -9,11 +9,15 @@ export function Footer({ lastUpdated }) {
     <div className="footer-wrapper">
       <div className="footer">
         <div id="footer-button-container">
-          {siteContentData?.fields.footerItems?.map(({ fields: { text, icon, url } }) => (
-            <a href={url} target="_blank" className="footer-button">
-              <i className={icon}></i>&nbsp;&nbsp;{text}
-            </a>
-          ))}
+          {siteContentData?.fields.footerItems?.map((item, index) => {
+            const { fields: { text, icon, url } = {} } = item || {};
+
+            return text && icon && url ? (
+              <a key={index} href={url} target="_blank" className="footer-button" aria-label={text}>
+                <i className={icon}></i>&nbsp;&nbsp;{text}
+              </a>
+            ) : null;
+          })}
         </div>
 
         {lastUpdated && <LastUpdated lastUpdated={lastUpdated} />}
