@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { formatDistanceToNow, format } from "date-fns";
-import { fetchSiteContentData } from "./fetchSiteContentData";
+import { SiteContentContext } from "./SiteContentContext";
 
 export function Footer({ lastUpdated }) {
   return (
@@ -43,11 +43,7 @@ function LastUpdated({ lastUpdated }) {
     setShowRelativeTime(!showRelativeTime);
   };
 
-  const [siteContentData, setSiteContentData] = useState(null);
-
-  useEffect(() => {
-    fetchSiteContentData().then((data) => setSiteContentData(data));
-  }, []);
+  const siteContentData = useContext(SiteContentContext);
 
   return (
     <div className="footer-text-container">

@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { fetchSiteContentData } from "./fetchSiteContentData";
+import React, { useContext } from "react";
+import { SiteContentContext } from "./SiteContentContext";
 
 export function Navbar() {
-  const [siteContentData, setSiteContentData] = useState(null);
-
-  useEffect(() => {
-    fetchSiteContentData().then((data) => setSiteContentData(data));
-  }, []);
+  const siteContentData = useContext(SiteContentContext);
 
   const currentYear = new Date().getFullYear();
   const siteTitle = siteContentData?.fields.siteTitle;
 
   return (
     <nav id="navbar">
-      {/* <div className="navbar-items-left"> */}
-      <h1>
-        <a title="Jump to current year" href={`#${currentYear}`} aria-label="Jump to current year">
-          {siteTitle}
-        </a>
-      </h1>
-      {/* </div> */}
-      {/* <div className="navbar-items-right">
+      <div className="navbar-items-left">
+        <h1>
+          <a title="Jump to current year" href={`#${currentYear}`} aria-label="Jump to current year">
+            {siteTitle}
+          </a>
+        </h1>
+      </div>
+      <div className="navbar-items-right">
         <a href="#" aria-label="Item 1">
           Item 1
         </a>
@@ -36,7 +32,7 @@ export function Navbar() {
         <a href="#" aria-label="Search">
           <span className="material-symbols-rounded">search</span>
         </a>
-      </div> */}
+      </div>
     </nav>
   );
 }
