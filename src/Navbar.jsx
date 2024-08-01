@@ -15,11 +15,16 @@ export function Navbar() {
         </a>
       </h1>
       <div className="navbar-menu-items">
-        {siteContentData?.fields.menuItems?.map(({ fields: { title, url } }) => (
-          <a key={title} href={url || "#"} aria-label={title}>
-            {title}
-          </a>
-        ))}
+        {siteContentData?.fields.menuItems?.map((item) => {
+          const { fields: { title, url } = {} } = item || {};
+
+          return title ? (
+            <a key={title} href={url || "#"} aria-label={title}>
+              {title}
+            </a>
+          ) : null;
+        })}
+
         <a href="#" aria-label="Search">
           <span className="material-symbols-rounded">search</span>
         </a>
