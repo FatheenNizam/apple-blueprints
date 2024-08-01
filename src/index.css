@@ -194,6 +194,7 @@ body::before {
     font-size: 0.8em;
     left: 18px;
     right: 18px;
+    padding: 0 18px;
   }
 }
 
