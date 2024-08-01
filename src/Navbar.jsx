@@ -17,7 +17,7 @@ export function Navbar() {
         </h1>
       </div>
       <div className="navbar-items-right">
-        {siteContentData?.fields.menuItems.map(({ fields: { title, url } }) => (
+        {siteContentData?.fields.menuItems?.map(({ fields: { title, url } }) => (
           <a key={title} href={url} aria-label={title}>
             {title}
           </a>
