@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { productIcons } from "./productIcons";
+import { productIcons, noFillProductLines } from "./productIcons";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
@@ -39,17 +39,7 @@ export function ProductItem({ product }) {
     >
       <span
         className={`material-symbols-rounded product-item-icon ${
-          productLine === "MacBook" ||
-          productLine === "MacBook Air" ||
-          productLine === "MacBook Pro" ||
-          productLine === "iMac" ||
-          productLine === "Studio Display" ||
-          productLine === "Apple Vision Pro" ||
-          productLine === "Magic Keyboard for iPad Pro" ||
-          productLine === "Apple Pencil" ||
-          productLine === "AirTag"
-            ? "material-symbols-rounded-no-fill"
-            : ""
+          noFillProductLines.has(productLine) ? "material-symbols-rounded-no-fill" : ""
         }`}
       >
         {productIcons[productLine]}

@@ -24,4 +24,16 @@ assignIcons(productIcons, ["Magic Trackpad"], "touch_app");
 assignIcons(productIcons, ["Studio Display"], "desktop_windows");
 assignIcons(productIcons, ["Apple Vision Pro"], "head_mounted_device");
 
-export { productIcons };
+const noFillProductLines = new Set([
+  "MacBook",
+  "MacBook Air",
+  "MacBook Pro",
+  "iMac",
+  "Studio Display",
+  "Apple Vision Pro",
+  "Magic Keyboard for iPad Pro",
+  "Apple Pencil",
+  "AirTag",
+]);
+
+export { productIcons, noFillProductLines };
