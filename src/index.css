@@ -667,11 +667,12 @@ body::before {
   margin-right: 24px;
   border: 1px solid var(--border);
 }
-
-.close-button:hover {
-  background-color: var(--footer-button-bg-hover);
-  border-color: var(--footer-button-highlight-hover);
-  color: var(--footer-button-highlight-hover);
+@media (min-width: 600px) {
+  .close-button:hover {
+    background-color: var(--footer-button-bg-hover);
+    border-color: var(--footer-button-highlight-hover);
+    color: var(--footer-button-highlight-hover);
+  }
 }
 
 .product-description {
@@ -813,12 +814,13 @@ td {
 .product-container-button {
   margin: 0 auto;
 }
-
-.footer-button:hover,
-.product-container-button:hover {
-  background-color: var(--footer-button-bg-hover);
-  border-color: var(--footer-button-highlight-hover);
-  color: var(--footer-button-highlight-hover);
+@media (min-width: 600px) {
+  .footer-button:hover,
+  .product-container-button:hover {
+    background-color: var(--footer-button-bg-hover);
+    border-color: var(--footer-button-highlight-hover);
+    color: var(--footer-button-highlight-hover);
+  }
 }
 
 .footer-text-container {
