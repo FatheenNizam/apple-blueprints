@@ -16,7 +16,7 @@ export function Navbar() {
       </h1>
       <div className="navbar-menu-items">
         {siteContentData?.fields.menuItems?.map(({ fields: { title, url } }) => (
-          <a key={title} href={url} aria-label={title}>
+          <a key={title} href={url || "#"} aria-label={title}>
             {title}
           </a>
         ))}
