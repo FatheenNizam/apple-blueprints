@@ -5,6 +5,6 @@ export async function fetchSiteContentData() {
   const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
   const apiUrl = `https://cdn.contentful.com/spaces/${spaceId}/environments/${environmentId}/entries/${entryId}?access_token=${accessToken}`;
   const data = await fetch(apiUrl).then((res) => res.json());
-
+  console.log({ data });
   return data;
 }

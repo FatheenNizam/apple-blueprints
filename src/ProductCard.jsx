@@ -1,7 +1,6 @@
 import React, { useContext, useMemo, useState, useEffect } from "react";
 import { statusLabels } from "./statusLabels";
 import { statusIcons } from "./statusIcons";
-import { productIcons } from "./productIcons";
 import { ProductsDataContext } from "./ProductsDataContext";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
@@ -97,8 +96,20 @@ export function ProductContainer({ product, onDismiss }) {
                   className={"product-status " + updatedProduct.fields.status + "-product"}
                   {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
                 >
-                  <i className={`product-status-icon ${statusIcons[updatedProduct.fields.status]}`} />
-                  <div className="product-status-text">{statusLabels[updatedProduct.fields.status]}</div>
+                  {/* <i className={`product-status-icon ${statusIcons[updatedProduct.fields.status]}`} /> */}
+                  <div className="product-status-text">
+                    {statusLabels[updatedProduct.fields.status]}{" "}
+                    {updatedProduct.fields.status === "announced"
+                      ? (updatedProduct.fields.announcedDate
+                          ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
+                          : "") +
+                        (updatedProduct.fields.releasedDate
+                          ? ` (Available ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
+                          : "")
+                      : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
+                      ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
+                      : ""}
+                  </div>
                 </div>
 
                 <div
@@ -153,7 +164,7 @@ export function ProductContainer({ product, onDismiss }) {
               <tr>
                 <td>Rumored</td>
                 <td>
-                  {updatedProduct?.fields.rumouredDate ? formatToUTCTime(updatedProduct.fields.rumouredDate) : "N/A"}
+                  {updatedProduct?.fields.rumoredDate ? formatToUTCTime(updatedProduct.fields.rumoredDate) : "N/A"}
                 </td>
               </tr>
               <tr>

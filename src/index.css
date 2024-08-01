@@ -25,7 +25,6 @@
 
   --site-bg: rgb(245, 245, 247);
 
-  --navbar-bg: rgba(255, 204, 0, 0.8);
   --navbar-bg: var(--apple-system-blue-light);
   --text-primary: rgb(29, 29, 31);
   --text-secondary: rgb(97, 97, 97);
@@ -33,22 +32,16 @@
 
   --month-card-bg: rgb(255, 255, 255);
 
-  --border: rgb(200, 200, 200);
   --border: rgb(220, 220, 220);
 
   --counter-bg: rgba(0, 0, 0, 0.05);
-  --released-product: rgb(8, 127, 6);
   --released-product: var(--apple-system-green-light);
-  --announced-product: rgb(230, 125, 6);
   --announced-product: var(--apple-system-orange-light);
-  --rumoured-product: grey;
-  --rumoured-product: var(--apple-system-gray-light);
+  --rumored-product: var(--text-secondary);
   --link: var(--apple-system-blue-light);
   --overlay: rgb(0, 0, 0);
   --footer-button-bg: rgba(0, 0, 0, 0.05);
-  --footer-button-bg-hover: rgba(255, 204, 0, 0.1);
   --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
-  --footer-button-highlight-hover: rgba(204, 143, 0, 1);
   --footer-button-highlight-hover: var(--apple-system-blue-light);
   --close-button-bg: rgb(232, 232, 238);
   --footer-bg: white;
@@ -100,7 +93,6 @@
     --counter-bg: rgba(255, 255, 255, 0.05);
     --released-product: var(--apple-system-green-dark);
     --announced-product: var(--apple-system-orange-dark);
-    --rumoured-product: var(--apple-system-gray-dark);
     --link: var(--apple-system-blue-dark);
     --overlay: rgb(255, 255, 255);
     --footer-button-bg: rgba(255, 255, 255, 0.05);
@@ -173,20 +165,22 @@ body::before {
 
 #navbar {
   max-width: calc(var(--site-width) - 84px);
-  position: fixed;
   margin: 0 auto;
+  position: fixed;
   top: 24px;
   left: 42px;
   right: 42px;
-  text-align: center;
   background-color: var(--navbar-bg);
   color: black;
   -webkit-backdrop-filter: saturate(200%) blur(var(--blur-value));
   backdrop-filter: saturate(200%) blur(var(--blur-value));
   border-radius: var(--border-radius-navbar);
   z-index: 1000;
-  padding: 0 24px;
+  padding: 0 32px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #navbar a {
@@ -195,12 +189,17 @@ body::before {
   color: white;
 }
 
-/* .navbar-items {
+.navbar-items-left {
   display: flex;
+  flex-direction: row;
+}
+
+.navbar-items-right {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  vertical-align: middle;
-} */
+  gap: 24px;
+}
 
 @media (max-width: 600px) {
   #navbar {
@@ -219,39 +218,45 @@ body::before {
   }
 }
 
-#prev-years-button-wrapper {
+.section {
   max-width: var(--site-width);
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
 }
 
-#prev-years-button {
+#main-buttons-container {
   margin: 0 42px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  #main-buttons-container {
+    margin: 12px 18px;
+  }
+}
+
+.main-button {
   background: var(--footer-button-bg);
   border: 1px solid var(--border);
   padding: 6px 12px;
   border-radius: var(--border-radius-button);
   color: var(--text-primary);
+  text-align: center;
   box-sizing: border-box;
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
+
 @media (min-width: 600px) {
-  #prev-years-button:hover {
+  .main-button:hover {
     background-color: var(--footer-button-bg-hover);
     color: var(--footer-button-highlight-hover);
     border: 1px solid var(var(--footer-button-highlight-hover));
+    transition: var(--transition-time) ease all;
   }
-}
-
-@media (max-width: 600px) {
-  #prev-years-button {
-    margin: 12px 0;
-  }
-}
-
-.year-list {
-  max-width: var(--site-width);
-  margin: 0 auto;
 }
 
 .year-list {
@@ -286,7 +291,8 @@ body::before {
     font-size: 48px;
   }
 }
-.past-date {
+.past-date,
+#unknown {
   color: var(--text-primary);
 }
 
@@ -533,7 +539,6 @@ body::before {
   display: inline-flex;
   align-items: center; /* Ensures vertical alignment of children */
   gap: 4px;
-  font-size: 18px;
   border-radius: var(--border-radius-button);
   order: 2;
   font-weight: 500;
@@ -567,21 +572,20 @@ body::before {
   background-color: rgba(230, 125, 6, 0.14);
 }
 
-.rumoured-product {
-  color: var(--rumoured-product);
+.rumored-product {
+  color: var(--rumored-product);
 }
 
-.rumoured-product:hover {
+.rumored-product:hover {
   background-color: rgba(128, 126, 128, 0.1);
 }
 
-.product-status.rumoured-product {
+.product-status.rumored-product {
   background-color: rgba(128, 126, 128, 0.14);
 }
 
 .titlebar {
   margin-bottom: var(--content-section-gap);
-  letter-spacing: var(--product-list-letter-spacing);
 }
 
 .product-name {
@@ -590,6 +594,7 @@ body::before {
   line-height: 1;
   order: 1;
   font-family: var(--current-font);
+  letter-spacing: var(--product-list-letter-spacing);
 }
 
 @media (max-width: 600px) {

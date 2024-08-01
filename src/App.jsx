@@ -19,15 +19,30 @@ export function App() {
   }, []);
 
   const unknownMonths = useMemo(() => [{ products: unknownProducts }], [unknownProducts]);
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className="app">
       <Navbar />
-      <div id="prev-years-button-wrapper">
-        <button id="prev-years-button">Show previous years</button>
+      <div className="section">
+        <div id="main-buttons-container">
+          <div>
+            <button className="main-button">
+              <span className="material-symbols-rounded">expand_all</span> Show previous years
+            </button>
+          </div>
+          <a href={`#${currentYear}`} style={{ textDecoration: "none" }}>
+            {" "}
+            <div>
+              <button className="main-button">
+                Jump to current year <span className="material-symbols-rounded">arrow_forward</span>
+              </button>
+            </div>
+          </a>
+        </div>
       </div>
       <ProductsDataContext.Provider value={productsData}>
-        <div className="year-list">
+        <div className="year-list section">
           {productsByYear &&
             productsByYear.map(({ yearName, months }) => <YearCard key={yearName} year={yearName} months={months} />)}
           {unknownProducts?.length > 0 && <YearCard key="unknown" year="unknown" months={unknownMonths} />}

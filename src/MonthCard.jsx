@@ -1,20 +1,7 @@
 import React from "react";
-import { parse, isBefore, endOfMonth, startOfMonth } from "date-fns";
+import { parse, isBefore, startOfMonth } from "date-fns";
 import { ProductItem } from "./ProductItem";
-
-// Define the priority order as an array
-const tagPriority = [
-  "iphone",
-  "macbook",
-  "ipad",
-  "airpods",
-  "watch",
-  "apple-tv",
-  "mac",
-  "imac",
-  "homepod",
-  "accessory",
-];
+import { productLinePriority } from "./productLinePriority";
 
 export function MonthCard({ month, products, year, isPastYear }) {
   if (month === "unknown" && products.length === 0) {
@@ -27,19 +14,16 @@ export function MonthCard({ month, products, year, isPastYear }) {
   const monthDate = parse(`${month} ${year}`, "MMMM yyyy", new Date());
 
   const startCurrentMonth = startOfMonth(today);
-  const endCurrentMonth = endOfMonth(today);
-
   const isPastMonth = isBefore(monthDate, startCurrentMonth) && year <= currentYear;
   const isCurrentMonth = monthDate.getFullYear() === currentYear && monthDate.getMonth() + 1 === currentMonth;
 
   // Sort products based on tag priority
   const sortedProducts = [...products].sort((a, b) => {
-    const tagA = a.metadata.tags.length > 0 ? a.metadata.tags[0].sys.id : "";
-    const tagB = b.metadata.tags.length > 0 ? b.metadata.tags[0].sys.id : "";
+    const productLineA = a.fields.productLine || "";
+    const productLineB = b.fields.productLine || "";
 
-    // Get the index from the priority array, default to Infinity if not found
-    const indexA = tagPriority.indexOf(tagA);
-    const indexB = tagPriority.indexOf(tagB);
+    const indexA = productLinePriority.indexOf(productLineA);
+    const indexB = productLinePriority.indexOf(productLineB);
 
     return (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB);
   });
