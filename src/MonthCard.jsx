@@ -3,6 +3,11 @@ import { parse, isBefore, startOfMonth } from "date-fns";
 import { ProductItem } from "./ProductItem";
 import { productLinePriority } from "./productLinePriority";
 
+function parseProductName(name) {
+  const match = name.match(/(\d+(\.\d+)?)-inch/);
+  return match ? parseFloat(match[1]) : null;
+}
+
 export function MonthCard({ month, products, year, isPastYear }) {
   if (month === "unknown" && products.length === 0) {
     return null;
@@ -17,13 +22,31 @@ export function MonthCard({ month, products, year, isPastYear }) {
   const isPastMonth = isBefore(monthDate, startCurrentMonth) && year <= currentYear;
   const isCurrentMonth = monthDate.getFullYear() === currentYear && monthDate.getMonth() + 1 === currentMonth;
 
-  // Sort products based on tag priority
   const sortedProducts = [...products].sort((a, b) => {
     const productLineA = a.fields.productLine || "";
     const productLineB = b.fields.productLine || "";
 
     const indexA = productLinePriority.indexOf(productLineA);
     const indexB = productLinePriority.indexOf(productLineB);
+
+    if (indexA === indexB) {
+      const nameA = a.fields.productName || "";
+      const nameB = b.fields.productName || "";
+      const alphaComparison = nameA.localeCompare(nameB);
+
+      if (alphaComparison !== 0) {
+        return alphaComparison;
+      }
+
+      const sizeA = parseProductName(nameA);
+      const sizeB = parseProductName(nameB);
+
+      if (sizeA !== null && sizeB !== null) {
+        return sizeA - sizeB;
+      }
+
+      return 0;
+    }
 
     return (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB);
   });
