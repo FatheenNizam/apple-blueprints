@@ -46,7 +46,6 @@ export function ProductItem({ product }) {
       >
         {productIcons[tag]}
       </span>
-
       <span
         className={`product-item-text ${isHovered ? "hovered-text" : ""}`}
         {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}

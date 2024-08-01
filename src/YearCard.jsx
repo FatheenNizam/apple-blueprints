@@ -44,8 +44,8 @@ export function YearCard({ months, year }) {
     const handleClick = () => {
       setShowPastYears((prevState) => !prevState);
       button.innerHTML = showPastYears
-        ? '<span class="material-symbols-rounded">expand_all</span> Show previous years'
-        : '<span class="material-symbols-rounded">collapse_all</span> Hide previous years';
+        ? '<span class="material-symbols-rounded">expand_all</span> Show past years'
+        : '<span class="material-symbols-rounded">collapse_all</span> Hide past years';
     };
 
     button.addEventListener("click", handleClick);

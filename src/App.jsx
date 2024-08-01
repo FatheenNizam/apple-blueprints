@@ -34,7 +34,7 @@ export function App() {
             <div id="main-buttons-container">
               <div>
                 <button className="main-button">
-                  <span className="material-symbols-rounded">expand_all</span> Show previous years
+                  <span className="material-symbols-rounded">expand_all</span> Show past years
                 </button>
               </div>
               <a href={`#${currentYear}`} style={{ textDecoration: "none" }}>

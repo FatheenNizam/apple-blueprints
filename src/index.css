@@ -170,19 +170,19 @@ body::before {
   flex-direction: row;
   justify-content: space-between;
 }
-
 #navbar a {
   text-decoration: none;
   cursor: pointer;
   color: white;
 }
-
-.navbar-items-left {
-  display: flex;
-  flex-direction: row;
+#navbar a:hover {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+  transition: color var(--transition-time) ease;
 }
 
-.navbar-items-right {
+.navbar-menu-items {
   display: flex;
   flex-direction: row;
   align-items: center;

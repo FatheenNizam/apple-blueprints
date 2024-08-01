@@ -9,14 +9,12 @@ export function Navbar() {
 
   return (
     <nav id="navbar">
-      <div className="navbar-items-left">
-        <h1>
-          <a title="Jump to current year" href={`#${currentYear}`} aria-label="Jump to current year">
-            {siteTitle}
-          </a>
-        </h1>
-      </div>
-      <div className="navbar-items-right">
+      <h1>
+        <a id="site-title" title="Jump to current year" href={`#${currentYear}`} aria-label="Jump to current year">
+          {siteTitle}
+        </a>
+      </h1>
+      <div className="navbar-menu-items">
         {siteContentData?.fields.menuItems?.map(({ fields: { title, url } }) => (
           <a key={title} href={url} aria-label={title}>
             {title}
