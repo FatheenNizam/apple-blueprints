@@ -17,18 +17,11 @@ export function Navbar() {
         </h1>
       </div>
       <div className="navbar-items-right">
-        <a href="#" aria-label="Item 1">
-          Item 1
-        </a>
-        <a href="#" aria-label="Item 2">
-          Item 2
-        </a>
-        <a href="#" aria-label="Item 3">
-          Item 3
-        </a>
-        <a href="#" aria-label="Item 4">
-          Item 4
-        </a>
+        {siteContentData?.fields.menuItems.map(({ fields: { title, url } }) => (
+          <a key={title} href={url} aria-label={title}>
+            {title}
+          </a>
+        ))}
         <a href="#" aria-label="Search">
           <span className="material-symbols-rounded">search</span>
         </a>
