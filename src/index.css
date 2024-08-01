@@ -181,6 +181,9 @@ body::before {
   text-underline-offset: 4px;
   transition: color var(--transition-time) ease;
 }
+#site-title:hover {
+  text-decoration: none !important;
+}
 
 .navbar-menu-items {
   display: flex;
