@@ -6,7 +6,7 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 
 export function ProductItem({ product }) {
   const updatedProduct = useContentfulLiveUpdates(product);
-  const tag = updatedProduct.metadata.tags.length > 0 ? updatedProduct.metadata.tags[0].sys.id : "";
+  const productLine = updatedProduct?.fields.productLine;
   const [isHovered, setIsHovered] = useState(false);
 
   const generation = updatedProduct.fields.generation;
@@ -33,18 +33,26 @@ export function ProductItem({ product }) {
   return (
     <Link
       to={"/product/" + updatedProduct.fields.slug}
-      className={`${updatedProduct.fields.status}-product product-item ${tag}`}
+      className={`${updatedProduct.fields.status}-product product-item ${productLine}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <span
         className={`material-symbols-rounded product-item-icon ${
-          tag === "mac" || tag === "macbook" || tag === "imac" || tag === "vision" || tag === "accessory"
+          productLine === "MacBook" ||
+          productLine === "MacBook Air" ||
+          productLine === "MacBook Pro" ||
+          productLine === "iMac" ||
+          productLine === "Studio Display" ||
+          productLine === "Apple Vision Pro" ||
+          productLine === "Magic Keyboard for iPad Pro" ||
+          productLine === "Apple Pencil" ||
+          productLine === "AirTag"
             ? "material-symbols-rounded-no-fill"
             : ""
         }`}
       >
-        {productIcons[tag]}
+        {productIcons[productLine]}
       </span>
       <span
         className={`product-item-text ${isHovered ? "hovered-text" : ""}`}

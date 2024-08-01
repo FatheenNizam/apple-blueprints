@@ -31,4 +31,5 @@ export const productLinePriority = [
   "Magic Mouse",
   "Magic Trackpad",
   "Studio Display",
+  "Vision Pro",
 ];
