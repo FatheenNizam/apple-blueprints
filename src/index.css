@@ -129,7 +129,7 @@ body {
   background-color: var(--site-bg);
   color: var(--text-primary);
   font-family: var(--current-font);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 body::before {
