@@ -378,7 +378,7 @@ body::before {
 
 .product-item:hover .product-item-text,
 .source-link:hover .source-link-text,
-.product-image-caption:hover {
+.product-image-source-link:hover {
   text-decoration: none !important;
 }
 
