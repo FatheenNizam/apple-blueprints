@@ -137,11 +137,12 @@ export function ProductContainer({ product, onDismiss }) {
                   <ProductImage image={image} />
                 ))}
                 <a
-                  className="product-image-caption source-link-text"
+                  className="product-image-source-link"
                   href={updatedProduct.fields.imageSource || (sources.length > 0 ? sources[0].fields.url : "#")}
                   target="_blank"
                 >
-                  View image source <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                  <span className="source-link-text">View image source</span>
+                  <i className="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
               </div>
             )}
@@ -265,7 +266,7 @@ function ProductImage({ image }) {
       key={image.fields.file.url}
       className="product-image"
       width={Math.min(300, image.fields.file.details.image.width)}
-      height={300}
+      // height={300}
       src={image.fields.file.url + "?fm=webp&h=300"}
       srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
       alt={image.fields.description}
