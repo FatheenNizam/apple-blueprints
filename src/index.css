@@ -617,7 +617,7 @@ body::before {
 .product-image-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
   align-items: center;
   overflow-x: hidden;
   max-width: 50%;
