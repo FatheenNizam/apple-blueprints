@@ -260,7 +260,9 @@ function useProductNavigation(product) {
   return { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug };
 }
 
-function ProductImage({ image }) {
+function ProductImage({ image, product }) {
+  const updatedProduct = useContentfulLiveUpdates(product);
+
   return (
     <img
       key={image.fields.file.url}
@@ -269,7 +271,7 @@ function ProductImage({ image }) {
       // height={300}
       src={image.fields.file.url + "?fm=webp&h=300"}
       srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
-      alt={image.fields.description}
+      alt={`The ${image.fields.title} is shown.`}
     />
   );
 }
