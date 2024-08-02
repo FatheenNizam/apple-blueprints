@@ -89,29 +89,30 @@ export function ProductContainer({ product, onDismiss }) {
       >
         <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
         <div className="product-container-content">
+          <div className="product-status-wrapper">
+            <div
+              className={"product-status " + updatedProduct.fields.status + "-product"}
+              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
+            >
+              {/* <i className={`product-status-icon ${statusIcons[updatedProduct.fields.status]}`} /> */}
+              <div className="product-status-text">
+                {statusLabels[updatedProduct.fields.status]}{" "}
+                {updatedProduct.fields.status === "announced"
+                  ? (updatedProduct.fields.announcedDate
+                      ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
+                      : "") +
+                    (updatedProduct.fields.releasedDate
+                      ? ` (Available ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
+                      : "")
+                  : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
+                  ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
+                  : ""}
+              </div>
+            </div>
+          </div>
           <div className="top-section">
             <div className="product-info">
               <div className="titlebar">
-                <div
-                  className={"product-status " + updatedProduct.fields.status + "-product"}
-                  {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
-                >
-                  {/* <i className={`product-status-icon ${statusIcons[updatedProduct.fields.status]}`} /> */}
-                  <div className="product-status-text">
-                    {statusLabels[updatedProduct.fields.status]}{" "}
-                    {updatedProduct.fields.status === "announced"
-                      ? (updatedProduct.fields.announcedDate
-                          ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
-                          : "") +
-                        (updatedProduct.fields.releasedDate
-                          ? ` (Available ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
-                          : "")
-                      : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
-                      ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
-                      : ""}
-                  </div>
-                </div>
-
                 <div
                   className="product-name"
                   id="product-title"
