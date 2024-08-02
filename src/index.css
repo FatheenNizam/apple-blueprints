@@ -515,7 +515,7 @@ body::before {
   left: 20px;
 }
 .product-container-content {
-  padding: 42px;
+  padding: 56px;
   display: flex;
   flex-direction: column;
   gap: var(--content-section-gap);
