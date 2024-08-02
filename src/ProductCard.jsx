@@ -136,14 +136,6 @@ export function ProductContainer({ product, onDismiss }) {
                 {images.map((image) => (
                   <ProductImage image={image} />
                 ))}
-                <a
-                  className="product-image-source-link"
-                  href={updatedProduct.fields.imageSource || (sources.length > 0 ? sources[0].fields.url : "#")}
-                  target="_blank"
-                >
-                  <span className="source-link-text">View image source</span>
-                  <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
               </div>
             )}
           </div>
@@ -260,19 +252,25 @@ function useProductNavigation(product) {
   return { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug };
 }
 
-function ProductImage({ image, product }) {
+function ProductImage({ image, product, sources }) {
   const updatedProduct = useContentfulLiveUpdates(product);
 
   return (
-    <img
-      key={image.fields.file.url}
-      className="product-image"
-      width={Math.min(300, image.fields.file.details.image.width)}
-      // height={300}
-      src={image.fields.file.url + "?fm=webp&h=300"}
-      srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
-      alt={`The ${image.fields.title} is shown.`}
-    />
+    <>
+      <img
+        key={image.fields.file.url}
+        className="product-image"
+        width={Math.min(300, image.fields.file.details.image.width)}
+        // height={300}
+        src={image.fields.file.url + "?fm=webp&h=300"}
+        srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
+        alt={`The ${image.fields.title} is shown.`}
+      />
+      <a className="product-image-source-link" href={image?.fields.description} target="_blank">
+        <span className="source-link-text">View image source</span>
+        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </>
   );
 }
 
