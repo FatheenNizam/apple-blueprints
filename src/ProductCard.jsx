@@ -59,7 +59,7 @@ export function ProductContainer({ product, onDismiss }) {
   }`;
 
   return (
-    <div className="product-container-wrapper">
+    <div className="product-card-wrapper">
       <div className="button-container">
         <button
           className="product-navigation-button"
@@ -70,14 +70,14 @@ export function ProductContainer({ product, onDismiss }) {
         </button>
       </div>
       <div
-        className="product-container"
+        className="product-card"
         ref={productContainerRef}
         tabIndex="-1"
         role="dialog"
         aria-labelledby="product-title"
       >
         <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
-        <div className="product-container-content">
+        <div className="product-card-content">
           <div className="product-status-wrapper">
             <div
               className={"product-status " + updatedProduct.fields.status + "-product"}
@@ -107,7 +107,7 @@ export function ProductContainer({ product, onDismiss }) {
                   id="product-title"
                   {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
                 >
-                  {displayName}
+                  {updatedProduct.fields.productName}
                 </div>
               </div>
               <div
@@ -182,7 +182,7 @@ export function ProductContainer({ product, onDismiss }) {
               </ul>
             </div>
           )}
-          <div className="product-container-last-updated-text">
+          <div className="product-card-last-updated-text">
             Last updated {format(new Date(updatedProduct?.sys.updatedAt), "MMMM d, yyyy, h:mm a")} (
             {formatDistanceToNow(new Date(updatedProduct?.sys.updatedAt))} ago)
           </div>
@@ -191,7 +191,7 @@ export function ProductContainer({ product, onDismiss }) {
             <a
               href={`mailto:appleblueprints@gmail.com?subject=Edit%20request:%20${updatedProduct.fields.productName}&body=Please%20provide%20details%20of%20the%20edit%20you%20would%20like%20to%20make.`}
               target="_blank"
-              className="product-container-button"
+              className="product-card-button"
               id="suggest-button"
             >
               <i className="fas fa-wrench"></i>&nbsp;&nbsp;Suggest edit

@@ -26,10 +26,6 @@ export function ProductItem({ product }) {
     displayGeneration = `(${generation}${suffix} generation)`;
   }
 
-  const displayName = `${updatedProduct.fields.productName} ${
-    updatedProduct.fields.spec ? `(${updatedProduct.fields.spec})` : displayGeneration
-  }`;
-
   return (
     <Link
       to={"/product/" + updatedProduct.fields.slug}
@@ -48,7 +44,7 @@ export function ProductItem({ product }) {
         className={`product-item-text ${isHovered ? "hovered-text" : ""}`}
         {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
       >
-        {displayName}
+        {updatedProduct.fields.productName}
       </span>
     </Link>
   );
