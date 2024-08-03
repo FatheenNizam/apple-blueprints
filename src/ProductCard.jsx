@@ -214,17 +214,12 @@ export function ProductContainer({ product, onDismiss }) {
 
 function useProductNavigation(product) {
   const productsData = useContext(ProductsDataContext);
-  const sortedProductSlugs = useMemo(
-    () =>
-      productsData.items
-        .toSorted((a, b) => new Date(a.fields.releasedDate).getTime() - new Date(b.fields.releasedDate).getTime())
-        .map((item) => item.fields.slug),
-    [productsData]
-  );
+  const allProducts = productsData?.flatMap((year) => year.months.flatMap((month) => month.products));
+  const productSlugs = allProducts.map((item) => item.fields.slug);
 
-  const currentProductIndex = sortedProductSlugs.indexOf(product.fields.slug);
-  const nextProductSlug = sortedProductSlugs[currentProductIndex + 1];
-  const previousProductSlug = sortedProductSlugs[currentProductIndex - 1];
+  const currentProductIndex = productSlugs.indexOf(product.fields.slug);
+  const nextProductSlug = productSlugs[currentProductIndex + 1];
+  const previousProductSlug = productSlugs[currentProductIndex - 1];
 
   const goToNextProduct = () => {
     if (nextProductSlug) {

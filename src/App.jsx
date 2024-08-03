@@ -26,7 +26,7 @@ export function App() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <ProductsDataContext.Provider value={productsData}>
+    <ProductsDataContext.Provider value={productsByYear}>
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />

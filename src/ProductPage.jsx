@@ -7,9 +7,10 @@ import { ProductContainer } from "./ProductCard";
 
 export function ProductPage() {
   const productsData = useContext(ProductsDataContext);
+  const allProducts = productsData?.flatMap((year) => year.months.flatMap((month) => month.products));
   const { product: slug } = useParams();
 
-  const product = productsData?.items.find((product) => product.fields.slug === slug);
+  const product = allProducts?.find((product) => product.fields.slug === slug);
 
   const closeModal = useCallback(() => {
     router.navigate("/");
