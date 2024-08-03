@@ -10,19 +10,8 @@ import { toZonedTime } from "date-fns-tz";
 import { useFocusOnUpdate } from "./useFocusOnUpdate";
 
 export function ProductContainer({ product, onDismiss }) {
-  const productsData = useContext(ProductsDataContext);
   const { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug } = useProductNavigation(product);
-
   const updatedProduct = useContentfulLiveUpdates(product);
-  const updatedAssets = useContentfulLiveUpdates(productsData.includes.Asset);
-  const updatedEntries = useContentfulLiveUpdates(productsData.includes.Entry);
-
-  const images = updatedProduct.fields.images?.map((image) =>
-    updatedAssets.find((asset) => asset.sys.id === image.sys.id)
-  );
-  const sources = updatedProduct.fields.sources?.map((source) =>
-    updatedEntries.find((entry) => entry.sys.id === source.sys.id)
-  );
 
   useEffect(() => {
     const handler = (event) => {
@@ -128,12 +117,12 @@ export function ProductContainer({ product, onDismiss }) {
                 {updatedProduct.fields.description}
               </div>
             </div>
-            {images && (
+            {updatedProduct.fields.images && (
               <div
                 className="product-image-container"
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
               >
-                {images.map((image) => (
+                {updatedProduct.fields.images.map((image) => (
                   <ProductImage key={image.sys.id} image={image} />
                 ))}
               </div>
@@ -175,14 +164,14 @@ export function ProductContainer({ product, onDismiss }) {
               </tr>
             </tbody>
           </table>
-          {sources && (
+          {updatedProduct.fields.sources && (
             <div className="product-header sources-header">
               Sources:
               <ul
                 className="product-sources"
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
               >
-                {sources.map((source) => (
+                {updatedProduct.fields.sources.map((source) => (
                   <li key={source} className="source-link">
                     <a href={source.fields.url} target="_blank" className="source-link">
                       <span className="source-link-text">{source.fields.title}</span>
