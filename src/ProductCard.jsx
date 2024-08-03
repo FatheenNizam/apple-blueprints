@@ -123,7 +123,7 @@ export function ProductContainer({ product, onDismiss }) {
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
               >
                 {updatedProduct.fields.images.map((image) => (
-                  <ProductImage key={image.sys.id} image={image} />
+                  <ProductImage key={image.sys.id} image={image} product={product} />
                 ))}
               </div>
             )}
@@ -236,18 +236,19 @@ function useProductNavigation(product) {
   return { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug };
 }
 
-function ProductImage({ image }) {
+function ProductImage({ image, product }) {
+  const updatedProduct = useContentfulLiveUpdates(product);
+
   return (
     <>
       <img
         key={image.fields.file.url}
         className="product-image"
         width={Math.min(300, image.fields.file.details.image.width)}
-        // height={image.height}
         style={{ aspectRatio: `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}` }}
         src={image.fields.file.url + "?fm=webp&h=300"}
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
-        alt={`The ${image.fields.title} is shown.`}
+        alt={`The ${updatedProduct.fields.productName} is shown.`}
       />
       <a className="product-image-source-link" href={image?.fields.description} target="_blank">
         <span className="source-link-text">View image source</span>
