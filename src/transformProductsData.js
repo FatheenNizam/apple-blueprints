@@ -1,3 +1,5 @@
+import { productLinePriority } from "./productLinePriority";
+
 export function transformProductsData(data) {
   const productsByYear = [];
   const unknownProducts = [];
@@ -30,6 +32,25 @@ export function transformProductsData(data) {
 
   productsByYear.sort((a, b) => a.yearName - b.yearName);
   productsByYear.forEach((year) => year.months.sort((a, b) => a.index - b.index));
+  productsByYear.forEach((year) =>
+    year.months.forEach((month) =>
+      month.products.sort((a, b) => {
+        const productLineA = a.fields.productLine;
+        const productLineB = b.fields.productLine;
+
+        const indexA = productLinePriority.indexOf(productLineA);
+        const indexB = productLinePriority.indexOf(productLineB);
+
+        if (indexA === indexB) {
+          const nameA = a.fields.productName || "";
+          const nameB = b.fields.productName || "";
+          return nameA.localeCompare(nameB);
+        }
+
+        return (indexA === -1 ? Infinity : indexA) - (indexB === -1 ? Infinity : indexB);
+      })
+    )
+  );
 
   const lastUpdated = data.items
     .map((item) => new Date(item.sys.updatedAt))

@@ -134,7 +134,7 @@ export function ProductContainer({ product, onDismiss }) {
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
               >
                 {images.map((image) => (
-                  <ProductImage image={image} />
+                  <ProductImage key={image.sys.id} image={image} />
                 ))}
               </div>
             )}
@@ -252,16 +252,15 @@ function useProductNavigation(product) {
   return { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug };
 }
 
-function ProductImage({ image, product, sources }) {
-  const updatedProduct = useContentfulLiveUpdates(product);
-
+function ProductImage({ image }) {
   return (
     <>
       <img
         key={image.fields.file.url}
         className="product-image"
         width={Math.min(300, image.fields.file.details.image.width)}
-        // height={300}
+        // height={image.height}
+        style={{ aspectRatio: `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}` }}
         src={image.fields.file.url + "?fm=webp&h=300"}
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
         alt={`The ${image.fields.title} is shown.`}
