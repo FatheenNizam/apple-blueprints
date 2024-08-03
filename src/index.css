@@ -242,7 +242,7 @@ body::before {
   align-items: center;
 }
 
-@media (min-width: 600px) {
+@media (hover: hover) and (pointer: fine) {
   .main-button:hover {
     background-color: var(--footer-button-bg-hover);
     color: var(--footer-button-highlight-hover);
@@ -315,6 +315,7 @@ body::before {
   align-items: start;
   margin-block-end: 0;
   box-shadow: var(--box-shadow);
+  gap: 6px;
 }
 
 @media (min-width: 400px) {
@@ -361,10 +362,9 @@ body::before {
   font-family: var(--current-font);
 }
 
-@media (min-width: 600px) {
+@media (hover: hover) and (pointer: fine) {
   .product-item:hover {
-    translate: 0 0;
-    cursor: pointer;
+    translate: 0;
   }
 }
 
@@ -516,6 +516,7 @@ body::before {
 }
 .product-container-content {
   padding: 56px;
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   gap: var(--content-section-gap);
@@ -544,7 +545,7 @@ body::before {
   color: var(--released-product);
 }
 
-@media (min-width: 600px) {
+@media (hover: hover) and (pointer: fine) {
   .released-product:hover {
     background-color: rgba(8, 127, 6, 0.1);
   }
@@ -669,7 +670,7 @@ body::before {
   margin-right: 24px;
   border: 1px solid var(--border);
 }
-@media (min-width: 600px) {
+@media (hover: hover) and (pointer: fine) {
   .close-button:hover {
     background-color: var(--footer-button-bg-hover);
     border-color: var(--footer-button-highlight-hover);
@@ -816,7 +817,7 @@ td {
 .product-container-button {
   margin: 0 auto;
 }
-@media (min-width: 600px) {
+@media (hover: hover) and (pointer: fine) {
   .footer-button:hover,
   .product-container-button:hover {
     background-color: var(--footer-button-bg-hover);
