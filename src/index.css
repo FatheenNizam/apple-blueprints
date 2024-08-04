@@ -435,7 +435,7 @@ body::before {
 }
 
 .product-card-wrapper {
-  width: 1040px;
+  width: 936px;
   max-width: 90vw;
   margin: 44px auto;
   max-height: 100%;
@@ -709,9 +709,12 @@ body::before {
     box-shadow: var(--box-shadow);
     pointer-events: auto;
   }
-  .mobile-navigation-button:hover {
-    background-color: rgb(220, 220, 220);
-    transition: var(--transition-time) ease background-color;
+
+  @media (hover: hover) and (pointer: fine) {
+    .mobile-navigation-button:hover {
+      background-color: rgb(220, 220, 220);
+      transition: var(--transition-time) ease background-color;
+    }
   }
 
   .mobile-navigation-button:disabled {
