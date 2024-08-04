@@ -91,7 +91,7 @@ export function ProductContainer({ product, onDismiss }) {
                       ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
                       : "") +
                     (updatedProduct.fields.releasedDate
-                      ? ` (Available ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
+                      ? ` (Releases ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
                       : "")
                   : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
                   ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
