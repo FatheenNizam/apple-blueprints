@@ -642,7 +642,6 @@ body::before {
 @media (max-width: 600px) {
   .product-image {
     width: 100%;
-    max-height: inherit;
   }
 }
 
@@ -705,7 +704,14 @@ body::before {
     border-radius: 9999px;
     box-shadow: var(--box-shadow);
     pointer-events: auto;
-    flex-shrink: 0;
+  }
+  .mobile-navigation-button:hover {
+    background-color: rgb(220, 220, 220);
+    transition: var(--transition-time) ease background-color;
+  }
+
+  .mobile-navigation-button:disabled {
+    background-color: var(--counter-bg);
   }
 }
 

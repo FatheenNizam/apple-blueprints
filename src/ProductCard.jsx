@@ -60,12 +60,14 @@ export function ProductContainer({ product, onDismiss }) {
             <button
               className="fa-solid fa-arrow-left mobile-navigation-button"
               onClick={goToPreviousProduct}
-              style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
+              disabled={!previousProductSlug}
+              // style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
             />
             <button
               className="fa-solid fa-arrow-right mobile-navigation-button"
               onClick={goToNextProduct}
-              style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
+              disabled={!nextProductSlug}
+              // style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
             />
           </div>
           <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
@@ -231,7 +233,6 @@ function useProductNavigation(product) {
 
 function ProductImage({ image, product }) {
   const updatedProduct = useContentfulLiveUpdates(product);
-  const isMobile = window.innerWidth <= 600;
 
   return (
     <>
@@ -239,7 +240,9 @@ function ProductImage({ image, product }) {
         key={image.fields.file.url}
         className="product-image"
         width={Math.min(300, image.fields.file.details.image.width)}
-        style={{ aspectRatio: `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}` }}
+        style={{
+          aspectRatio: `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}`,
+        }}
         src={image.fields.file.url + "?fm=webp&h=300"}
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
         alt={`The ${updatedProduct.fields.productName} is shown.`}
