@@ -58,12 +58,12 @@ export function ProductContainer({ product, onDismiss }) {
         <div className="top-buttons-container">
           <div className="mobile-navigation-buttons-container mobile-navigation">
             <button
-              className="fa-solid fa-arrow-left product-navigation-button mobile-navigation-button"
+              className="fa-solid fa-arrow-left mobile-navigation-button"
               onClick={goToPreviousProduct}
               style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
             />
             <button
-              className="fa-solid fa-arrow-right product-navigation-button mobile-navigation-button"
+              className="fa-solid fa-arrow-right mobile-navigation-button"
               onClick={goToNextProduct}
               style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
             />
