@@ -205,7 +205,7 @@ body::before {
 }
 @media (max-width: 600px) {
   #wrapper {
-    padding-top: 90px;
+    padding-top: 124px;
   }
 }
 
@@ -264,9 +264,8 @@ body::before {
 }
 
 .year-label {
-  /* margin-top: 24px; */
+  margin: auto;
   margin-left: 60px;
-  /* margin-bottom: 12px; */
   font-size: 60px;
   font-weight: bold;
   display: flex;
