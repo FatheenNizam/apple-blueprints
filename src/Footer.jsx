@@ -6,8 +6,8 @@ export function Footer({ lastUpdated }) {
   const siteContentData = useContext(SiteContentContext);
 
   return (
-    <div className="section footer-wrapper">
-      <div className="footer">
+    <div id="footer-wrapper">
+      <div id="footer">
         <div id="footer-button-container">
           {siteContentData?.fields.footerItems?.map((item, index) => {
             const { fields: { text, icon, url } = {} } = item || {};

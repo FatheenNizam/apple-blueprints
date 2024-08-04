@@ -163,7 +163,7 @@ export function ProductContainer({ product, onDismiss }) {
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
               >
                 {updatedProduct.fields.sources.map((source) => (
-                  <li key={source} className="source-link">
+                  <li key={source}>
                     <a href={source.fields.url} target="_blank" className="source-link">
                       <span className="source-link-text">{source.fields.title}</span>
                       <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
