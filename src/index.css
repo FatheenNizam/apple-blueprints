@@ -787,6 +787,10 @@ td {
   color: var(--text-secondary);
 }
 
+.date-list {
+  display: none;
+}
+
 .product-card-last-updated-text {
   color: var(--text-secondary);
 }

@@ -133,7 +133,7 @@ export function ProductContainer({ product, onDismiss }) {
             </div>
           )}
 
-          <table>
+          <table className="date-list">
             <tbody>
               <tr>
                 <td>Rumored</td>
