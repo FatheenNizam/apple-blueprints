@@ -655,9 +655,14 @@ body::before {
   text-underline-offset: 4px !important;
 }
 
+.top-buttons {
+  display: flex;
+  justify-content: end;
+}
+
 .close-button {
-  height: 36px;
   width: 36px;
+  height: 36px;
   font-size: 20px;
   text-align: center;
   color: var(--text-secondary);
@@ -666,15 +671,50 @@ body::before {
   transition: var(--transition-time);
   align-self: end;
   flex-shrink: 0;
-  margin-top: 24px;
-  margin-right: 24px;
+  margin-top: 32px;
+  margin-right: 32px;
   border: 1px solid var(--border);
 }
+
 @media (hover: hover) and (pointer: fine) {
   .close-button:hover {
     background-color: var(--footer-button-bg-hover);
     border-color: var(--footer-button-highlight-hover);
     color: var(--footer-button-highlight-hover);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .top-buttons {
+    justify-content: space-between;
+  }
+
+  .mobile-navigation-buttons-container {
+    display: flex;
+    justify-content: left;
+    gap: 12px;
+    margin-top: 32px;
+    margin-left: 32px;
+  }
+
+  .mobile-navigation-button {
+    width: 36px;
+    height: 36px;
+    background-color: white;
+    color: black;
+    border-radius: 9999px;
+    box-shadow: var(--box-shadow);
+    pointer-events: auto;
+  }
+
+  .close-button {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .mobile-navigation-buttons-container {
+    display: none;
   }
 }
 
