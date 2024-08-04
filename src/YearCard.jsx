@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MonthCard } from "./MonthCard";
 
 export function YearCard({ months, year }) {
   const currentYear = new Date().getFullYear();
   const isPastYear = year < currentYear;
 
-  const yearLabelRef = useRef(null);
   const [isScrollingProgrammatically] = useState(false);
   const [showPastYears, setShowPastYears] = useState(false);
+  const [showMonths, setShowMonths] = useState(true); // New state to track month visibility
 
   useEffect(() => {
     let lastTop = 0;
@@ -15,7 +15,6 @@ export function YearCard({ months, year }) {
     const navbar = document.querySelector("#navbar");
     const navbarTravel = navbar.clientHeight + 100;
 
-    // Set navbar to visible initially
     navbar.style.transform = `translateY(0)`;
 
     const handleScroll = () => {
@@ -59,22 +58,31 @@ export function YearCard({ months, year }) {
     return null;
   }
 
+  const handleYearClick = () => {
+    setShowMonths((prevShowMonths) => !prevShowMonths);
+  };
+
   return (
     <div className="year-card">
-      <h2 id={year} className={`year-label ${isPastYear ? "past-date" : ""}`}>
+      <h2 id={year} className={`year-label ${isPastYear ? "past-date" : ""}`} onClick={handleYearClick}>
         {year}
+        <span className="material-symbols-rounded year-list-arrow">
+          {showMonths ? "keyboard_arrow_down" : "keyboard_arrow_right"}
+        </span>
       </h2>
-      <div className="container">
-        {months.map(({ name, products }) => (
-          <MonthCard
-            key={name ?? "unknown"}
-            month={name}
-            products={products}
-            year={year}
-            isPastYear={isPastYear} // Pass isPastYear to MonthCard
-          />
-        ))}
-      </div>
+      {showMonths && (
+        <div className="container">
+          {months.map(({ name, products }) => (
+            <MonthCard
+              key={name ?? "unknown"}
+              month={name}
+              products={products}
+              year={year}
+              isPastYear={isPastYear} // Pass isPastYear to MonthCard
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

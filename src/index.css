@@ -268,6 +268,13 @@ body::before {
   align-items: flex-end;
   letter-spacing: var(--header-letter-spacing);
   color: var(--apple-system-blue-light);
+  cursor: pointer;
+}
+
+.year-list-arrow {
+  font-size: inherit !important;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -283,6 +290,7 @@ body::before {
     font-size: 48px;
   }
 }
+
 .past-date,
 #unknown {
   color: var(--text-primary);
@@ -730,7 +738,6 @@ body::before {
 
 .product-header {
   margin: 0;
-  /* margin-top: 10px; */
   font-size: 24px;
   font-weight: 600;
   font-family: var(--current-font);
@@ -738,11 +745,6 @@ body::before {
 
 .sources-header {
   font-size: 18px;
-}
-
-.product-features,
-.product-sources {
-  /* margin-bottom: var(--content-section-gap); */
 }
 
 .product-features li,

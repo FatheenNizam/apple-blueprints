@@ -1,6 +1,5 @@
 import React, { useContext, useMemo, useState, useEffect } from "react";
 import { statusLabels } from "./statusLabels";
-import { statusIcons } from "./statusIcons";
 import { ProductsDataContext } from "./ProductsDataContext";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
@@ -61,13 +60,11 @@ export function ProductContainer({ product, onDismiss }) {
               className="fa-solid fa-arrow-left mobile-navigation-button"
               onClick={goToPreviousProduct}
               disabled={!previousProductSlug}
-              // style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
             />
             <button
               className="fa-solid fa-arrow-right mobile-navigation-button"
               onClick={goToNextProduct}
               disabled={!nextProductSlug}
-              // style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
             />
           </div>
           <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
@@ -78,7 +75,6 @@ export function ProductContainer({ product, onDismiss }) {
               className={"product-status-label " + updatedProduct.fields.status + "-product"}
               {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
             >
-              {/* <i className={`product-status-label-icon ${statusIcons[updatedProduct.fields.status]}`} /> */}
               <div className="product-status-label-text">
                 {statusLabels[updatedProduct.fields.status]}{" "}
                 {updatedProduct.fields.status === "announced"
