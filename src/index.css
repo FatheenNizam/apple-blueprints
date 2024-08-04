@@ -201,7 +201,7 @@ body::before {
 }
 
 #wrapper {
-  padding-top: 118px;
+  padding-top: 148px;
 }
 @media (max-width: 600px) {
   #wrapper {
@@ -303,6 +303,7 @@ body::before {
 
 .container {
   margin: 0 42px;
+  margin-bottom: 30px;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

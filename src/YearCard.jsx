@@ -6,8 +6,7 @@ export function YearCard({ months, year }) {
   const isPastYear = year < currentYear;
 
   const [isScrollingProgrammatically] = useState(false);
-  const [showPastYears, setShowPastYears] = useState(false);
-  const [showMonths, setShowMonths] = useState(true); // New state to track month visibility
+  const [showMonths, setShowMonths] = useState(true); // State to track month visibility
 
   useEffect(() => {
     let lastTop = 0;
@@ -36,27 +35,6 @@ export function YearCard({ months, year }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isScrollingProgrammatically]);
-
-  useEffect(() => {
-    const button = document.querySelector(".main-button");
-
-    const handleClick = () => {
-      setShowPastYears((prevState) => !prevState);
-      button.innerHTML = showPastYears
-        ? '<span class="material-symbols-rounded">expand_all</span> Show past years'
-        : '<span class="material-symbols-rounded">collapse_all</span> Hide past years';
-    };
-
-    button.addEventListener("click", handleClick);
-
-    return () => {
-      button.removeEventListener("click", handleClick);
-    };
-  }, [showPastYears]);
-
-  if (isPastYear && !showPastYears) {
-    return null;
-  }
 
   const handleYearClick = () => {
     setShowMonths((prevShowMonths) => !prevShowMonths);

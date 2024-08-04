@@ -31,14 +31,14 @@ export function App() {
         <div className="app">
           <Navbar />
           <div className="section">
-            <div id="main-buttons-container">
+            {/* <div id="main-buttons-container">
               <button className="main-button">
                 <span className="material-symbols-rounded">expand_all</span> Show past years
               </button>
               <a href={`#${currentYear}`} style={{ textDecoration: "none" }} className="main-button">
                 Jump to current year <span className="material-symbols-rounded">arrow_forward</span>
               </a>
-            </div>
+            </div> */}
           </div>
           <div className="section year-list">
             {productsByYear &&

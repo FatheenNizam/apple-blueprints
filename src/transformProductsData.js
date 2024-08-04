@@ -30,7 +30,7 @@ export function transformProductsData(data) {
     productsForMonth.products.push(item);
   });
 
-  productsByYear.sort((a, b) => a.yearName - b.yearName);
+  productsByYear.sort((a, b) => b.yearName - a.yearName);
   productsByYear.forEach((year) => year.months.sort((a, b) => a.index - b.index));
   productsByYear.forEach((year) =>
     year.months.forEach((month) =>
