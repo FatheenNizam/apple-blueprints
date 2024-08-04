@@ -655,12 +655,9 @@ body::before {
   text-underline-offset: 4px !important;
 }
 
-/* Common styles */
 .top-buttons {
   display: flex;
   justify-content: end;
-  /* Debugging border for visibility */
-  border: 1px solid red;
 }
 
 .close-button {
@@ -677,8 +674,6 @@ body::before {
   margin-top: 32px;
   margin-right: 32px;
   border: 1px solid var(--border);
-  /* Debugging border for visibility */
-  border: 1px solid blue;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -692,8 +687,6 @@ body::before {
 @media screen and (max-width: 600px) {
   .top-buttons {
     justify-content: space-between;
-    /* Debugging border for visibility */
-    border: 1px solid green;
   }
 
   .mobile-navigation-buttons-container {
@@ -715,13 +708,13 @@ body::before {
   }
 
   .close-button {
-    display: none; /* Hides only the close button on mobile */
+    display: none;
   }
 }
 
 @media screen and (min-width: 600px) {
   .mobile-navigation-buttons-container {
-    display: none; /* Hides mobile navigation buttons on larger screens */
+    display: none;
   }
 }
 
