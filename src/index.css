@@ -705,6 +705,7 @@ body::before {
     border-radius: 9999px;
     box-shadow: var(--box-shadow);
     pointer-events: auto;
+    flex-shrink: 0;
   }
 }
 
