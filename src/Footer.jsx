@@ -6,7 +6,7 @@ export function Footer({ lastUpdated }) {
   const siteContentData = useContext(SiteContentContext);
 
   return (
-    <div className="footer-wrapper">
+    <div className="section footer-wrapper">
       <div className="footer">
         <div id="footer-button-container">
           {siteContentData?.fields.footerItems?.map((item, index) => {

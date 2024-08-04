@@ -8,7 +8,7 @@ export function Navbar() {
   const siteTitle = siteContentData?.fields.siteTitle;
 
   return (
-    <nav id="navbar">
+    <nav id="navbar" className="section">
       <h1>
         <a id="site-title" title="Jump to current year" href={`#${currentYear}`} aria-label="Jump to current year">
           {siteTitle}

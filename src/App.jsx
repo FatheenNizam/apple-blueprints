@@ -40,7 +40,7 @@ export function App() {
               </a>
             </div>
           </div>
-          <div className="year-list section">
+          <div className="section year-list">
             {productsByYear &&
               productsByYear.map(({ yearName, months }) => <YearCard key={yearName} year={yearName} months={months} />)}
             {unknownProducts?.length > 0 && <YearCard key="unknown" year="unknown" months={unknownMonths} />}
