@@ -55,7 +55,7 @@ export function ProductContainer({ product, onDismiss }) {
         role="dialog"
         aria-labelledby="product-title"
       >
-        <div className="top-buttons">
+        <div className="top-buttons-container">
           <div className="mobile-navigation-buttons-container mobile-navigation">
             <button
               className="fa-solid fa-arrow-left product-navigation-button mobile-navigation-button"

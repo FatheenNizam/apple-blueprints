@@ -655,7 +655,7 @@ body::before {
   text-underline-offset: 4px !important;
 }
 
-.top-buttons {
+.top-buttons-container {
   display: flex;
   justify-content: end;
 }
@@ -685,7 +685,7 @@ body::before {
 }
 
 @media screen and (max-width: 600px) {
-  .top-buttons {
+  .top-buttons-container {
     justify-content: space-between;
   }
 
