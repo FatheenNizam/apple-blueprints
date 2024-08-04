@@ -711,7 +711,7 @@ body::before {
 
 @media screen and (min-width: 600px) {
   .mobile-navigation-buttons-container {
-    /* display: none; */
+    display: none;
   }
 }
 
