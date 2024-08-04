@@ -6,8 +6,7 @@ export function YearCard({ months, year }) {
   const isPastYear = year < currentYear;
 
   const [isScrollingProgrammatically] = useState(false);
-  const [showMonths, setShowMonths] = useState(true); // State to track month visibility
-
+  const [showMonths, setShowMonths] = useState(true);
   useEffect(() => {
     let lastTop = 0;
     let lastScrollPosition = 0;
@@ -51,13 +50,7 @@ export function YearCard({ months, year }) {
       {showMonths && (
         <div className="container">
           {months.map(({ name, products }) => (
-            <MonthCard
-              key={name ?? "unknown"}
-              month={name}
-              products={products}
-              year={year}
-              isPastYear={isPastYear} // Pass isPastYear to MonthCard
-            />
+            <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} isPastYear={isPastYear} />
           ))}
         </div>
       )}
