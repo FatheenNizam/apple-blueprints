@@ -231,20 +231,16 @@ function useProductNavigation(product) {
 
 function ProductImage({ image, product }) {
   const updatedProduct = useContentfulLiveUpdates(product);
-  const aspectRatio = `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}`;
   const isMobile = window.innerWidth <= 600;
 
   return (
     <>
       <img
         key={image.fields.file.url}
-        className={`product-image ${isMobile ? "mobile-image" : ""}`}
+        className="product-image"
         width={Math.min(300, image.fields.file.details.image.width)}
-        style={{
-          aspectRatio,
-          height: isMobile ? "300px" : "auto",
-        }}
-        src={image.fields.file.url + "?fm=webp" + (isMobile ? "&h=300" : "")}
+        style={{ aspectRatio: `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}` }}
+        src={image.fields.file.url + "?fm=webp&h=300"}
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
         alt={`The ${updatedProduct.fields.productName} is shown.`}
       />
