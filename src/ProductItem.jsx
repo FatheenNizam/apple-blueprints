@@ -9,23 +9,6 @@ export function ProductItem({ product }) {
   const productLine = updatedProduct?.fields.productLine;
   const [isHovered, setIsHovered] = useState(false);
 
-  const generation = updatedProduct.fields.generation;
-  let displayGeneration = "";
-
-  if (generation && generation > 0) {
-    let suffix = "th";
-
-    if (generation % 10 === 1 && generation % 100 !== 11) {
-      suffix = "st";
-    } else if (generation % 10 === 2 && generation % 100 !== 12) {
-      suffix = "nd";
-    } else if (generation % 10 === 3 && generation % 100 !== 13) {
-      suffix = "rd";
-    }
-
-    displayGeneration = `(${generation}${suffix} generation)`;
-  }
-
   return (
     <Link
       to={"/product/" + updatedProduct.fields.slug}
