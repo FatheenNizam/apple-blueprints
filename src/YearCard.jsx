@@ -48,7 +48,7 @@ export function YearCard({ months, year }) {
         </span>
       </h2>
       {showMonths && (
-        <div className="container">
+        <div className="month-card-container">
           {months.map(({ name, products }) => (
             <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} isPastYear={isPastYear} />
           ))}

@@ -301,7 +301,7 @@ body::before {
   color: var(--text-primary);
 }
 
-.container {
+.month-card-container {
   margin: 0 42px;
   margin-bottom: 30px;
   padding: 0;
@@ -312,8 +312,9 @@ body::before {
 }
 
 @media (max-width: 600px) {
-  .container {
+  .month-card-container {
     margin: 0 18px;
+    margin-bottom: 30px;
     grid-template-columns: 1fr;
   }
 }
@@ -830,12 +831,6 @@ td {
   gap: 32px;
   border-radius: var(--border-radius);
   box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-  #footer {
-    margin: 32px 18px;
-  }
 }
 
 #footer-button-container {
