@@ -41,7 +41,7 @@ export function ProductContainer({ product, onDismiss }) {
     <div className="product-card-wrapper">
       <div className="button-container">
         <button
-          className="product-navigation-button"
+          className="product-navigation-button "
           onClick={goToPreviousProduct}
           style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
         >
@@ -55,7 +55,21 @@ export function ProductContainer({ product, onDismiss }) {
         role="dialog"
         aria-labelledby="product-title"
       >
-        <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
+        <div className="top-buttons">
+          <div className="mobile-navigation-buttons-container mobile-navigation">
+            <button
+              className="fa-solid fa-arrow-left product-navigation-button mobile-navigation-button"
+              onClick={goToPreviousProduct}
+              style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
+            />
+            <button
+              className="fa-solid fa-arrow-right product-navigation-button mobile-navigation-button"
+              onClick={goToNextProduct}
+              style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
+            />
+          </div>
+          <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
+        </div>
         <div className="product-card-content">
           <div className="product-status-label-wrapper">
             <div
@@ -217,15 +231,20 @@ function useProductNavigation(product) {
 
 function ProductImage({ image, product }) {
   const updatedProduct = useContentfulLiveUpdates(product);
+  const aspectRatio = `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}`;
+  const isMobile = window.innerWidth <= 600;
 
   return (
     <>
       <img
         key={image.fields.file.url}
-        className="product-image"
+        className={`product-image ${isMobile ? "mobile-image" : ""}`}
         width={Math.min(300, image.fields.file.details.image.width)}
-        style={{ aspectRatio: `${image.fields.file.details.image.width}/${image.fields.file.details.image.height}` }}
-        src={image.fields.file.url + "?fm=webp&h=300"}
+        style={{
+          aspectRatio,
+          height: isMobile ? "300px" : "auto",
+        }}
+        src={image.fields.file.url + "?fm=webp" + (isMobile ? "&h=300" : "")}
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
         alt={`The ${updatedProduct.fields.productName} is shown.`}
       />
