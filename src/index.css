@@ -528,12 +528,12 @@ body::before {
   }
 }
 
-.product-status-wrapper {
+.product-status-label-wrapper {
   display: flex;
   justify-content: start;
 }
 
-.product-status {
+.product-status-label {
   padding: 4px 8px;
   border-radius: var(--border-radius-button);
   font-weight: 500;
@@ -551,7 +551,7 @@ body::before {
   }
 }
 
-.product-status.released-product {
+.product-status-label.released-product {
   background-color: rgba(8, 127, 6, 0.14);
 }
 
@@ -563,7 +563,7 @@ body::before {
   background-color: rgba(230, 125, 6, 0.1);
 }
 
-.product-status.announced-product {
+.product-status-label.announced-product {
   background-color: rgba(230, 125, 6, 0.14);
 }
 
@@ -575,7 +575,7 @@ body::before {
   background-color: rgba(128, 126, 128, 0.1);
 }
 
-.product-status.rumored-product {
+.product-status-label.rumored-product {
   background-color: rgba(128, 126, 128, 0.14);
 }
 

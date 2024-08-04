@@ -78,13 +78,13 @@ export function ProductContainer({ product, onDismiss }) {
       >
         <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
         <div className="product-card-content">
-          <div className="product-status-wrapper">
+          <div className="product-status-label-wrapper">
             <div
-              className={"product-status " + updatedProduct.fields.status + "-product"}
+              className={"product-status-label " + updatedProduct.fields.status + "-product"}
               {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
             >
-              {/* <i className={`product-status-icon ${statusIcons[updatedProduct.fields.status]}`} /> */}
-              <div className="product-status-text">
+              {/* <i className={`product-status-label-icon ${statusIcons[updatedProduct.fields.status]}`} /> */}
+              <div className="product-status-label-text">
                 {statusLabels[updatedProduct.fields.status]}{" "}
                 {updatedProduct.fields.status === "announced"
                   ? (updatedProduct.fields.announcedDate
