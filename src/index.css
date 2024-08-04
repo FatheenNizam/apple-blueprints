@@ -706,10 +706,6 @@ body::before {
     box-shadow: var(--box-shadow);
     pointer-events: auto;
   }
-
-  .close-button {
-    display: none;
-  }
 }
 
 @media screen and (min-width: 600px) {
