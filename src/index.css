@@ -464,7 +464,6 @@ body::before {
 
 .button-container {
   padding-top: 32px;
-  /* align-self: center; */
 }
 
 .product-card {
@@ -515,9 +514,11 @@ body::before {
     display: none;
   }
 }
+
 #previous-button {
   left: 20px;
 }
+
 .product-card-content {
   padding: 56px;
   padding-top: 24px;

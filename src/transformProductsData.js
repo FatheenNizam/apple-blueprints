@@ -31,7 +31,7 @@ export function transformProductsData(data) {
   });
 
   productsByYear.sort((a, b) => b.yearName - a.yearName);
-  productsByYear.forEach((year) => year.months.sort((a, b) => a.index - b.index));
+  productsByYear.forEach((year) => year.months.sort((a, b) => b.index - a.index));
   productsByYear.forEach((year) =>
     year.months.forEach((month) =>
       month.products.sort((a, b) => {
