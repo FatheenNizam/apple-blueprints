@@ -8,9 +8,14 @@ export function Navbar() {
   const siteTitle = siteContentData?.fields.siteTitle;
 
   return (
-    <nav id="navbar" className="section">
+    <nav id="navbar" className="section" role="navigation" aria-label="Main navigation">
       <h1>
-        <a id="site-title" title="Jump to current year" href={`#${currentYear}`} aria-label="Jump to current year">
+        <a
+          id="site-title"
+          href={`#${currentYear}`}
+          aria-current="page"
+          aria-label={`Jump to current year: ${currentYear}`}
+        >
           {siteTitle}
         </a>
       </h1>
@@ -26,7 +31,9 @@ export function Navbar() {
         })}
 
         <a href="#" aria-label="Search">
-          <span className="material-symbols-rounded">search</span>
+          <span className="material-symbols-rounded" aria-hidden="true">
+            search
+          </span>
         </a>
       </div>
     </nav>

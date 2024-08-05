@@ -17,17 +17,19 @@ export function MonthCard({ month, products, year, isPastYear }) {
   const isCurrentMonth = monthDate.getFullYear() === currentYear && monthDate.getMonth() + 1 === currentMonth;
 
   return (
-    <ul className="month-card">
-      <h3
-        className={`month-label ${isPastYear || isPastMonth ? "past-date" : ""} ${
-          isCurrentMonth ? "current-month" : ""
-        }`}
-      >
-        {month}
-      </h3>
+    <ul className="month-card" role="list">
+      <li>
+        <h3
+          className={`month-label ${isPastYear || isPastMonth ? "past-date" : ""} ${
+            isCurrentMonth ? "current-month" : ""
+          }`}
+        >
+          {month}
+        </h3>
+      </li>
       <div className="product-list-container">
         {products.map((product) => (
-          <ProductItem key={product.sys.id} product={product} />
+          <ProductItem key={product.sys.id} product={product} role="listitem" />
         ))}
       </div>
     </ul>

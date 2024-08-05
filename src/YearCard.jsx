@@ -41,14 +41,22 @@ export function YearCard({ months, year }) {
 
   return (
     <div className="year-card">
-      <h2 id={year} className={`year-label ${isPastYear ? "past-date" : ""}`} onClick={handleYearClick}>
+      <button
+        id={year}
+        className={`year-label ${isPastYear ? "past-date" : ""}`}
+        onClick={handleYearClick}
+        tabIndex="0"
+        aria-expanded={showMonths}
+        aria-controls={`months-${year}`}
+        aria-label={`Toggle months for ${year}`}
+      >
         {year}
         <span className="material-symbols-rounded year-list-arrow">
           {showMonths ? "keyboard_arrow_down" : "keyboard_arrow_right"}
         </span>
-      </h2>
+      </button>
       {showMonths && (
-        <div className="month-card-container">
+        <div id={`months-${year}`} className="month-card-container">
           {months.map(({ name, products }) => (
             <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} isPastYear={isPastYear} />
           ))}

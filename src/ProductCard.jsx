@@ -40,19 +40,23 @@ export function ProductContainer({ product, onDismiss }) {
     <div className="product-card-wrapper">
       <div className="button-container">
         <button
-          className="product-navigation-button "
+          className="product-navigation-button"
           onClick={goToPreviousProduct}
           style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
+          aria-label="Previous product"
+          disabled={!previousProductSlug}
         >
           <i className="fa-solid fa-arrow-left"></i>
         </button>
       </div>
+
       <div
         className="product-card"
         ref={productContainerRef}
-        tabIndex="-1"
+        tabIndex="0"
         role="dialog"
         aria-labelledby="product-title"
+        aria-modal="true"
       >
         <div className="top-buttons-container">
           <div className="mobile-navigation-buttons-container mobile-navigation">
@@ -60,11 +64,13 @@ export function ProductContainer({ product, onDismiss }) {
               className="fa-solid fa-arrow-left mobile-navigation-button"
               onClick={goToPreviousProduct}
               disabled={!previousProductSlug}
+              aria-label="Previous product"
             />
             <button
               className="fa-solid fa-arrow-right mobile-navigation-button"
               onClick={goToNextProduct}
               disabled={!nextProductSlug}
+              aria-label="Next product"
             />
           </div>
           <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
@@ -72,7 +78,7 @@ export function ProductContainer({ product, onDismiss }) {
         <div className="product-card-content">
           <div className="product-status-label-wrapper">
             <div
-              className={"product-status-label " + updatedProduct.fields.status + "-product"}
+              className={`product-status-label ${updatedProduct.fields.status}-product`}
               {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
             >
               <div className="product-status-label-text">
@@ -93,20 +99,20 @@ export function ProductContainer({ product, onDismiss }) {
           <div className="top-section">
             <div className="product-info">
               <div className="titlebar">
-                <div
+                <h3
                   className="product-name"
                   id="product-title"
                   {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
                 >
                   {updatedProduct.fields.productName}
-                </div>
+                </h3>
               </div>
-              <div
+              <p
                 className="product-description"
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "description" })}
               >
                 {updatedProduct.fields.description}
-              </div>
+              </p>
             </div>
             {updatedProduct.fields.images && (
               <div
@@ -124,7 +130,7 @@ export function ProductContainer({ product, onDismiss }) {
               className="product-header"
               {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "features" })}
             >
-              What's new:
+              <h4>What's new:</h4>
               <ul className="product-features">
                 {updatedProduct.fields.features.map((feature) => (
                   <li key={feature}>{feature}</li>
@@ -157,14 +163,14 @@ export function ProductContainer({ product, onDismiss }) {
           </table>
           {updatedProduct.fields.sources && (
             <div className="product-header sources-header">
-              Sources:
+              <h4>Sources:</h4>
               <ul
                 className="product-sources"
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
               >
                 {updatedProduct.fields.sources.map((source) => (
-                  <li key={source}>
-                    <a href={source.fields.url} target="_blank" className="source-link">
+                  <li key={source.fields.url}>
+                    <a href={source.fields.url} target="_blank" rel="noopener noreferrer" className="source-link">
                       <span className="source-link-text">{source.fields.title}</span>
                       <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
                     </a>
@@ -182,19 +188,23 @@ export function ProductContainer({ product, onDismiss }) {
             <a
               href={`mailto:appleblueprints@gmail.com?subject=Edit%20request:%20${updatedProduct.fields.productName}&body=Please%20provide%20details%20of%20the%20edit%20you%20would%20like%20to%20make.`}
               target="_blank"
+              rel="noopener noreferrer"
               className="product-card-button"
               id="suggest-button"
             >
               <i className="fas fa-wrench"></i>&nbsp;&nbsp;Suggest edit
-            </a>{" "}
+            </a>
           </div>
         </div>
       </div>
+
       <div className="button-container">
         <button
           className="product-navigation-button"
           onClick={goToNextProduct}
           style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
+          aria-label="Next product"
+          disabled={!nextProductSlug}
         >
           <i className="fa-solid fa-arrow-right"></i>
         </button>

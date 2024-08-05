@@ -8,17 +8,24 @@ export function Footer({ lastUpdated }) {
   return (
     <div id="footer-wrapper">
       <div id="footer">
-        <div id="footer-button-container">
+        <nav id="footer-button-container" aria-label="Footer navigation">
           {siteContentData?.fields.footerItems?.map((item, index) => {
             const { fields: { text, icon, url } = {} } = item || {};
 
             return text && icon && url ? (
-              <a key={index} href={url} target="_blank" className="footer-button" aria-label={text}>
+              <a
+                key={index}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-button"
+                aria-label={`${text} (opens in a new tab)`}
+              >
                 <i className={icon}></i>&nbsp;&nbsp;{text}
               </a>
             ) : null;
           })}
-        </div>
+        </nav>
 
         {lastUpdated && <LastUpdated lastUpdated={lastUpdated} />}
       </div>
@@ -39,11 +46,21 @@ function LastUpdated({ lastUpdated }) {
 
   return (
     <div className="footer-text-container">
-      <div className="footer-text disclaimer-text">{siteContentData?.fields.footerText}</div>
-      <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
+      <p className="footer-text disclaimer-text" aria-label="Footer text">
+        {siteContentData?.fields.footerText}
+      </p>
+      <button
+        className="footer-text last-updated-text"
+        onClick={handleClick}
+        title="Click to toggle"
+        aria-expanded={showRelativeTime}
+        aria-controls="last-updated-time"
+      >
         Last updated{!showRelativeTime}{" "}
-        <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
-      </div>
+        <span id="last-updated-time" className="last-updated-time">
+          {showRelativeTime ? relativeTime : actualDate}
+        </span>
+      </button>
     </div>
   );
 }

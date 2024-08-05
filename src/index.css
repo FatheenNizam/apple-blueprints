@@ -108,8 +108,14 @@ h3 {
 }
 
 ul {
-  margin-block-start: 0;
-  margin-block-end: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  margin: 0;
+  padding: 0;
 }
 
 button {
@@ -400,22 +406,6 @@ body::before {
   align-self: start;
 }
 
-.counter {
-  padding: 4px 12px;
-  min-height: 38px;
-  min-width: 38px;
-  margin: 12px;
-  box-sizing: border-box;
-  border-radius: 100px;
-  background-color: var(--counter-bg);
-  color: var(--text-secondary);
-  font-size: 0.7em;
-  font-weight: 500;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 #modal-container {
   position: fixed;
   top: 0;
@@ -427,7 +417,7 @@ body::before {
   justify-content: center;
   pointer-events: none;
   z-index: 9999;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #modal-container > * {
@@ -444,7 +434,7 @@ body::before {
   z-index: 1000;
   gap: 24px;
   pointer-events: none;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -478,7 +468,7 @@ body::before {
   pointer-events: auto;
 }
 .product-card:focus {
-  outline: none;
+  /* outline: none; */
 }
 
 @media (max-width: 600px) {
@@ -616,8 +606,8 @@ body::before {
 }
 
 .product-info {
-  flex: 1; /* Ensures each item takes equal space */
-  max-width: 100%; /* Adjusted to ensure full width */
+  flex: 1;
+  max-width: 100%;
 }
 
 .product-image-container {
@@ -704,22 +694,23 @@ body::before {
   .mobile-navigation-button {
     width: 36px;
     height: 36px;
-    background-color: white;
-    color: black;
+    color: var(--text-secondary);
     border-radius: 9999px;
-    box-shadow: var(--box-shadow);
-    pointer-events: auto;
+    border: 1px solid var(--border);
+    transition: var(--transition-time);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .mobile-navigation-button:hover {
-      background-color: rgb(220, 220, 220);
-      transition: var(--transition-time) ease background-color;
+    .mobile-navigation-button:not(:disabled):hover {
+      background-color: var(--footer-button-bg-hover);
+      border-color: var(--footer-button-highlight-hover);
+      color: var(--footer-button-highlight-hover);
     }
   }
 
   .mobile-navigation-button:disabled {
-    background-color: var(--counter-bg);
+    opacity: 0.5;
+    cursor: inherit;
   }
 }
 
@@ -835,7 +826,7 @@ td {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
   border-radius: var(--border-radius);
   box-sizing: border-box;
 }
@@ -874,7 +865,6 @@ td {
 .footer-text-container {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--content-section-gap) / 2);
 }
 
 .footer-text {
@@ -894,13 +884,6 @@ td {
 }
 
 :focus {
-  outline: 3px solid var(--focus-color);
-}
-
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
 }
