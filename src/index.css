@@ -243,6 +243,7 @@ body::before {
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   filter: saturate(150%);
   z-index: 1000;
@@ -486,7 +487,7 @@ body::before {
 }
 
 #modal-container > * {
-  pointer-events: initial;
+  pointer-events: auto;
 }
 
 #loading-text {
