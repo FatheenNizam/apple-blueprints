@@ -1,15 +1,17 @@
 import { useRef, useEffect } from "react";
 
-export function useFocusOnUpdate() {
+export function useFocusOnUpdate(isModalOpen) {
   const ref = useRef(null);
 
   useEffect(() => {
     const element = ref.current;
     const previousOverflow = document.body.style.overflow;
 
-    if (element) {
+    if (isModalOpen) {
       document.body.style.overflow = "hidden";
+    }
 
+    if (element) {
       const focusTimeout = setTimeout(() => {
         if (element.focus) {
           element.focus();
@@ -21,7 +23,7 @@ export function useFocusOnUpdate() {
         document.body.style.overflow = previousOverflow;
       };
     }
-  }, [ref]);
+  }, [ref, isModalOpen]);
 
   return ref;
 }
