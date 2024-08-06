@@ -43,15 +43,19 @@ export function YearCard({ months, year }) {
     <div className="year-card">
       <button
         id={year}
-        className={`year-label ${isPastYear ? "past-date" : ""}`}
+        className="year-label-wrapper"
         onClick={handleYearClick}
         tabIndex="0"
         aria-expanded={showMonths}
         aria-controls={`months-${year}`}
         aria-label={`Toggle months for ${year}`}
       >
-        {year}&nbsp;
-        <i className={`${showMonths ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-down"} year-list-arrow`}></i>
+        <h2 className={`year-label ${isPastYear ? "" : "text-highlight"}`}>{year}&nbsp;</h2>
+        <i
+          className={`${isPastYear ? "" : "text-highlight"} ${
+            showMonths ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-right"
+          } year-list-arrow`}
+        ></i>
       </button>
       {showMonths && (
         <div id={`months-${year}`} className="month-card-container">

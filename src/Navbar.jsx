@@ -4,19 +4,17 @@ import { SiteContentContext } from "./SiteContentContext";
 export function Navbar() {
   const siteContentData = useContext(SiteContentContext);
 
-  const currentYear = new Date().getFullYear();
-  const siteTitle = siteContentData?.fields.siteTitle;
-
   return (
     <nav id="navbar" className="section" role="navigation" aria-label="Main navigation">
       <h1>
         <a
           id="site-title"
-          href={`#${currentYear}`}
+          href="#top"
           aria-current="page"
-          aria-label={`Jump to current year: ${currentYear}`}
+          aria-label="Jump to top of the page"
+          title="Scroll to the top of the page"
         >
-          {siteTitle}
+          {siteContentData?.fields.siteTitle}
         </a>
       </h1>
       <div className="navbar-menu-items">
@@ -24,16 +22,14 @@ export function Navbar() {
           const { fields: { title, url } = {} } = item || {};
 
           return title ? (
-            <a key={title} href={url || "#"} aria-label={title}>
+            <a className="menu-link" key={title} href={url || "#"} aria-label={title}>
               {title}
             </a>
           ) : null;
         })}
 
-        <a href="#" aria-label="Search">
-          <span className="material-symbols-rounded" aria-hidden="true">
-            search
-          </span>
+        <a id="search-icon" href="#" aria-label="Search">
+          <i className="fa-solid fa-magnifying-glass"></i>
         </a>
       </div>
     </nav>

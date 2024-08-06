@@ -1,5 +1,5 @@
 import React from "react";
-import { parse, isBefore, startOfMonth } from "date-fns";
+import { parse } from "date-fns";
 import { ProductItem } from "./ProductItem";
 
 export function MonthCard({ month, products, year, isPastYear }) {
@@ -12,20 +12,12 @@ export function MonthCard({ month, products, year, isPastYear }) {
   const currentMonth = today.getMonth() + 1;
   const monthDate = parse(`${month} ${year}`, "MMMM yyyy", new Date());
 
-  const startCurrentMonth = startOfMonth(today);
-  const isPastMonth = isBefore(monthDate, startCurrentMonth) && year <= currentYear;
   const isCurrentMonth = monthDate.getFullYear() === currentYear && monthDate.getMonth() + 1 === currentMonth;
 
   return (
     <ul className="month-card" role="list">
       <li>
-        <h3
-          className={`month-label ${isPastYear || isPastMonth ? "past-date" : ""} ${
-            isCurrentMonth ? "current-month" : ""
-          }`}
-        >
-          {month}
-        </h3>
+        <h3 className={`month-label ${isCurrentMonth ? "text-highlight" : ""}`}>{month}</h3>
       </li>
       <div className="product-list-container">
         {products.map((product) => (

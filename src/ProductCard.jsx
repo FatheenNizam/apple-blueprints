@@ -101,7 +101,9 @@ export function ProductContainer({ product, onDismiss }) {
               >
                 <div className="product-status-label-text">
                   {statusLabels[updatedProduct.fields.status]}{" "}
-                  {updatedProduct.fields.status === "announced"
+                  {updatedProduct.fields.status === "rumored" && updatedProduct.fields.announcedDate
+                    ? ` for ${format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")}`
+                    : updatedProduct.fields.status === "announced"
                     ? (updatedProduct.fields.announcedDate
                         ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
                         : "") +

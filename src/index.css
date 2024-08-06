@@ -42,7 +42,7 @@
   --footer-bg: white;
   --underline: rgb(169, 169, 169);
   --text-highlight: var(--apple-system-blue-light);
-  --focus-color: rgb(255, 153, 0);
+  --focus-color: rgba(255, 153, 0, 0.8);
   --blur-value: 12px;
   --border-radius: 18px;
   --border-radius-navbar: 12px;
@@ -50,7 +50,7 @@
   --transition-time: 200ms;
   --tablet-viewport: 900px;
   --mobile-viewport: 600px;
-  --content-section-gap: 24px;
+  --content-section-gap: 32px;
   --site-width: 1400px;
   --header-letter-spacing: -1px;
   --product-list-letter-spacing: -0.5px;
@@ -105,7 +105,6 @@ h4,
 p {
   margin: 0;
   padding: 0;
-  /* font-size: inherit; */
   font-weight: inherit;
   color: inherit;
 }
@@ -266,15 +265,21 @@ body::before {
   gap: 12px;
 }
 
+.year-label-wrapper {
+  margin-left: 60px;
+  display: flex;
+  align-self: start;
+  align-items: center;
+}
+
 .year-label {
   margin: auto;
-  margin-left: 60px;
   font-size: 60px;
   font-weight: bold;
   display: flex;
   align-items: flex-end;
   letter-spacing: var(--header-letter-spacing);
-  color: var(--apple-system-blue-light);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
@@ -282,13 +287,6 @@ body::before {
   font-size: 36px;
   opacity: 0.5;
   cursor: pointer;
-}
-
-@media (prefers-color-scheme: dark) {
-  .year-label {
-    color: var(--text-primary);
-    color: var(--apple-system-blue-dark);
-  }
 }
 
 @media (max-width: 600px) {
@@ -301,6 +299,10 @@ body::before {
 .past-date,
 #unknown {
   color: var(--text-primary);
+}
+
+.text-highlight {
+  color: var(--text-highlight);
 }
 
 .month-card-container {
@@ -355,10 +357,6 @@ body::before {
   .month-label {
     font-size: 32px;
   }
-}
-
-.current-month {
-  color: var(--text-highlight);
 }
 
 .product-list-container {
@@ -416,7 +414,6 @@ body::before {
   align-items: flex-start;
   justify-content: center;
   overflow: auto;
-  /* overflow: hidden;  */
   pointer-events: none;
   z-index: 9999;
 }
@@ -431,10 +428,8 @@ body::before {
   max-height: 100%;
   position: relative;
   display: flex;
-  flex-direction: column; /* Add this line to allow vertical scrolling */
   gap: 24px;
   z-index: 1000;
-  overflow: auto; /* Add this line to enable scrolling within the container */
   pointer-events: none;
 }
 .product-card-container:focus {
@@ -466,7 +461,6 @@ body::before {
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     gap: 0;
-    overflow: auto; /* Ensure scrolling is enabled on mobile */
   }
 }
 
@@ -500,8 +494,8 @@ body::before {
 }
 
 .product-navigation-button {
-  height: 36px;
   width: 36px;
+  height: 36px;
   background-color: white;
   color: black;
   border-radius: 9999px;
@@ -907,10 +901,10 @@ td {
   text-underline-offset: 4px;
 }
 
-/* :focus {
+:focus-visible {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
-} */
+}
 
 ::selection {
   background-color: #ffd700;
