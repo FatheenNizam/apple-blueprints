@@ -483,7 +483,7 @@ body::before {
   align-items: flex-start;
   justify-content: center;
   overflow: auto;
-  pointer-events: none;
+  pointer-events: initial;
   z-index: 9999;
 }
 
