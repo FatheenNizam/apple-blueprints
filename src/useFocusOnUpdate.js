@@ -7,9 +7,7 @@ export function useFocusOnUpdate() {
     const element = ref.current;
     const previousOverflow = document.body.style.overflow;
 
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-
-    if (element && isDesktop) {
+    if (element) {
       document.body.style.overflow = "hidden";
 
       const focusTimeout = setTimeout(() => {
