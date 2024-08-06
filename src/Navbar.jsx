@@ -9,7 +9,6 @@ export function Navbar() {
       <h1>
         <a
           id="site-title"
-          className="menu-link"
           href="#top"
           aria-current="page"
           aria-label="Jump to top of the page"
@@ -23,14 +22,16 @@ export function Navbar() {
           const { fields: { title, url } = {} } = item || {};
 
           return title ? (
-            <a className="menu-link" key={title} href={url || "#"} aria-label={title}>
+            <a className="desktop-item menu-item" key={title} href={url || "#"} aria-label={title}>
               {title}
             </a>
           ) : null;
         })}
-
-        <a id="search-icon" className="menu-link" href="#" aria-label="Search">
+        <a id="search-icon" className="desktop-item menu-item" href="#" aria-label="Search">
           <i className="fa-solid fa-magnifying-glass"></i>
+        </a>
+        <a id="mobile-menu-icon" className="mobile-item menu-item" href="#" aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
         </a>
       </div>
     </nav>

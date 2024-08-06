@@ -7,6 +7,7 @@ import { ProductContainer } from "./ProductCard";
 
 export function ProductPage() {
   const productsData = useContext(ProductsDataContext);
+
   const allProducts = productsData?.flatMap((year) => year.months.flatMap((month) => month.products));
   const { product: slug } = useParams();
 
@@ -21,7 +22,7 @@ export function ProductPage() {
       {product ? (
         <ProductContainer key={product.sys.id} product={product} onDismiss={closeModal} />
       ) : (
-        <div id="loading-text">Loading product...</div>
+        <div id="loading-text">Loading product..</div>
       )}
     </Modal>
   );

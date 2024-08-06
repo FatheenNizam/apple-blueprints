@@ -7,6 +7,7 @@ import { router } from "./router";
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 import { useFocusOnUpdate } from "./useFocusOnUpdate";
+import { getStatusMessage } from "./statusMessages";
 
 export function ProductContainer({ product, onDismiss }) {
   const { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug } = useProductNavigation(product);
@@ -100,19 +101,7 @@ export function ProductContainer({ product, onDismiss }) {
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
               >
                 <div className="product-status-label-text">
-                  {statusLabels[updatedProduct.fields.status]}{" "}
-                  {updatedProduct.fields.status === "rumored" && updatedProduct.fields.announcedDate
-                    ? ` for ${format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")}`
-                    : updatedProduct.fields.status === "announced"
-                    ? (updatedProduct.fields.announcedDate
-                        ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
-                        : "") +
-                      (updatedProduct.fields.releasedDate
-                        ? ` (Releases ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
-                        : "")
-                    : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
-                    ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
-                    : ""}
+                  {statusLabels[updatedProduct.fields.status]} {getStatusMessage(updatedProduct.fields)}
                 </div>
               </div>
             </div>
