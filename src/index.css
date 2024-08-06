@@ -488,6 +488,7 @@ body::before {
 @media (max-width: 768px) {
   #modal-container {
     position: absolute;
+    bottom: 0;
   }
 }
 
