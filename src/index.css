@@ -473,7 +473,7 @@ body::before {
 }
 
 #modal-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -484,6 +484,11 @@ body::before {
   overflow: auto;
   pointer-events: none;
   z-index: 9999;
+}
+@media (max-width: 768px) {
+  #modal-container {
+    position: absolute;
+  }
 }
 
 #modal-container > * {
