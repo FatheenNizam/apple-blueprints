@@ -50,9 +50,6 @@ export function ProductContainer({ product, onDismiss }) {
   };
 
   const focusRef = useFocusOnUpdate();
-  const modalRef = useFocusOnUpdate(isOpen);
-
-  if (!isOpen) return null;
 
   return (
     <div ref={focusRef} tabIndex="0" className="product-card-container">

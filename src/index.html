@@ -95,6 +95,14 @@
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
   </head>
 
+  <script>
+    import React, { useState } from "react";
+    import { useFocusOnUpdate } from "./useFocusOnUpdate"; // Adjust the import path as needed
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const modalRef = useFocusOnUpdate(isModalOpen);
+  </script>
+
   <body>
     <div id="wrapper"></div>
     <div id="modal-container" ref="{modalRef}"></div>
