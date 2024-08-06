@@ -557,7 +557,6 @@ body::before {
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   pointer-events: auto;
-  overflow: auto;
   order: 2;
 }
 
