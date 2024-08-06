@@ -279,7 +279,7 @@ body::before {
 }
 
 .year-list-arrow {
-  font-size: inherit !important;
+  font-size: 36px;
   opacity: 0.5;
   cursor: pointer;
 }
@@ -491,6 +491,7 @@ body::before {
     transform: translate(0%, 0%);
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
+    overflow: scroll;
   }
 }
 
@@ -729,7 +730,7 @@ body::before {
   }
 
   .mobile-navigation-button:disabled {
-    opacity: 0.5;
+    opacity: 0.2;
     cursor: inherit;
   }
 }

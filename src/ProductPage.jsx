@@ -21,7 +21,7 @@ export function ProductPage() {
       {product ? (
         <ProductContainer key={product.sys.id} product={product} onDismiss={closeModal} />
       ) : (
-        <div>Loading...</div>
+        <div>Loading product...</div>
       )}
     </Modal>
   );

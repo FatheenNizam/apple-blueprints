@@ -50,10 +50,8 @@ export function YearCard({ months, year }) {
         aria-controls={`months-${year}`}
         aria-label={`Toggle months for ${year}`}
       >
-        {year}
-        <span className="material-symbols-rounded year-list-arrow">
-          {showMonths ? "keyboard_arrow_down" : "keyboard_arrow_right"}
-        </span>
+        {year}&nbsp;
+        <i className={`${showMonths ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-down"} year-list-arrow`}></i>
       </button>
       {showMonths && (
         <div id={`months-${year}`} className="month-card-container">
