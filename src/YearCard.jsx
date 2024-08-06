@@ -43,7 +43,7 @@ export function YearCard({ months, year }) {
     <div className="year-card">
       <button
         id={year}
-        className="year-label-wrapper"
+        className=" year-label-wrapper"
         onClick={handleYearClick}
         tabIndex="0"
         aria-expanded={showMonths}

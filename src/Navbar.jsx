@@ -9,6 +9,7 @@ export function Navbar() {
       <h1>
         <a
           id="site-title"
+          className="menu-link"
           href="#top"
           aria-current="page"
           aria-label="Jump to top of the page"
@@ -28,7 +29,7 @@ export function Navbar() {
           ) : null;
         })}
 
-        <a id="search-icon" href="#" aria-label="Search">
+        <a id="search-icon" className="menu-link" href="#" aria-label="Search">
           <i className="fa-solid fa-magnifying-glass"></i>
         </a>
       </div>

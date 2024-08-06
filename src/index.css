@@ -171,17 +171,31 @@ body::before {
   flex-direction: row;
   justify-content: space-between;
 }
-#navbar a {
+
+.menu-link {
+  position: relative; /* Ensure positioning context for the pseudo-element */
   text-decoration: none;
   cursor: pointer;
   color: white;
 }
-#navbar a:hover {
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 4px;
-  transition: color var(--transition-time) ease;
+
+.menu-link::after {
+  content: ""; /* Empty content to create the underline effect */
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* Adjust the offset here */
+  width: 100%;
+  height: 1.5px; /* Adjust the height to your preference */
+  background: white; /* Underline color */
+  transform: scaleX(0); /* Start with zero scale */
+  transform-origin: bottom left; /* Anchor the scaling */
+  transition: transform var(--transition-time) ease; /* Apply transition */
 }
+
+.menu-link:hover::after {
+  transform: scaleX(1); /* Scale to full width on hover */
+}
+
 #site-title:hover {
   text-decoration: none !important;
 }
@@ -272,6 +286,12 @@ body::before {
   align-items: center;
 }
 
+@media (max-width: 600px) {
+  .year-label-wrapper {
+    margin-left: 0;
+  }
+}
+
 .year-label {
   margin: auto;
   font-size: 60px;
@@ -308,7 +328,6 @@ body::before {
 .month-card-container {
   margin: 0 42px;
   margin-bottom: 30px;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 24px;
@@ -420,6 +439,21 @@ body::before {
 
 #modal-container > * {
   pointer-events: initial;
+}
+
+#loading-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 18px 24px;
+  background-color: var(--month-card-bg);
+  font-size: 24px;
+  color: var(--text-primary);
+  border-radius: var(--border-radius-navbar);
+  box-shadow: var(--box-shadow);
+  text-wrap: nowrap;
+  z-index: 1100;
 }
 
 .product-card-container {
