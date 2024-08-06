@@ -5,10 +5,10 @@ export function useFocusOnUpdate() {
 
   useEffect(() => {
     const element = ref.current;
-    const previousOverflow = document.body.style.overflow;
+    // const previousOverflow = document.body.style.overflow;
 
     if (element) {
-      document.body.style.overflow = "hidden";
+      // document.body.style.overflow = "hidden";
 
       const focusTimeout = setTimeout(() => {
         if (element.focus) {
@@ -18,7 +18,7 @@ export function useFocusOnUpdate() {
 
       return () => {
         clearTimeout(focusTimeout);
-        document.body.style.overflow = previousOverflow;
+        // document.body.style.overflow = previousOverflow;
       };
     }
   }, [ref]);
