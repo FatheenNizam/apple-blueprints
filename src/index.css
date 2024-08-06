@@ -330,8 +330,8 @@ body::before {
   cursor: pointer;
 }
 
-.year-list-arrow {
-  font-size: 36px;
+.year-label-arrow {
+  font-size: 24px;
   opacity: 0.5;
   cursor: pointer;
 }

@@ -54,7 +54,7 @@ export function YearCard({ months, year }) {
         <i
           className={`${isPastYear ? "" : "text-highlight"} ${
             showMonths ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-right"
-          } year-list-arrow`}
+          } year-label-arrow`}
         ></i>
       </button>
       {showMonths && (
