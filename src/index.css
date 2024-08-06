@@ -488,8 +488,8 @@ body::before {
 }
 @media (max-width: 768px) {
   #modal-container {
-    height: 100%;
-    position: fixed;
+    height: inherit;
+    position: absolute;
   }
 }
 
