@@ -52,11 +52,7 @@ export function ProductContainer({ product, onDismiss }) {
   const focusRef = useFocusOnUpdate();
 
   return (
-    <div
-      // ref={focusRef}
-      tabIndex="0"
-      className="product-card-container"
-    >
+    <div ref={focusRef} tabIndex="0" className="product-card-container">
       <div className="product-card-wrapper">
         <div id="previous-button" className="button-container">
           <button
