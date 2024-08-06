@@ -34,180 +34,200 @@ export function ProductContainer({ product, onDismiss }) {
     };
   }, []);
 
-  const productContainerRef = useFocusOnUpdate();
+  const [showRelativeTime, setShowRelativeTime] = useState(true);
+
+  const relativeTime = formatDistanceToNow(new Date(updatedProduct?.sys.updatedAt), { addSuffix: true });
+  const actualDate = format(new Date(updatedProduct?.sys.updatedAt), "MMMM d, yyyy, h:mm a");
+
+  const handleClick = () => {
+    setShowRelativeTime(!showRelativeTime);
+  };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick();
+    }
+  };
+
+  const focusRef = useFocusOnUpdate();
 
   return (
-    <div className="product-card-wrapper">
-      <div className="button-container">
-        <button
-          className="product-navigation-button"
-          onClick={goToPreviousProduct}
-          style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
-          aria-label="Previous product"
-          disabled={!previousProductSlug}
-        >
-          <i className="fa-solid fa-arrow-left"></i>
-        </button>
-      </div>
-
-      <div
-        className="product-card"
-        ref={productContainerRef}
-        tabIndex="0"
-        role="dialog"
-        aria-labelledby="product-title"
-        aria-modal="true"
-      >
-        <div className="top-buttons-container">
-          <div className="mobile-navigation-buttons-container mobile-navigation">
-            <button
-              className="fa-solid fa-arrow-left mobile-navigation-button"
-              onClick={goToPreviousProduct}
-              disabled={!previousProductSlug}
-              aria-label="Previous product"
-            />
-            <button
-              className="fa-solid fa-arrow-right mobile-navigation-button"
-              onClick={goToNextProduct}
-              disabled={!nextProductSlug}
-              aria-label="Next product"
-            />
-          </div>
-          <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
+    <div ref={focusRef} tabIndex="0" className="product-card-container">
+      <div className="product-card-wrapper">
+        <div id="previous-button" className="button-container">
+          <button
+            className="product-navigation-button"
+            onClick={goToPreviousProduct}
+            style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
+            aria-label="Previous product"
+            disabled={!previousProductSlug}
+          >
+            <i className="fa-solid fa-chevron-left"></i>
+          </button>
         </div>
-        <div className="product-card-content">
-          <div className="product-status-label-wrapper">
-            <div
-              className={`product-status-label ${updatedProduct.fields.status}-product`}
-              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
-            >
-              <div className="product-status-label-text">
-                {statusLabels[updatedProduct.fields.status]}{" "}
-                {updatedProduct.fields.status === "announced"
-                  ? (updatedProduct.fields.announcedDate
-                      ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
-                      : "") +
-                    (updatedProduct.fields.releasedDate
-                      ? ` (Releases ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
-                      : "")
-                  : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
-                  ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
-                  : ""}
-              </div>
+        <div id="next-button" className="button-container">
+          <button
+            className="product-navigation-button"
+            onClick={goToNextProduct}
+            style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
+            aria-label="Next product"
+            disabled={!nextProductSlug}
+          >
+            <i className="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+        <div className="product-card" role="dialog" aria-labelledby="product-title" aria-modal="true">
+          <div className="top-buttons-container">
+            <div className="mobile-navigation-buttons-container mobile-navigation">
+              <button
+                className="fa-solid fa-chevron-left mobile-navigation-button"
+                onClick={goToPreviousProduct}
+                disabled={!previousProductSlug}
+                aria-label="Previous product"
+              />
+              <button
+                className="fa-solid fa-chevron-right mobile-navigation-button"
+                onClick={goToNextProduct}
+                disabled={!nextProductSlug}
+                aria-label="Next product"
+              />
             </div>
+            <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
           </div>
-          <div className="top-section">
-            <div className="product-info">
-              <div className="titlebar">
-                <h3
-                  className="product-name"
-                  id="product-title"
-                  {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
-                >
-                  {updatedProduct.fields.productName}
-                </h3>
-              </div>
-              <p
-                className="product-description"
-                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "description" })}
-              >
-                {updatedProduct.fields.description}
-              </p>
-            </div>
-            {updatedProduct.fields.images && (
+          <div className="product-card-content">
+            <div className="product-status-label-wrapper">
               <div
-                className="product-image-container"
-                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
+                className={`product-status-label ${updatedProduct.fields.status}-product`}
+                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
               >
-                {updatedProduct.fields.images.map((image) => (
-                  <ProductImage key={image.sys.id} image={image} product={product} />
-                ))}
+                <div className="product-status-label-text">
+                  {statusLabels[updatedProduct.fields.status]}{" "}
+                  {updatedProduct.fields.status === "announced"
+                    ? (updatedProduct.fields.announcedDate
+                        ? format(new Date(updatedProduct.fields.announcedDate), "MMM d, yyyy")
+                        : "") +
+                      (updatedProduct.fields.releasedDate
+                        ? ` (Releases ${format(new Date(updatedProduct.fields.releasedDate), "MMM d")})`
+                        : "")
+                    : updatedProduct.fields.status === "released" && updatedProduct.fields.releasedDate
+                    ? format(new Date(updatedProduct.fields.releasedDate), "MMM d, yyyy")
+                    : ""}
+                </div>
+              </div>
+            </div>
+            <div className="top-section">
+              <div className="product-info">
+                <div className="titlebar">
+                  <h3
+                    className="product-name"
+                    id="product-title"
+                    {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "productName" })}
+                  >
+                    {updatedProduct.fields.productName}
+                  </h3>
+                </div>
+                <p
+                  className="product-description"
+                  {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "description" })}
+                >
+                  {updatedProduct.fields.description}
+                </p>
+              </div>
+              {updatedProduct.fields.images && (
+                <div
+                  className="product-image-container"
+                  {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "images" })}
+                >
+                  {updatedProduct.fields.images.map((image) => (
+                    <ProductImage key={image.sys.id} image={image} product={product} />
+                  ))}
+                </div>
+              )}
+            </div>
+            {updatedProduct.fields.features && (
+              <div
+                className="product-header"
+                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "features" })}
+              >
+                <h4>What's new:</h4>
+                <ul className="product-features">
+                  {updatedProduct.fields.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
               </div>
             )}
-          </div>
-          {updatedProduct.fields.features && (
-            <div
-              className="product-header"
-              {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "features" })}
-            >
-              <h4>What's new:</h4>
-              <ul className="product-features">
-                {updatedProduct.fields.features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          )}
 
-          <table className="date-list">
-            <tbody>
-              <tr>
-                <td>Rumored</td>
-                <td>
-                  {updatedProduct?.fields.rumoredDate ? formatToUTCTime(updatedProduct.fields.rumoredDate) : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Announced</td>
-                <td>
-                  {updatedProduct?.fields.announcedDate ? formatToUTCTime(updatedProduct.fields.announcedDate) : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Released</td>
-                <td>
-                  {updatedProduct?.fields.releasedDate ? formatToUTCTime(updatedProduct.fields.releasedDate) : "N/A"}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          {updatedProduct.fields.sources && (
-            <div className="product-header sources-header">
-              <h4>Sources:</h4>
-              <ul
-                className="product-sources"
-                {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
+            <table className="date-list">
+              <tbody>
+                <tr>
+                  <td>Rumored</td>
+                  <td>
+                    {updatedProduct?.fields.rumoredDate ? formatToUTCTime(updatedProduct.fields.rumoredDate) : "N/A"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Announced</td>
+                  <td>
+                    {updatedProduct?.fields.announcedDate
+                      ? formatToUTCTime(updatedProduct.fields.announcedDate)
+                      : "N/A"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Released</td>
+                  <td>
+                    {updatedProduct?.fields.releasedDate ? formatToUTCTime(updatedProduct.fields.releasedDate) : "N/A"}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            {updatedProduct.fields.sources && (
+              <div className="product-header sources-header">
+                <h4>Sources:</h4>
+                <ul
+                  className="product-sources"
+                  {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "sources" })}
+                >
+                  {updatedProduct.fields.sources.map((source) => (
+                    <li key={source.fields.url}>
+                      <a href={source.fields.url} target="_blank" rel="noopener noreferrer" className="source-link">
+                        <span className="source-link-text">{source.fields.title}</span>
+                        <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div>
+              <button className="footer-text last-updated-text" tabIndex="-1">
+                Last updated{" "}
+                <span
+                  className="last-updated-time"
+                  onClick={handleClick}
+                  onKeyDown={handleKeyPress}
+                  title="Click to toggle"
+                  role="button"
+                  aria-label="Toggle time format"
+                  tabIndex="0"
+                >
+                  {showRelativeTime ? relativeTime : actualDate}
+                </span>
+              </button>
+            </div>
+            <div>
+              <a
+                href={`mailto:appleblueprints@gmail.com?subject=Edit%20request:%20${updatedProduct.fields.productName}&body=Please%20provide%20details%20of%20the%20edit%20you%20would%20like%20to%20make.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="product-card-button"
+                id="suggest-button"
               >
-                {updatedProduct.fields.sources.map((source) => (
-                  <li key={source.fields.url}>
-                    <a href={source.fields.url} target="_blank" rel="noopener noreferrer" className="source-link">
-                      <span className="source-link-text">{source.fields.title}</span>
-                      <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+                <i className="fas fa-wrench"></i>&nbsp;&nbsp;Suggest edit
+              </a>
             </div>
-          )}
-          <div className="product-card-last-updated-text">
-            Last updated {format(new Date(updatedProduct?.sys.updatedAt), "MMMM d, yyyy, h:mm a")} (
-            {formatDistanceToNow(new Date(updatedProduct?.sys.updatedAt))} ago)
-          </div>
-
-          <div>
-            <a
-              href={`mailto:appleblueprints@gmail.com?subject=Edit%20request:%20${updatedProduct.fields.productName}&body=Please%20provide%20details%20of%20the%20edit%20you%20would%20like%20to%20make.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="product-card-button"
-              id="suggest-button"
-            >
-              <i className="fas fa-wrench"></i>&nbsp;&nbsp;Suggest edit
-            </a>
           </div>
         </div>
-      </div>
-
-      <div className="button-container">
-        <button
-          className="product-navigation-button"
-          onClick={goToNextProduct}
-          style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
-          aria-label="Next product"
-          disabled={!nextProductSlug}
-        >
-          <i className="fa-solid fa-arrow-right"></i>
-        </button>
       </div>
     </div>
   );
@@ -253,9 +273,15 @@ function ProductImage({ image, product }) {
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
         alt={`The ${updatedProduct.fields.productName} is shown.`}
       />
-      <a className="product-image-source-link" href={image?.fields.description} target="_blank">
+      <a
+        className="product-image-source-link"
+        href={image?.fields.description}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View image source"
+      >
         <span className="source-link-text">View image source</span>
-        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+        <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
       </a>
     </>
   );

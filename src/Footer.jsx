@@ -42,6 +42,12 @@ function LastUpdated({ lastUpdated }) {
     setShowRelativeTime(!showRelativeTime);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick();
+    }
+  };
+
   const siteContentData = useContext(SiteContentContext);
 
   return (
@@ -49,15 +55,17 @@ function LastUpdated({ lastUpdated }) {
       <p className="footer-text disclaimer-text" aria-label="Footer text">
         {siteContentData?.fields.footerText}
       </p>
-      <button
-        className="footer-text last-updated-text"
-        onClick={handleClick}
-        title="Click to toggle"
-        aria-expanded={showRelativeTime}
-        aria-controls="last-updated-time"
-      >
-        Last updated{!showRelativeTime}{" "}
-        <span id="last-updated-time" className="last-updated-time">
+      <button className="footer-text last-updated-text" tabIndex="-1">
+        Last updated{" "}
+        <span
+          className="last-updated-time"
+          onClick={handleClick}
+          onKeyDown={handleKeyPress}
+          title="Click to toggle"
+          role="button"
+          aria-label="Toggle time format"
+          tabIndex="0"
+        >
           {showRelativeTime ? relativeTime : actualDate}
         </span>
       </button>

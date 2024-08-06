@@ -48,6 +48,7 @@
   --border-radius-navbar: 12px;
   --border-radius-button: 6px;
   --transition-time: 200ms;
+  --tablet-viewport: 900px;
   --mobile-viewport: 600px;
   --content-section-gap: 24px;
   --site-width: 1400px;
@@ -99,23 +100,19 @@ html {
 }
 
 h2,
-h3 {
+h3,
+h4,
+p {
   margin: 0;
   padding: 0;
-  font-size: inherit;
+  /* font-size: inherit; */
   font-weight: inherit;
   color: inherit;
 }
 
 ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-ul li {
-  margin: 0;
-  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 button {
@@ -350,6 +347,9 @@ body::before {
   font-weight: 600;
   letter-spacing: var(--header-letter-spacing);
 }
+.month-card li {
+  list-style: none;
+}
 
 @media (max-width: 600px) {
   .month-label {
@@ -373,7 +373,7 @@ body::before {
   display: flex;
   gap: 6px;
   border-radius: var(--border-radius-button);
-  transition: 0.2s;
+  transition: translate var(--transition-time) ease, background-color var(--transition-time) ease;
   align-items: center;
   text-decoration: none;
   padding: 6px 8px;
@@ -399,7 +399,7 @@ body::before {
 .product-item:hover .product-item-text,
 .source-link:hover .source-link-text,
 .product-image-source-link:hover {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .product-item-icon {
@@ -415,30 +415,42 @@ body::before {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  overflow: auto;
   pointer-events: none;
   z-index: 9999;
-  overflow-y: auto;
 }
 
 #modal-container > * {
   pointer-events: initial;
 }
 
-.product-card-wrapper {
+.product-card-container {
   width: 936px;
   max-width: 90vw;
-  margin: 44px auto;
   max-height: 100%;
-  display: flex;
   position: relative;
-  z-index: 1000;
+  display: flex;
   gap: 24px;
+  z-index: 1000;
   pointer-events: none;
-  overflow-y: auto;
+}
+.product-card-container:focus {
+  outline: none;
+}
+
+.product-card-wrapper {
+  margin: 40px auto;
+  display: flex;
+  gap: 24px;
+}
+@media screen and (max-width: 600px) {
+  .product-card-wrapper {
+    gap: 0;
+  }
 }
 
 @media screen and (max-width: 600px) {
-  .product-card-wrapper {
+  .product-card-container {
     max-width: 100vw;
     max-height: 90%;
     top: inherit;
@@ -452,10 +464,6 @@ body::before {
   }
 }
 
-.button-container {
-  padding-top: 32px;
-}
-
 .product-card {
   width: 100%;
   display: flex;
@@ -463,17 +471,14 @@ body::before {
   background-color: var(--month-card-bg);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   box-shadow: var(--box-shadow);
-  overflow: scroll;
   border-radius: var(--border-radius);
   pointer-events: auto;
-}
-.product-card:focus {
-  /* outline: none; */
+  order: 2;
 }
 
 @media (max-width: 600px) {
   .product-card {
-    max-height: 90%;
+    max-height: 100%;
     bottom: 0;
     left: 0;
     right: 0;
@@ -481,6 +486,10 @@ body::before {
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
+}
+
+.button-container {
+  padding-top: 32px;
 }
 
 .product-navigation-button {
@@ -492,11 +501,11 @@ body::before {
   margin: 0;
   flex-shrink: 0;
   box-shadow: var(--box-shadow);
+  transition: background-color var(--transition-time) ease;
   pointer-events: auto;
 }
 .product-navigation-button:hover {
   background-color: rgb(220, 220, 220);
-  transition: var(--transition-time) ease background-color;
 }
 
 @media (max-width: 600px) {
@@ -506,7 +515,10 @@ body::before {
 }
 
 #previous-button {
-  left: 20px;
+  order: 1;
+}
+#next-button {
+  order: 3;
 }
 
 .product-card-content {
@@ -588,7 +600,7 @@ body::before {
 
 @media (max-width: 600px) {
   .product-name {
-    font-size: 2.5em;
+    font-size: 32px;
   }
 }
 
@@ -598,10 +610,11 @@ body::before {
   align-items: top;
   gap: calc(var(--content-section-gap) * 2);
 }
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .top-section {
     flex-direction: column;
     width: 100%;
+    gap: var(--content-section-gap);
   }
 }
 
@@ -615,12 +628,11 @@ body::before {
   flex-direction: column;
   gap: 24px;
   align-items: center;
-  overflow-x: hidden;
   max-width: 50%;
   border-radius: var(--border-radius-button);
   padding-bottom: 2px;
 }
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .product-image-container {
     max-width: 100%;
   }
@@ -662,7 +674,8 @@ body::before {
   color: var(--text-secondary);
   cursor: pointer;
   border-radius: 9999px;
-  transition: var(--transition-time);
+  transition: background-color var(--transition-time) ease, border-color var(--transition-time) ease,
+    color var(--transition-time) ease;
   align-self: end;
   flex-shrink: 0;
   margin-top: 32px;
@@ -697,7 +710,8 @@ body::before {
     color: var(--text-secondary);
     border-radius: 9999px;
     border: 1px solid var(--border);
-    transition: var(--transition-time);
+    transition: background-color var(--transition-time) ease, border-color var(--transition-time) ease,
+      color var(--transition-time) ease;
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -786,10 +800,6 @@ td {
   display: none;
 }
 
-.product-card-last-updated-text {
-  color: var(--text-secondary);
-}
-
 .overlay {
   position: fixed;
   display: inline-block;
@@ -826,7 +836,7 @@ td {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 12px;
+  gap: 32px;
   border-radius: var(--border-radius);
   box-sizing: border-box;
 }
@@ -846,7 +856,8 @@ td {
   color: var(--text-secondary);
   padding: 6px 12px;
   border-radius: var(--border-radius-button);
-  transition: var(--transition-time);
+  transition: background-color var(--transition-time) ease, border-color var(--transition-time) ease,
+    color var(--transition-time) ease;
   text-decoration: none;
 }
 
@@ -865,6 +876,8 @@ td {
 .footer-text-container {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  cursor: default;
 }
 
 .footer-text {
@@ -872,7 +885,11 @@ td {
   text-align: center;
   color: var(--text-secondary);
   border-radius: var(--border-radius);
-  transition: var(--transition-time);
+}
+
+.last-updated-text {
+  margin: auto;
+  cursor: default;
 }
 
 .last-updated-time {
@@ -883,10 +900,10 @@ td {
   text-underline-offset: 4px;
 }
 
-:focus {
+/* :focus {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
-}
+} */
 
 ::selection {
   background-color: #ffd700;
