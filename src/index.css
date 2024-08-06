@@ -482,12 +482,12 @@ body::before {
   align-items: flex-start;
   justify-content: center;
   overflow: auto;
-  pointer-events: none;
+  /* pointer-events: none; */
   z-index: 9999;
 }
 
 #modal-container > * {
-  pointer-events: auto;
+  pointer-events: initial;
 }
 
 #loading-text {
