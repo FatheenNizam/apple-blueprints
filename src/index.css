@@ -416,6 +416,7 @@ body::before {
   align-items: flex-start;
   justify-content: center;
   overflow: auto;
+  /* overflow: hidden;  */
   pointer-events: none;
   z-index: 9999;
 }
@@ -430,8 +431,10 @@ body::before {
   max-height: 100%;
   position: relative;
   display: flex;
+  flex-direction: column; /* Add this line to allow vertical scrolling */
   gap: 24px;
   z-index: 1000;
+  overflow: auto; /* Add this line to enable scrolling within the container */
   pointer-events: none;
 }
 .product-card-container:focus {
@@ -445,6 +448,8 @@ body::before {
 }
 @media screen and (max-width: 600px) {
   .product-card-wrapper {
+    margin: 0;
+    margin-top: 40px;
     gap: 0;
   }
 }
@@ -461,6 +466,7 @@ body::before {
     font-size: 0.9rem;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     gap: 0;
+    overflow: auto; /* Ensure scrolling is enabled on mobile */
   }
 }
 
