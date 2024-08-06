@@ -446,6 +446,7 @@ body::before {
   translate: -8px 0;
   line-height: 1.3;
   font-family: var(--current-font);
+  pointer-events: initial;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -486,9 +487,15 @@ body::before {
   z-index: 9999;
 }
 
-#modal-container > * {
-  pointer-events: initial;
+@media screen and (max-width: 768px) {
+  #modal-container {
+    pointer-events: initial;
+  }
 }
+
+/* #modal-container > * {
+  pointer-events: initial;
+} */
 
 #loading-text {
   position: fixed;
@@ -527,8 +534,6 @@ body::before {
 }
 @media screen and (max-width: 768px) {
   .product-card-wrapper {
-    margin: 0;
-    margin-top: 40px;
     gap: 0;
   }
 }
