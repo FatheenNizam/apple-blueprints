@@ -27,7 +27,7 @@ export function Navbar() {
             </a>
           ) : null;
         })}
-        <a id="search-icon" className="desktop-item menu-item" href="#" aria-label="Search">
+        <a id="search-icon" className="desktop-item mobile-item menu-item" href="#" aria-label="Search">
           <i className="fa-solid fa-magnifying-glass"></i>
         </a>
         <a id="mobile-menu-icon" className="mobile-item menu-item" href="#" aria-label="Menu">
