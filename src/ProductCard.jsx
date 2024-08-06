@@ -55,7 +55,7 @@ export function ProductContainer({ product, onDismiss }) {
       <div className="product-card-wrapper">
         <div id="previous-button" className="button-container">
           <button
-            className="product-navigation-button"
+            className="product-nav-button"
             onClick={goToPreviousProduct}
             style={{ visibility: previousProductSlug ? "visible" : "hidden" }}
             aria-label="Previous product"
@@ -66,7 +66,7 @@ export function ProductContainer({ product, onDismiss }) {
         </div>
         <div id="next-button" className="button-container">
           <button
-            className="product-navigation-button"
+            className="product-nav-button"
             onClick={goToNextProduct}
             style={{ visibility: nextProductSlug ? "visible" : "hidden" }}
             aria-label="Next product"
@@ -77,15 +77,15 @@ export function ProductContainer({ product, onDismiss }) {
         </div>
         <div className="product-card" role="dialog" aria-labelledby="product-title" aria-modal="true">
           <div className="top-buttons-container">
-            <div className="mobile-navigation-buttons-container mobile-navigation">
+            <div className="mobile-nav-buttons-container mobile-nav">
               <button
-                className="fa-solid fa-chevron-left mobile-navigation-button"
+                className="fa-solid fa-chevron-left mobile-nav-button"
                 onClick={goToPreviousProduct}
                 disabled={!previousProductSlug}
                 aria-label="Previous product"
               />
               <button
-                className="fa-solid fa-chevron-right mobile-navigation-button"
+                className="fa-solid fa-chevron-right mobile-nav-button"
                 onClick={goToNextProduct}
                 disabled={!nextProductSlug}
                 aria-label="Next product"
