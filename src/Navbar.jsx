@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SiteContentContext } from "./SiteContentContext";
 
 export function Navbar() {
@@ -7,7 +7,14 @@ export function Navbar() {
 
   const toggleDropdown = (e) => {
     e.preventDefault();
-    setIsDropdownVisible(!isDropdownVisible);
+    const isVisible = !isDropdownVisible;
+    setIsDropdownVisible(isVisible);
+
+    if (isVisible) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
   };
 
   return (
