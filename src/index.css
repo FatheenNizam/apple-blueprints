@@ -481,7 +481,7 @@ body::before {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  overflow: scroll;
+  overflow: auto;
   pointer-events: none;
   z-index: 9999;
 }
@@ -557,6 +557,7 @@ body::before {
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   pointer-events: auto;
+  overflow: auto;
   order: 2;
 }
 
