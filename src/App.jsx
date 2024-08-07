@@ -29,7 +29,6 @@ export function App() {
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />
-          <div id="modal"></div>
           <div className="section"></div>
           <div className="section year-list">
             {productsByYear &&
