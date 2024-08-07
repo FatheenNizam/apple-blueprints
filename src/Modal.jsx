@@ -18,6 +18,7 @@ export function Modal({ onDismiss, children }) {
         onClick={() => {
           onDismiss();
           console.log("Modal closed");
+          document.querySelector("#modal").style.pointerEvents = "none";
         }}
       />
       {children}

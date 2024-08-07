@@ -19,6 +19,7 @@ export function ProductCard({ product, onDismiss }) {
         case "Escape":
           onDismiss();
           console.log("Modal closed");
+          document.querySelector("#modal").style.pointerEvents = "none";
           break;
         case "ArrowLeft":
           goToPreviousProduct();
@@ -103,6 +104,7 @@ export function ProductCard({ product, onDismiss }) {
               onClick={() => {
                 onDismiss();
                 console.log("Modal closed");
+                document.querySelector("#modal").style.pointerEvents = "none";
               }}
               aria-label="Close"
             />
