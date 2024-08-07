@@ -253,7 +253,14 @@ body::before {
   gap: 32px;
   margin-top: -124px;
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+
+.mobile-dropdown.visible {
+  opacity: 1;
+}
+
 @media (prefers-color-scheme: dark) {
   .mobile-dropdown {
     background-color: rgba(0, 0, 0, 0.5);
@@ -267,6 +274,7 @@ body::before {
   text-decoration: none;
   color: var(--text-primary);
 }
+
 #mobile-dropdown-close-button {
   margin: 0 0 0 auto;
   font-size: 32px;

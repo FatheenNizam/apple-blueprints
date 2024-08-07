@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FocusTrap from "focus-trap-react";
 import { SiteContentContext } from "./SiteContentContext";
 
@@ -8,15 +8,21 @@ export function Navbar() {
 
   const toggleDropdown = (e) => {
     e.preventDefault();
-    const isVisible = !isDropdownVisible;
-    setIsDropdownVisible(isVisible);
-
-    if (isVisible) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
+    setIsDropdownVisible((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    const dropdown = document.querySelector(".mobile-dropdown");
+    if (dropdown) {
+      if (isDropdownVisible) {
+        dropdown.classList.add("visible");
+        document.body.classList.add("no-scroll");
+      } else {
+        dropdown.classList.remove("visible");
+        document.body.classList.remove("no-scroll");
+      }
+    }
+  }, [isDropdownVisible]);
 
   return (
     <>
