@@ -24,7 +24,6 @@ export function App() {
   }, []);
 
   const unknownMonths = useMemo(() => [{ products: unknownProducts }], [unknownProducts]);
-  const currentYear = new Date().getFullYear();
 
   const { ref, isOpen } = useFocusOnUpdate();
 
@@ -41,7 +40,7 @@ export function App() {
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />
-          <div id="modal-container" ref={ref} tabIndex={-1}></div>
+          <div id="modal-container"></div>
           <div className="section"></div>
           <div className="section year-list">
             {productsByYear &&
