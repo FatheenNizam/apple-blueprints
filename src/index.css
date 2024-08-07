@@ -683,6 +683,12 @@ body::before {
   .released-product:hover {
     background-color: rgba(8, 127, 6, 0.1);
   }
+  .announced-product:hover {
+    background-color: rgba(230, 125, 6, 0.1);
+  }
+  .rumored-product:hover {
+    background-color: rgba(128, 126, 128, 0.1);
+  }
 }
 
 .product-status-label.released-product {
@@ -693,20 +699,12 @@ body::before {
   color: var(--announced-product);
 }
 
-.announced-product:hover {
-  background-color: rgba(230, 125, 6, 0.1);
-}
-
 .product-status-label.announced-product {
   background-color: rgba(230, 125, 6, 0.14);
 }
 
 .rumored-product {
   color: var(--rumored-product);
-}
-
-.rumored-product:hover {
-  background-color: rgba(128, 126, 128, 0.1);
 }
 
 .product-status-label.rumored-product {
