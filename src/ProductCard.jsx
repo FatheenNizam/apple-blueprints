@@ -18,7 +18,6 @@ export function ProductCard({ product, onDismiss }) {
       switch (event.key) {
         case "Escape":
           onDismiss();
-          console.log("Modal closed");
           document.querySelector("#modal").style.pointerEvents = "none";
           break;
         case "ArrowLeft":
@@ -53,7 +52,6 @@ export function ProductCard({ product, onDismiss }) {
 
   if (ProductCard) {
     document.querySelector("#modal").style.pointerEvents = "initial";
-    console.log("Modal open");
   }
 
   const focusRef = useFocusOnUpdate();
@@ -103,7 +101,6 @@ export function ProductCard({ product, onDismiss }) {
               className="fa-solid fa-xmark close-button"
               onClick={() => {
                 onDismiss();
-                console.log("Modal closed");
                 document.querySelector("#modal").style.pointerEvents = "none";
               }}
               aria-label="Close"

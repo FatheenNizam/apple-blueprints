@@ -17,7 +17,6 @@ export function Modal({ onDismiss, children }) {
         className="overlay"
         onClick={() => {
           onDismiss();
-          console.log("Modal closed");
           document.querySelector("#modal").style.pointerEvents = "none";
         }}
       />
