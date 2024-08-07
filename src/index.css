@@ -489,7 +489,7 @@ body::before {
 
 @media screen and (max-width: 768px) {
   #modal {
-    pointer-events: initial;
+    pointer-events: none;
   }
 }
 
