@@ -1,7 +1,8 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export function useFocusOnUpdate() {
   const ref = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -9,6 +10,7 @@ export function useFocusOnUpdate() {
 
     if (element) {
       document.body.style.overflow = "hidden";
+      setIsOpen(true);
 
       const focusTimeout = setTimeout(() => {
         if (element.focus) {
@@ -19,9 +21,12 @@ export function useFocusOnUpdate() {
       return () => {
         clearTimeout(focusTimeout);
         document.body.style.overflow = previousOverflow;
+        setIsOpen(false);
       };
+    } else {
+      setIsOpen(false);
     }
   }, [ref]);
 
-  return ref;
+  return { ref, isOpen };
 }

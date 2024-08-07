@@ -1003,3 +1003,15 @@ td {
   background-color: #ffd700;
   color: black;
 }
+
+/* Default state (pointer events disabled on mobile) */
+body.modal-open {
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  body.modal-open {
+    pointer-events: initial; /* Enable pointer events when modal is open */
+  }
+}

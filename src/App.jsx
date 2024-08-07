@@ -8,6 +8,7 @@ import { fetchSiteContentData } from "./fetchSiteContentData";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { SiteContentContext } from "./SiteContentContext";
+import { useFocusOnUpdate } from "./useFocusOnUpdate";
 
 export function App() {
   const [productsData, setProductsData] = useState(null);
@@ -25,11 +26,22 @@ export function App() {
   const unknownMonths = useMemo(() => [{ products: unknownProducts }], [unknownProducts]);
   const currentYear = new Date().getFullYear();
 
+  const { ref, isOpen } = useFocusOnUpdate();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+  }, [isOpen]);
+
   return (
     <ProductsDataContext.Provider value={productsByYear}>
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />
+          <div id="modal-container" ref={ref} tabIndex={-1}></div>
           <div className="section"></div>
           <div className="section year-list">
             {productsByYear &&
