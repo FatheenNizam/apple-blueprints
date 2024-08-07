@@ -5,7 +5,7 @@ export function Modal({ onDismiss, children }) {
   const element = useRef(document.createElement("div"));
 
   useEffect(() => {
-    const parentNode = document.querySelector("#modal-container");
+    const parentNode = document.querySelector("#modal");
     parentNode.appendChild(element.current);
 
     return () => element.current.remove();
@@ -13,7 +13,13 @@ export function Modal({ onDismiss, children }) {
 
   return createPortal(
     <>
-      <div className="overlay" onClick={onDismiss} />
+      <div
+        className="overlay"
+        onClick={() => {
+          onDismiss();
+          console.log("Modal closed");
+        }}
+      />
       {children}
     </>,
     element.current

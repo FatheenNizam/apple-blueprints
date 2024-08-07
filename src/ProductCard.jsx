@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { statusLabels } from "./statusLabels";
 import { ProductsDataContext } from "./ProductsDataContext";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
@@ -9,7 +9,7 @@ import { toZonedTime } from "date-fns-tz";
 import { useFocusOnUpdate } from "./useFocusOnUpdate";
 import { getStatusMessage } from "./statusMessages";
 
-export function ProductContainer({ product, onDismiss }) {
+export function ProductCard({ product, onDismiss }) {
   const { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug } = useProductNavigation(product);
   const updatedProduct = useContentfulLiveUpdates(product);
 
@@ -18,6 +18,7 @@ export function ProductContainer({ product, onDismiss }) {
       switch (event.key) {
         case "Escape":
           onDismiss();
+          console.log("Modal closed");
           break;
         case "ArrowLeft":
           goToPreviousProduct();
@@ -48,6 +49,11 @@ export function ProductContainer({ product, onDismiss }) {
       handleClick();
     }
   };
+
+  if (ProductCard) {
+    document.querySelector("#modal").style.pointerEvents = "none";
+    console.log("Modal open");
+  }
 
   const focusRef = useFocusOnUpdate();
 
@@ -92,7 +98,14 @@ export function ProductContainer({ product, onDismiss }) {
                 aria-label="Next product"
               />
             </div>
-            <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
+            <button
+              className="fa-solid fa-xmark close-button"
+              onClick={() => {
+                onDismiss();
+                console.log("Modal closed");
+              }}
+              aria-label="Close"
+            />
           </div>
           <div className="product-card-content">
             <div className="product-status-label-wrapper">

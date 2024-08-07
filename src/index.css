@@ -473,7 +473,7 @@ body::before {
   align-self: start;
 }
 
-#modal-container {
+#modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -487,20 +487,13 @@ body::before {
   z-index: 9999;
 }
 
-/* @media screen and (max-width: 768px) {
-  #modal-container {
+@media screen and (max-width: 768px) {
+  #modal {
     pointer-events: initial;
-  }
-    
-} */
-/* Media query for mobile devices */
-@media (max-width: 768px) {
-  #modal-container.modal-open {
-    pointer-events: initial; /* Enable pointer events when modal is open */
   }
 }
 
-#modal-container > * {
+#modal > * {
   pointer-events: initial;
 }
 

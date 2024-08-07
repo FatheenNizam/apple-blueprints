@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { router } from "./router";
 import { ProductsDataContext } from "./ProductsDataContext";
 import { Modal } from "./Modal";
-import { ProductContainer } from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 
 export function ProductPage() {
   const productsData = useContext(ProductsDataContext);
@@ -20,7 +20,7 @@ export function ProductPage() {
   return (
     <Modal onDismiss={closeModal}>
       {product ? (
-        <ProductContainer key={product.sys.id} product={product} onDismiss={closeModal} />
+        <ProductCard key={product.sys.id} product={product} onDismiss={closeModal} />
       ) : (
         <div id="loading-text">Loading product..</div>
       )}
