@@ -51,7 +51,7 @@ export function ProductCard({ product, onDismiss }) {
   };
 
   if (ProductCard) {
-    document.querySelector("#modal").style.pointerEvents = "none";
+    document.querySelector("#modal").style.pointerEvents = "initial";
     console.log("Modal open");
   }
 
