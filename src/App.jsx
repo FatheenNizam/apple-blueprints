@@ -28,10 +28,14 @@ export function App() {
   const { ref, isOpen } = useFocusOnUpdate();
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
+    const modalContainer = document.getElementById("modal-container");
+
+    if (modalContainer) {
+      if (isOpen) {
+        modalContainer.classList.add("modal-open");
+      } else {
+        modalContainer.classList.remove("modal-open");
+      }
     }
   }, [isOpen]);
 
@@ -40,7 +44,7 @@ export function App() {
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />
-          <div id="modal-container"></div>
+          <div id="modal-container" ref={ref} tabIndex={-1} className="modal"></div>
           <div className="section"></div>
           <div className="section year-list">
             {productsByYear &&

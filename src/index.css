@@ -487,9 +487,16 @@ body::before {
   z-index: 9999;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   #modal-container {
     pointer-events: initial;
+  }
+    
+} */
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  #modal-container.modal-open {
+    pointer-events: initial; /* Enable pointer events when modal is open */
   }
 }
 
@@ -1002,16 +1009,4 @@ td {
 ::selection {
   background-color: #ffd700;
   color: black;
-}
-
-/* Default state (pointer events disabled on mobile) */
-#modal-container.modal-open {
-  overflow: hidden; /* Prevent scrolling */
-}
-
-/* Media query for mobile devices */
-@media (max-width: 768px) {
-  #modal-container.modal-open {
-    pointer-events: initial; /* Enable pointer events when modal is open */
-  }
 }
