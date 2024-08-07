@@ -8,6 +8,7 @@ import { format, formatDistanceToNow, parseISO } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 import { useFocusOnUpdate } from "./useFocusOnUpdate";
 import { getStatusMessage } from "./statusMessages";
+import { FocusTrap } from "focus-trap-react";
 
 export function ProductCard({ product, onDismiss }) {
   const { goToNextProduct, goToPreviousProduct, nextProductSlug, previousProductSlug } = useProductNavigation(product);

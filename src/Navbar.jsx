@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import FocusTrap from "focus-trap-react";
 import { SiteContentContext } from "./SiteContentContext";
 
 export function Navbar() {
@@ -50,26 +51,28 @@ export function Navbar() {
         </div>
       </nav>
       {isDropdownVisible && (
-        <div id="mobile-dropdown-menu" className="mobile-dropdown">
-          <a
-            id="mobile-dropdown-close-button"
-            className="mobile-dropdown-menu-item"
-            href="#"
-            aria-label="Search"
-            onClick={toggleDropdown}
-          >
-            <i className="fa-solid fa-close"></i>
-          </a>
-          {siteContentData?.fields.menuItems?.map((item) => {
-            const { fields: { title, url } = {} } = item || {};
+        <FocusTrap>
+          <div id="mobile-dropdown-menu" className="mobile-dropdown">
+            <a
+              id="mobile-dropdown-close-button"
+              className="mobile-dropdown-menu-item"
+              href="#"
+              aria-label="Close menu"
+              onClick={toggleDropdown}
+            >
+              <i className="fa-solid fa-close"></i>
+            </a>
+            {siteContentData?.fields.menuItems?.map((item) => {
+              const { fields: { title, url } = {} } = item || {};
 
-            return title ? (
-              <a className="mobile-dropdown-menu-item" key={title} href={url || "#"} aria-label={title}>
-                {title}
-              </a>
-            ) : null;
-          })}
-        </div>
+              return title ? (
+                <a className="mobile-dropdown-menu-item" key={title} href={url || "#"} aria-label={title}>
+                  {title}
+                </a>
+              ) : null;
+            })}
+          </div>
+        </FocusTrap>
       )}
     </>
   );

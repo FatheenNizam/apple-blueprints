@@ -250,7 +250,7 @@ body::before {
   display: flex;
   flex-direction: column;
   padding: 24px;
-  gap: 24px;
+  gap: 32px;
   margin-top: -124px;
   box-sizing: border-box;
 }
@@ -262,10 +262,13 @@ body::before {
 
 .mobile-dropdown-menu-item {
   font-size: 26px;
+  margin: 0 auto 0 0;
+  text-align: left;
   text-decoration: none;
   color: var(--text-primary);
 }
 #mobile-dropdown-close-button {
+  margin: 0 0 0 auto;
   font-size: 32px;
   text-align: right;
 }
@@ -381,19 +384,38 @@ body::before {
 
 .month-card-container {
   margin: 0 42px;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 24px;
   box-sizing: border-box;
+  overflow: hidden;
+  max-height: 0;
+  transition: opacity 0.3s ease, max-height 0.3s ease, margin-bottom 0.3s ease;
+  padding: 0;
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
   .month-card-container {
     margin: 0 18px;
-    margin-bottom: 30px;
     grid-template-columns: 1fr;
   }
+}
+
+.month-card-container.expanded {
+  max-height: 1000px;
+  opacity: 1;
+  margin-bottom: 30px;
+}
+
+.month-card-container.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.month-card-container.collapsed .product-item {
+  display: none;
 }
 
 .month-card {
@@ -1009,4 +1031,12 @@ td {
 ::selection {
   background-color: #ffd700;
   color: black;
+}
+
+.year-label-arrow {
+  transition: transform 0.3s ease;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
 }

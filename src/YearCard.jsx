@@ -43,7 +43,7 @@ export function YearCard({ months, year }) {
     <div className="year-card">
       <button
         id={year}
-        className=" year-label-wrapper"
+        className="year-label-wrapper"
         onClick={handleYearClick}
         tabIndex="0"
         aria-expanded={showMonths}
@@ -52,18 +52,16 @@ export function YearCard({ months, year }) {
       >
         <h2 className={`year-label ${isPastYear ? "" : "text-highlight"}`}>{year}&nbsp;</h2>
         <i
-          className={`${isPastYear ? "" : "text-highlight"} ${
-            showMonths ? "fa-solid fa-chevron-down" : "fa-solid fa-chevron-right"
-          } year-label-arrow`}
+          className={`${isPastYear ? "" : "text-highlight"} year-label-arrow ${
+            showMonths ? "rotate-90" : ""
+          } fa-solid fa-chevron-right`}
         ></i>
       </button>
-      {showMonths && (
-        <div id={`months-${year}`} className="month-card-container">
-          {months.map(({ name, products }) => (
-            <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} isPastYear={isPastYear} />
-          ))}
-        </div>
-      )}
+      <div id={`months-${year}`} className={`month-card-container ${showMonths ? "expanded" : "collapsed"}`}>
+        {months.map(({ name, products }) => (
+          <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} isPastYear={isPastYear} />
+        ))}
+      </div>
     </div>
   );
 }
