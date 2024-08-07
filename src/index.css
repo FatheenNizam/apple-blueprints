@@ -634,6 +634,7 @@ body::before {
 .product-status-label-wrapper {
   display: flex;
   justify-content: start;
+  margin-bottom: -12px;
 }
 
 .product-status-label {
