@@ -254,6 +254,11 @@ body::before {
   margin-top: -124px;
   box-sizing: border-box;
 }
+@media (prefers-color-scheme: dark) {
+  .mobile-dropdown {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
 
 .mobile-dropdown-menu-item {
   font-size: 26px;
