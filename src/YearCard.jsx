@@ -14,16 +14,31 @@ export function YearCard({ months, year }) {
   };
 
   useEffect(() => {
+    if (!showMonths) {
+      const yearLabelElement = yearLabelRef.current;
+      yearLabelElement.style.position = "static";
+      yearLabelElement.style.border = "none";
+      yearLabelElement.style.backdropFilter = "";
+      yearLabelElement.style.webkitBackdropFilter = "";
+      return;
+    } else {
+      yearLabelRef.current.style.position = "sticky";
+    }
+
     const handleScroll = () => {
       const yearLabelElement = yearLabelRef.current;
       const yearLabelTextElement = yearLabelTextRef.current;
+      const rootElement = document.documentElement;
+      const computedStyle = getComputedStyle(rootElement);
+      const blurValue = computedStyle.getPropertyValue('--blur-value').trim();
+
       const isSticky =
         yearLabelElement.getBoundingClientRect().top <=
         parseInt(getComputedStyle(yearLabelElement).getPropertyValue("top"));
 
       if (isSticky) {
-        yearLabelElement.style.backdropFilter = "saturate(200%) blur(12px)";
-        yearLabelElement.style.webkitBackdropFilter = "saturate(200%) blur(12px)";
+        yearLabelElement.style.backdropFilter = `saturate(200%) blur(${blurValue})`;
+        yearLabelElement.style.webkitBackdropFilter = `saturate(200%) blur(${blurValue})`;        
         yearLabelElement.style.border = "1px solid var(--border)";
         yearLabelTextElement.style.margin =
           "calc(var(--border-radius) / 2) 0 calc(var(--border-radius) / 2) var(--border-radius)";
@@ -40,7 +55,7 @@ export function YearCard({ months, year }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [showMonths]);
 
   return (
     <div className="year-card">
@@ -62,7 +77,7 @@ export function YearCard({ months, year }) {
           } fa-solid fa-chevron-right`}
         ></i>
       </button>
-      <div id={`months-${year}`} className={`month-card-container ${showMonths ? "expanded" : "collapsed"}`}>
+      <div className={`month-card-container ${showMonths ? "expanded" : "collapsed"}`}>
         {months.map(({ name, products }) => (
           <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} showMonths={showMonths} />
         ))}

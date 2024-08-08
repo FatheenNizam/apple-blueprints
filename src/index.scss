@@ -1,5 +1,5 @@
-$mobileBreakpoint: 768px;
-$tabletBreakpoint: 1024px;
+$mobileBreakpoint: 767px;
+$tabletBreakpoint: 1023px;
 
 @font-face {
   src:
@@ -64,7 +64,7 @@ $tabletBreakpoint: 1024px;
   --underline: rgb(169, 169, 169);
   --text-highlight: var(--apple-system-blue-light);
   --focus-color: rgba(255, 153, 0, 0.8);
-  --blur-value: 12px;
+  --blur-value: 20px;
   --border-radius: 18px;
   --border-radius-navbar: 12px;
   --border-radius-button: 6px;
@@ -152,13 +152,13 @@ ul {
 }
 
 button {
-  cursor: pointer;
   margin: 0;
+  padding: 0;
   border: none;
   background: none;
-  padding: 0;
   color: inherit;
   font: inherit;
+  cursor: pointer;
 }
 
 body {
@@ -171,15 +171,15 @@ body {
 }
 
 body::before {
+  z-index: -1;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  width: 100%;
+  height: 100%;
   background:
     linear-gradient(rgba(0, 0, 0, var(--grid-opacity)) 1px, transparent 1px) 0 0 / 10px 10px,
     linear-gradient(90deg, rgba(0, 0, 0, var(--grid-opacity)) 1px, transparent 1px) 0 0 / 10px 10px;
-  width: 100%;
-  height: 100%;
   content: "";
 }
 
@@ -192,20 +192,20 @@ body::before {
 }
 
 #navbar {
+  box-sizing: border-box;
   display: flex;
+  z-index: 1000;
   left: var(--horizontal-padding);
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-  will-change: transform;
-  box-sizing: border-box;
+  justify-content: space-between;
+  height: var(--navbar-height);
   margin-top: var(--vertical-padding);
+  padding: 0 32px;
   border-radius: var(--border-radius-navbar);
   background-color: var(--navbar-bg);
-  padding: 0 32px;
-  height: var(--navbar-height);
   color: black;
+  will-change: transform;
 
   @media (max-width: $mobileBreakpoint) {
     padding: 0 18px;
@@ -214,14 +214,14 @@ body::before {
 }
 
 .navbar-cover {
+  z-index: 1001;
   position: fixed;
   top: 0;
   left: 0;
-  transform: translateY(-100%);
-  z-index: 1001;
-  background-color: var(--site-bg);
   width: 100vw;
   height: 100vh;
+  transform: translateY(-100%);
+  background-color: var(--site-bg);
 }
 
 #site-title {
@@ -233,8 +233,6 @@ body::before {
   }
 }
 
-
-
 .navbar-menu-items-container {
   display: flex;
   flex-direction: row;
@@ -245,22 +243,22 @@ body::before {
 
 .navbar-menu-item {
   position: relative;
-  cursor: pointer;
   color: white;
   text-decoration: none;
+  cursor: pointer;
   &::after {
     position: absolute;
     bottom: -4px;
     left: 0;
-    transform: scaleX(0);
-    transform-origin: bottom left;
-    transition: transform var(--transition-time) ease;
-    background: white;
     width: 100%;
     height: 1.5px;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    background: white;
     content: "";
+    transition: transform var(--transition-time) ease;
   }
-  &:hover::after{
+  &:hover::after {
     transform: scaleX(1);
   }
   @media screen and (max-width: $tabletBreakpoint) {
@@ -272,29 +270,28 @@ body::before {
   display: none;
   font-size: 24px;
   @media screen and (max-width: $tabletBreakpoint) {
-      display: block;
-    }
+    display: block;
+  }
 }
-
 
 .mobile-dropdown {
   display: flex;
   display: none;
+  z-index: 1000;
   position: absolute;
   right: 0;
   left: 0;
   flex-direction: column;
   gap: var(--vertical-padding);
   opacity: 0;
-  z-index: 1000;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  filter: saturate(150%);
-  transition: opacity 0.3s ease;
+  -webkit-backdrop-filter: blur(var(--blur-value));
   box-sizing: border-box;
-  border-radius: var(--border-radius-navbar);
   padding: var(--vertical-padding);
+  border-radius: var(--border-radius-navbar);
+  backdrop-filter: blur(var(--blur-value));
+  filter: saturate(150%);
   pointer-events: none;
+  transition: opacity 0.3s ease;
   @media (prefers-color-scheme: dark) {
     background-color: rgba(0, 0, 0, 0.5);
   }
@@ -305,7 +302,6 @@ body::before {
   opacity: 1;
   pointer-events: initial;
 }
-
 
 .mobile-dropdown-menu-item {
   margin: 0 auto 0 0;
@@ -325,39 +321,40 @@ body::before {
 }
 
 .section {
-  margin: 0 auto;
   width: var(--section-width);
+  margin: 0 auto;
 }
 
 #main-buttons-container {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  box-sizing: border-box;
+  height: 100%;
   margin: 0 42px;
+  gap: 12px;
   @media (max-width: $mobileBreakpoint) {
     margin: 12px 18px;
   }
 }
 
 .main-button {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  padding: 6px 12px;
   gap: 6px;
-  box-sizing: border-box;
   border: 1px solid var(--border);
   border-radius: var(--border-radius-button);
   background: var(--footer-button-bg);
-  padding: 6px 12px;
   color: var(--text-primary);
   text-align: center;
   @media (hover: hover) and (pointer: fine) {
-    &:hover{
-      transition: var(--transition-time) ease all;
+    &:hover {
       border: 1px solid var(--footer-button-highlight-hover);
       background-color: var(--footer-button-bg-hover);
       color: var(--footer-button-highlight-hover);
+      transition: var(--transition-time) ease all;
     }
   }
 }
@@ -365,9 +362,9 @@ body::before {
 .year-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   padding-top: calc(2 * var(--vertical-padding));
   padding-bottom: var(--vertical-padding);
+  gap: 12px;
 }
 
 .year-card {
@@ -378,10 +375,10 @@ body::before {
 
 .year-label-wrapper {
   display: flex;
+  z-index: 50;
   position: sticky;
   top: var(--vertical-padding);
   align-items: center;
-  z-index: 50;
   border-radius: var(--border-radius);
 }
 
@@ -392,7 +389,7 @@ body::before {
   font-weight: bold;
   font-size: 60px;
   letter-spacing: var(--header-letter-spacing);
-  transition: 
+  transition:
     margin var(--transition-time) ease,
     font-size var(--transition-time) ease;
   @media (max-width: $mobileBreakpoint) {
@@ -401,11 +398,10 @@ body::before {
 }
 
 .year-label-arrow {
-  opacity: 0.5;
-  cursor: pointer;
   font-size: 24px;
+  cursor: pointer;
+  opacity: 0.5;
   transition: transform 0.3s ease;
-
 }
 
 .past-date,
@@ -421,25 +417,26 @@ body::before {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: var(--vertical-padding);
+  box-sizing: border-box;
+  max-height: 0;
   opacity: 0;
   transition:
     opacity 0.3s ease-in-out,
     max-height 0.3s ease-in-out,
     margin-bottom 0.3s ease-in-out;
-  box-sizing: border-box;
-  max-height: 0;
   @media (max-width: $mobileBreakpoint) {
     grid-template-columns: 1fr;
   }
   &.expanded {
     max-height: 1000px;
-    opacity: 1;
     margin-bottom: 30px;
+    opacity: 1;
   }
   &.collapsed {
-    opacity: 0;
+    display: none;
     max-height: 0;
     margin-bottom: 0;
+    opacity: 0;
   }
 }
 
@@ -448,13 +445,13 @@ body::before {
   position: relative;
   flex-direction: column;
   align-items: start;
-  gap: 6px;
   margin-block-end: 0;
-  box-shadow: var(--box-shadow);
+  padding: 12px 18px;
+  gap: 6px;
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
   background-color: var(--month-card-bg);
-  padding: 12px 18px;
+  box-shadow: var(--box-shadow);
 
   @media (min-width: 400px) {
     min-width: 256px;
@@ -486,17 +483,17 @@ body::before {
   display: flex;
   flex-shrink: 0;
   align-items: center;
+  padding: 6px 8px;
   gap: 6px;
   translate: -8px 0;
-  transition:
-    translate var(--transition-time) ease,
-    background-color var(--transition-time) ease;
   border-radius: var(--border-radius-button);
-  padding: 6px 8px;
   font-size: 20px;
   line-height: 1.3;
   font-family: var(--current-font);
   text-decoration: none;
+  transition:
+    translate var(--transition-time) ease,
+    background-color var(--transition-time) ease;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       translate: 0;
@@ -525,12 +522,12 @@ body::before {
 #modal {
   display: flex;
   display: none;
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
-  justify-content: center;
   align-items: flex-start;
-  z-index: 9999;
+  justify-content: center;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -539,15 +536,15 @@ body::before {
   }
 }
 #loading-text {
+  z-index: 1100;
   position: fixed;
   top: 50%;
   left: 50%;
+  padding: 18px var(--vertical-padding);
   transform: translate(-50%, -50%);
-  z-index: 1100;
-  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius-navbar);
   background-color: var(--month-card-bg);
-  padding: 18px var(--vertical-padding);
+  box-shadow: var(--box-shadow);
   color: var(--text-primary);
   font-size: 24px;
   text-wrap: nowrap;
@@ -555,23 +552,22 @@ body::before {
 
 .product-card-container {
   display: flex;
-  position: relative;
-  gap: var(--vertical-padding);
   z-index: 1000;
-  width: 936px;
-  max-width: 90vw;
+  position: relative;
+  max-width: 1120px;
   max-height: 100%;
+  gap: var(--vertical-padding);
   pointer-events: none;
   @media screen and (max-width: $mobileBreakpoint) {
     top: inherit;
     right: 0;
     bottom: 0;
     left: 0;
+    width: 100%;
+    max-height: 90%;
     gap: 0;
     transform: translate(0%, 0%);
     border-radius: 0;
-    max-width: 100vw;
-    max-height: 90%;
     font-size: 0.9rem;
   }
   &:focus {
@@ -581,65 +577,74 @@ body::before {
 
 .product-card-wrapper {
   display: flex;
-  gap: var(--vertical-padding);
-  margin: 40px auto;
   width: 100%;
+  max-width: var(--section-width);
+  margin: 40px var(--horizontal-padding);
+  gap: calc(var(--vertical-padding) * 3);
+  @media screen and (max-width: $tabletBreakpoint) {
+    gap: calc(var(--vertical-padding) * 3);
+  }
   @media screen and (max-width: $mobileBreakpoint) {
+    max-width: inherit;
+    margin: 40px 0 0 0;
     gap: 0;
-    margin-bottom: 0;
-    border-radius: 0;
   }
 }
-
-
 .product-card {
   display: flex;
   flex-direction: column;
   order: 2;
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
-  box-shadow: var(--box-shadow);
+  width: 100%;
+  margin: auto;
   border-radius: var(--border-radius);
   background-color: var(--month-card-bg);
-  width: 100%;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow);
   pointer-events: initial;
   @media (max-width: $mobileBreakpoint) {
     right: 0;
     bottom: 0;
     left: 0;
-    transform: translate(0%, 0%);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
     max-height: 100%;
     overflow: auto;
+    transform: translate(0%, 0%);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
     font-size: 0.9rem;
   }
 }
 
 .button-container {
-  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: -40px;
 }
 
 .product-nav-button {
-  flex-shrink: 0;
-  transition: background-color var(--transition-time) ease;
-  margin: 0;
-  box-shadow: var(--box-shadow);
+  position: fixed;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  margin-top: -40px;
+  margin-left: -32px;
+  -webkit-backdrop-filter: blur(var(--blur-value));
   border-radius: 9999px;
-  background-color: white;
-  width: 36px;
-  height: 36px;
-  pointer-events: initial;
+  backdrop-filter: blur(var(--blur-value));
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--box-shadow);
   color: black;
+  font-size: 28px;
+  pointer-events: initial;
+  transition: background-color var(--transition-time) ease;
   &:hover {
     background-color: rgb(220, 220, 220);
-  }
-  @media (max-width: $mobileBreakpoint) {
-    display: none;
   }
 }
 
 #previous-button {
   order: 1;
 }
+
 #next-button {
   order: 3;
 }
@@ -647,10 +652,9 @@ body::before {
 .product-card-content {
   display: flex;
   flex-direction: column;
-  gap: var(--content-section-gap);
   padding: 56px;
   padding-top: var(--vertical-padding);
-
+  gap: var(--content-section-gap);
   @media (max-width: $mobileBreakpoint) {
     padding: 24px 32px 32px 32px;
   }
@@ -664,8 +668,8 @@ body::before {
 
 .product-status-label {
   margin-bottom: -12px;
-  border-radius: var(--border-radius-button);
   padding: 4px 8px;
+  border-radius: var(--border-radius-button);
   font-weight: 500;
   font-family: var(--current-font);
 }
@@ -673,10 +677,10 @@ body::before {
 .released-product {
   color: var(--released-product-text-color);
   @media (hover: hover) and (pointer: fine) {
-  &:hover {
-    background-color: var(--released-product-bg-hover);
+    &:hover {
+      background-color: var(--released-product-bg-hover);
+    }
   }
-}
 }
 
 .product-status-label.released-product {
@@ -692,10 +696,10 @@ body::before {
 .announced-product {
   color: var(--announced-product-text-color);
   @media (hover: hover) and (pointer: fine) {
-  &:hover {
-    background-color: var(--announced-product-bg-hover);
+    &:hover {
+      background-color: var(--announced-product-bg-hover);
+    }
   }
-}
 }
 
 .rumored-product {
@@ -706,7 +710,6 @@ body::before {
     }
   }
 }
-
 
 .titlebar {
   margin-bottom: var(--content-section-gap);
@@ -725,13 +728,13 @@ body::before {
 
 .top-section {
   display: flex;
-  justify-content: space-between;
   align-items: top;
+  justify-content: space-between;
   gap: calc(var(--content-section-gap) * 2);
   @media (max-width: $tabletBreakpoint) {
     flex-direction: column;
-    gap: var(--content-section-gap);
     width: 100%;
+    gap: var(--content-section-gap);
   }
 }
 
@@ -745,23 +748,23 @@ body::before {
   position: relative;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  gap: var(--vertical-padding);
-  padding-bottom: 2px;
   max-width: 50%;
+  margin: 0 auto;
+  padding-bottom: 2px;
   overflow: hidden;
+  gap: var(--vertical-padding);
   @media (max-width: $mobileBreakpoint) {
     max-width: 100%;
   }
 }
 
 .product-image {
-  border-radius: 6px;
   width: 100%;
-  height: auto;
+  max-width: 300px;
   max-height: 300px;
   object-fit: contain;
   object-position: center;
+  border-radius: 6px;
   @media (max-width: $tabletBreakpoint) {
     max-width: 100%;
   }
@@ -787,21 +790,20 @@ body::before {
 .close-button {
   flex-shrink: 0;
   align-self: end;
-  transition:
-    background-color var(--transition-time) ease,
-    border-color var(--transition-time) ease,
-    color var(--transition-time) ease;
-  cursor: pointer;
+  width: 36px;
+  height: 36px;
   margin-top: 32px;
   margin-right: 32px;
   border: 1px solid var(--border);
   border-radius: 9999px;
-  width: 36px;
-  height: 36px;
   color: var(--text-secondary);
   font-size: 20px;
   text-align: center;
-
+  cursor: pointer;
+  transition:
+    background-color var(--transition-time) ease,
+    border-color var(--transition-time) ease,
+    color var(--transition-time) ease;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       border-color: var(--footer-button-highlight-hover);
@@ -813,25 +815,25 @@ body::before {
 
 .mobile-nav-buttons-container {
   display: flex;
-  justify-content: left;
-  gap: 12px;
+  justify-content: end;
   margin-top: 32px;
   margin-left: 32px;
+  gap: 12px;
   @media screen and (min-width: $mobileBreakpoint) {
     display: none;
   }
 }
 
 .mobile-nav-button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  color: var(--text-secondary);
   transition:
     background-color var(--transition-time) ease,
     border-color var(--transition-time) ease,
     color var(--transition-time) ease;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  width: 36px;
-  height: 36px;
-  color: var(--text-secondary);
   @media (hover: hover) and (pointer: fine) {
     &:not(:disabled):hover {
       border-color: var(--footer-button-highlight-hover);
@@ -840,11 +842,10 @@ body::before {
     }
   }
   &:disabled {
-    opacity: 0.2;
     cursor: inherit;
+    opacity: 0.2;
   }
 }
-
 
 .product-description {
   color: var(--text-primary);
@@ -885,7 +886,6 @@ body::before {
   }
 }
 
-
 .source-link-text {
   margin-right: 6px;
   &:hover {
@@ -898,14 +898,14 @@ body::before {
 }
 
 table {
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
   font-family: var(--current-font);
 }
 th,
 td {
-  border: 1px solid var(--border);
   padding: 8px;
+  border: 1px solid var(--border);
   color: var(--text-secondary);
   text-align: left;
 }
@@ -916,55 +916,55 @@ td {
 
 .overlay {
   display: inline-block;
+  z-index: 999;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay);
+  cursor: pointer;
   opacity: 0;
   opacity: 0.2;
   opacity: 0.48;
-  z-index: 999;
-  cursor: pointer;
-  background-color: var(--overlay);
-  width: 100%;
-  height: 100%;
 }
 
 #footer {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 32px;
-  box-sizing: border-box;
+  justify-content: center;
   margin-bottom: var(--vertical-padding);
+  padding: 56px 32px;
+  gap: 32px;
   border-radius: var(--border-radius);
   background-color: var(--footer-bg);
-  padding: 56px 32px;
   line-height: 1.5;
 }
 
 #footer-button-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 
 .footer-button,
 .product-card-button {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-button);
+  color: var(--text-secondary);
+  font-size: 1em;
+  text-decoration: none;
   transition:
     background-color var(--transition-time) ease,
     border-color var(--transition-time) ease,
     color var(--transition-time) ease;
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius-button);
-  padding: 6px 12px;
-  color: var(--text-secondary);
-  font-size: 1em;
-  text-decoration: none;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       border-color: var(--footer-button-highlight-hover);
@@ -993,16 +993,16 @@ td {
 }
 
 .last-updated-text {
-  cursor: default;
   margin: auto;
+  cursor: default;
 }
 
 .last-updated-time {
-  cursor: pointer;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: var(--underline);
   text-underline-offset: 4px;
+  cursor: pointer;
 }
 
 :focus-visible {
@@ -1018,4 +1018,3 @@ td {
 .rotate-90 {
   transform: rotate(90deg);
 }
-
