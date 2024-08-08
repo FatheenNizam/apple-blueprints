@@ -272,6 +272,9 @@ body::before {
   @media screen and (max-width: $tabletBreakpoint) {
     display: block;
   }
+  &:hover::after {
+    transform: scaleX(0);
+  }
 }
 
 .mobile-dropdown {
