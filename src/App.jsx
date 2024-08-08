@@ -29,7 +29,6 @@ export function App() {
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />
-          <div className="section"></div>
           <div className="section year-list">
             {productsByYear &&
               productsByYear.map(({ yearName, months }) => <YearCard key={yearName} year={yearName} months={months} />)}

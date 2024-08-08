@@ -6,29 +6,27 @@ export function Footer({ lastUpdated }) {
   const siteContentData = useContext(SiteContentContext);
 
   return (
-    <div id="footer-wrapper">
-      <div id="footer">
-        <nav id="footer-button-container" aria-label="Footer navigation">
-          {siteContentData?.fields.footerItems?.map((item, index) => {
-            const { fields: { text, icon, url } = {} } = item || {};
+    <div id="footer" className="section">
+      <nav id="footer-button-container" aria-label="Footer navigation">
+        {siteContentData?.fields.footerItems?.map((item, index) => {
+          const { fields: { text, icon, url } = {} } = item || {};
 
-            return text && icon && url ? (
-              <a
-                key={index}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-button"
-                aria-label={`${text} (opens in a new tab)`}
-              >
-                <i className={icon}></i>&nbsp;&nbsp;{text}
-              </a>
-            ) : null;
-          })}
-        </nav>
+          return text && icon && url ? (
+            <a
+              key={index}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-button"
+              aria-label={`${text} (opens in a new tab)`}
+            >
+              <i className={icon}></i>&nbsp;&nbsp;{text}
+            </a>
+          ) : null;
+        })}
+      </nav>
 
-        {lastUpdated && <LastUpdated lastUpdated={lastUpdated} />}
-      </div>
+      {lastUpdated && <LastUpdated lastUpdated={lastUpdated} />}
     </div>
   );
 }

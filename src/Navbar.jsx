@@ -13,26 +13,45 @@ export function Navbar() {
     });
   };
 
-  useEffect(() => {
-    // const dropdown = document.querySelector(".mobile-dropdown");
-    // console.log("useEffect called, isDropdownVisible:", isDropdownVisible); // Debugging log
+  const navbarRef = useRef(null);
 
-    // if (dropdown) {
-    if (isDropdownVisible) {
-      // dropdown.classList.add("visible");
-      document.body.classList.add("no-scroll");
-      console.log("Dropdown is visible"); // Debugging log
-    } else {
-      console.log("Dropdown is hidden"); // Debugging log
-      // dropdown.classList.remove("visible");
-      document.body.classList.remove("no-scroll");
-    }
-    // }
-  }, [isDropdownVisible]);
+  // useEffect(() => {
+  //   let lastTop = 0;
+  //   let lastScrollPosition = 0;
+  //   const navbar = navbarRef.current;
+
+  //   const updateNavbar = () => {
+  //     const navbarTravel = navbar.clientHeight + 50;
+  //     const totalHeight = Math.max(
+  //       document.body.scrollHeight,
+  //       document.body.offsetHeight,
+  //       document.body.clientHeight,
+  //       document.documentElement.scrollHeight,
+  //       document.documentElement.offsetHeight,
+  //       document.documentElement.clientHeight
+  //     );
+  //     const scrollPosition = Math.min(window.scrollY, totalHeight - window.innerHeight);
+  //     const delta = scrollPosition - lastScrollPosition;
+  //     const top = scrollPosition <= 0 ? 0 : Math.max(0, Math.min(navbarTravel, lastTop + delta));
+
+  //     navbar.style.transform = `translateY(${-top}px)`;
+
+  //     lastTop = top;
+  //     lastScrollPosition = scrollPosition;
+  //   };
+
+  //   updateNavbar();
+
+  //   window.addEventListener("scroll", updateNavbar);
+
+  //   return () => {
+  //     window.removeEventListener("scroll", updateNavbar);
+  //   };
+  // }, []);
 
   return (
     <>
-      <nav id="navbar" className="section" role="navigation" aria-label="Main navigation">
+      <nav ref={navbarRef} id="navbar" className="section" role="navigation" aria-label="Main navigation">
         <h1>
           <a
             id="site-title"
@@ -62,10 +81,9 @@ export function Navbar() {
           </a>
         </div>
       </nav>
-      {/* {isDropdownVisible && ( */}
-      {/* <FocusTrap> */}
-      <div id="mobile-dropdown-menu" className={"mobile-dropdown " + (isDropdownVisible ? "visible" : "")}>
-        <a
+      <div className="navbar-cover"></div>
+      <div id="mobile-dropdown-menu" className={"section mobile-dropdown " + (isDropdownVisible ? "visible" : "")}>
+        {/* <a
           id="mobile-dropdown-close-button"
           className="mobile-dropdown-menu-item"
           href="#"
@@ -73,7 +91,7 @@ export function Navbar() {
           onClick={toggleDropdown}
         >
           <i className="fa-solid fa-close"></i>
-        </a>
+        </a> */}
         {siteContentData?.fields.menuItems?.map((item) => {
           const { fields: { title, url } = {} } = item || {};
 
@@ -84,8 +102,6 @@ export function Navbar() {
           ) : null;
         })}
       </div>
-      {/* </FocusTrap> */}
-      {/* )} */}
     </>
   );
 }
