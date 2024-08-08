@@ -52,7 +52,7 @@ export function ProductCard({ product, onDismiss }) {
   };
 
   if (ProductCard) {
-    document.querySelector("#modal").style.pointerEvents = "initial";
+    // document.querySelector("#modal").style.pointerEvents = "initial";
   }
 
   const focusRef = useFocusOnUpdate();

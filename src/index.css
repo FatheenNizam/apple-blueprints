@@ -526,11 +526,11 @@ body::before {
   z-index: 9999;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   #modal {
     pointer-events: none;
   }
-}
+} */
 
 #modal > * {
   pointer-events: initial;
