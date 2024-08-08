@@ -116,6 +116,7 @@ ul {
 
 .no-scroll {
   overflow: hidden;
+  height: 100%;
 }
 
 button {
@@ -255,9 +256,12 @@ body::before {
   box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
+  display: none;
 }
 
 .mobile-dropdown.visible {
+  pointer-events: initial;
   opacity: 1;
 }
 

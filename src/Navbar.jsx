@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import FocusTrap from "focus-trap-react";
 import { SiteContentContext } from "./SiteContentContext";
 
@@ -8,20 +8,26 @@ export function Navbar() {
 
   const toggleDropdown = (e) => {
     e.preventDefault();
-    setIsDropdownVisible((prevState) => !prevState);
+    setIsDropdownVisible((prevState) => {
+      return !prevState;
+    });
   };
 
   useEffect(() => {
-    const dropdown = document.querySelector(".mobile-dropdown");
-    if (dropdown) {
-      if (isDropdownVisible) {
-        dropdown.classList.add("visible");
-        document.body.classList.add("no-scroll");
-      } else {
-        dropdown.classList.remove("visible");
-        document.body.classList.remove("no-scroll");
-      }
+    // const dropdown = document.querySelector(".mobile-dropdown");
+    // console.log("useEffect called, isDropdownVisible:", isDropdownVisible); // Debugging log
+
+    // if (dropdown) {
+    if (isDropdownVisible) {
+      // dropdown.classList.add("visible");
+      document.body.classList.add("no-scroll");
+      console.log("Dropdown is visible"); // Debugging log
+    } else {
+      console.log("Dropdown is hidden"); // Debugging log
+      // dropdown.classList.remove("visible");
+      document.body.classList.remove("no-scroll");
     }
+    // }
   }, [isDropdownVisible]);
 
   return (
@@ -56,30 +62,30 @@ export function Navbar() {
           </a>
         </div>
       </nav>
-      {isDropdownVisible && (
-        <FocusTrap>
-          <div id="mobile-dropdown-menu" className="mobile-dropdown">
-            <a
-              id="mobile-dropdown-close-button"
-              className="mobile-dropdown-menu-item"
-              href="#"
-              aria-label="Close menu"
-              onClick={toggleDropdown}
-            >
-              <i className="fa-solid fa-close"></i>
-            </a>
-            {siteContentData?.fields.menuItems?.map((item) => {
-              const { fields: { title, url } = {} } = item || {};
+      {/* {isDropdownVisible && ( */}
+      {/* <FocusTrap> */}
+      <div id="mobile-dropdown-menu" className={"mobile-dropdown " + (isDropdownVisible ? "visible" : "")}>
+        <a
+          id="mobile-dropdown-close-button"
+          className="mobile-dropdown-menu-item"
+          href="#"
+          aria-label="Close menu"
+          onClick={toggleDropdown}
+        >
+          <i className="fa-solid fa-close"></i>
+        </a>
+        {siteContentData?.fields.menuItems?.map((item) => {
+          const { fields: { title, url } = {} } = item || {};
 
-              return title ? (
-                <a className="mobile-dropdown-menu-item" key={title} href={url || "#"} aria-label={title}>
-                  {title}
-                </a>
-              ) : null;
-            })}
-          </div>
-        </FocusTrap>
-      )}
+          return title ? (
+            <a className="mobile-dropdown-menu-item" key={title} href={url || "#"} aria-label={title}>
+              {title}
+            </a>
+          ) : null;
+        })}
+      </div>
+      {/* </FocusTrap> */}
+      {/* )} */}
     </>
   );
 }
