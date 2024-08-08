@@ -63,35 +63,26 @@ export function Navbar() {
             {siteContentData?.fields.siteTitle}
           </a>
         </h1>
-        <div className="menu-items-container">
+        <div className="navbar-menu-items-container">
           {siteContentData?.fields.menuItems?.map((item) => {
             const { fields: { title, url } = {} } = item || {};
 
             return title ? (
-              <a className="menu-item" key={title} href={url || "#"} aria-label={title}>
+              <a className="navbar-menu-item" key={title} href={url || "#"} aria-label={title}>
                 {title}
               </a>
             ) : null;
           })}
-          <a id="search-icon" className="menu-item" href="#" aria-label="Search">
+          {/* <a id="search-icon" className="navbar-menu-item" href="#" aria-label="Search">
             <i className="fa-solid fa-magnifying-glass"></i>
-          </a>
-          <a id="mobile-menu-icon" className="menu-item" href="#" aria-label="Menu" onClick={toggleDropdown}>
+          </a> */}
+          <a id="mobile-menu-icon" className="navbar-menu-item" href="#" aria-label="Menu" onClick={toggleDropdown}>
             <i className={`fa-solid ${isDropdownVisible ? "fa-close" : "fa-bars"}`}></i>
           </a>
         </div>
       </nav>
       <div className="navbar-cover"></div>
       <div id="mobile-dropdown-menu" className={"section mobile-dropdown " + (isDropdownVisible ? "visible" : "")}>
-        {/* <a
-          id="mobile-dropdown-close-button"
-          className="mobile-dropdown-menu-item"
-          href="#"
-          aria-label="Close menu"
-          onClick={toggleDropdown}
-        >
-          <i className="fa-solid fa-close"></i>
-        </a> */}
         {siteContentData?.fields.menuItems?.map((item) => {
           const { fields: { title, url } = {} } = item || {};
 

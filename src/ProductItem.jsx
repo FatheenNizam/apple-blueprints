@@ -4,7 +4,7 @@ import { productIcons, noFillProductLines } from "./productIcons";
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-export function ProductItem({ product }) {
+export function ProductItem({ product, showMonths }) {
   const updatedProduct = useContentfulLiveUpdates(product);
   const productLine = updatedProduct?.fields.productLine;
   const [isHovered, setIsHovered] = useState(false);
@@ -12,6 +12,7 @@ export function ProductItem({ product }) {
   return (
     <Link
       to={"/product/" + updatedProduct.fields.slug}
+      tabIndex={showMonths ? "0" : "-1"}
       className={`${updatedProduct.fields.status}-product product-item ${productLine}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

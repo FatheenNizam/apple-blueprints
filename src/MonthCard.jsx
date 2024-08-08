@@ -2,7 +2,7 @@ import React from "react";
 import { parse } from "date-fns";
 import { ProductItem } from "./ProductItem";
 
-export function MonthCard({ month, products, year, isPastYear }) {
+export function MonthCard({ month, products, year, showMonths }) {
   if (month === "unknown" && products.length === 0) {
     return null;
   }
@@ -21,7 +21,7 @@ export function MonthCard({ month, products, year, isPastYear }) {
       </li>
       <div className="product-list-container">
         {products.map((product) => (
-          <ProductItem key={product.sys.id} product={product} role="listitem" />
+          <ProductItem key={product.sys.id} product={product} showMonths={showMonths} role="listitem" />
         ))}
       </div>
     </ul>
