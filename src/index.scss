@@ -368,25 +368,28 @@ body::before {
 
 .year-label-wrapper {
   display: flex;
+  justify-content: start;
   align-items: center;
+  margin-right: auto;
   position: sticky;
   top: var(--vertical-padding);
   z-index: 50;
-  // -webkit-backdrop-filter: saturate(200%) blur(var(--blur-value));
-  // backdrop-filter: saturate(200%) blur(var(--blur-value));
-  // border: 1px solid var(--border);
-  // border-radius: var(--border-radius);
+  -webkit-backdrop-filter: saturate(200%) blur(var(--blur-value));
+  backdrop-filter: saturate(200%) blur(var(--blur-value));
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding-right: 18px;
+
 }
 
 .year-label {
   font-size: 60px;
   font-weight: bold;
   display: flex;
-  align-items: flex-end;
   letter-spacing: var(--header-letter-spacing);
   color: var(--text-primary);
   margin-left: var(--border-radius);
-  // margin: calc(var(--border-radius)/2) 0 calc(var(--border-radius)/2) var(--border-radius);
+  margin: calc(var(--border-radius)/2) 0 calc(var(--border-radius)/2) var(--border-radius);
   cursor: pointer;
 
   @media (max-width: $mobileBreakpoint) {
