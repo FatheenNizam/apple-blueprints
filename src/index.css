@@ -485,7 +485,6 @@ body::before {
   translate: -8px 0;
   line-height: 1.3;
   font-family: var(--current-font);
-  pointer-events: initial;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -522,18 +521,12 @@ body::before {
   align-items: flex-start;
   justify-content: center;
   overflow: auto;
-  pointer-events: none;
   z-index: 9999;
+  display: none;
 }
 
-/* @media screen and (max-width: 768px) {
-  #modal {
-    pointer-events: none;
-  }
-} */
-
-#modal > * {
-  pointer-events: initial;
+#modal:has(*) {
+  display: flex;
 }
 
 #loading-text {
@@ -601,7 +594,7 @@ body::before {
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
-  pointer-events: auto;
+  pointer-events: initial;
   order: 2;
 }
 @media (max-width: 768px) {
@@ -631,7 +624,7 @@ body::before {
   flex-shrink: 0;
   box-shadow: var(--box-shadow);
   transition: background-color var(--transition-time) ease;
-  pointer-events: auto;
+  pointer-events: initial;
 }
 
 .product-nav-button:hover {

@@ -19,7 +19,6 @@ export function ProductCard({ product, onDismiss }) {
       switch (event.key) {
         case "Escape":
           onDismiss();
-          document.querySelector("#modal").style.pointerEvents = "none";
           break;
         case "ArrowLeft":
           goToPreviousProduct();
@@ -50,10 +49,6 @@ export function ProductCard({ product, onDismiss }) {
       handleClick();
     }
   };
-
-  if (ProductCard) {
-    // document.querySelector("#modal").style.pointerEvents = "initial";
-  }
 
   const focusRef = useFocusOnUpdate();
 
@@ -98,14 +93,7 @@ export function ProductCard({ product, onDismiss }) {
                 aria-label="Next product"
               />
             </div>
-            <button
-              className="fa-solid fa-xmark close-button"
-              onClick={() => {
-                onDismiss();
-                document.querySelector("#modal").style.pointerEvents = "none";
-              }}
-              aria-label="Close"
-            />
+            <button className="fa-solid fa-xmark close-button" onClick={onDismiss} aria-label="Close" />
           </div>
           <div className="product-card-content">
             <div className="product-status-label-wrapper">
