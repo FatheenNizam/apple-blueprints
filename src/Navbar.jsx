@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import FocusTrap from "focus-trap-react";
 import { SiteContentContext } from "./SiteContentContext";
+
 
 export function Navbar() {
   const siteContentData = useContext(SiteContentContext);
@@ -51,7 +51,9 @@ export function Navbar() {
 
   return (
     <>
+  
       <nav ref={navbarRef} id="navbar" className="section" role="navigation" aria-label="Main navigation">
+        
         <h1>
           <a
             id="site-title"
