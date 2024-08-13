@@ -6,10 +6,19 @@ export function YearCard({ months, year }) {
   const isPastYear = year < currentYear;
 
   const [showMonths, setShowMonths] = useState(true);
+  const [isHidden, setIsHidden] = useState(false); 
   const yearLabelRef = useRef(null);
   const yearLabelTextRef = useRef(null);
 
   const handleYearClick = () => {
+    if (showMonths) {
+      setTimeout(() => {
+        setIsHidden(true);
+      }, 200); 
+    } else {
+        setIsHidden(false); 
+    }
+
     setShowMonths((prevShowMonths) => !prevShowMonths);
   };
 
@@ -77,7 +86,9 @@ export function YearCard({ months, year }) {
           } fa-solid fa-chevron-right`}
         ></i>
       </button>
-      <div className={`month-card-container ${showMonths ? "expanded" : "collapsed"}`}>
+      <div
+        className={`month-card-container ${showMonths ? "expanded" : "collapsed"} ${isHidden ? "hidden" : ""}`}
+      >
         {months.map(({ name, products }) => (
           <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} showMonths={showMonths} />
         ))}

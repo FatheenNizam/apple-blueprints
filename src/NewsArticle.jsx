@@ -13,9 +13,5 @@ export function NewsArticle() {
 
   const product = allProducts?.find((product) => product.fields.slug === slug);
 
-  const closeModal = useCallback(() => {
-    router.navigate("/");
-  });
-
   return <div>News Article</div>;
 }
