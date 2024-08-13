@@ -497,6 +497,31 @@ body::before {
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       translate: 0;
+      text-decoration: none;
+    }
+  }
+  &.released-product {
+    color: var(--released-product-text-color);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--released-product-bg-hover);
+      }
+    }
+  }
+  &.announced-product {
+    color: var(--announced-product-text-color);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--announced-product-bg-hover);
+      }
+    }
+  }
+  &.rumored-product {
+    color: var(--rumored-product-text-color);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--rumored-product-bg-hover);
+      }
     }
   }
 }
@@ -512,7 +537,9 @@ body::before {
 .product-item:hover .product-item-text,
 .source-link:hover .source-link-text,
 .product-image-source-link:hover {
-  text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    text-decoration: none;
+  }
 }
 
 .product-item-icon {
@@ -672,42 +699,17 @@ body::before {
   border-radius: var(--border-radius-button);
   font-weight: 500;
   font-family: var(--current-font);
-}
-
-.released-product {
-  color: var(--released-product-text-color);
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      background-color: var(--released-product-bg-hover);
-    }
+  &.released-product {
+    background-color: var(--released-product-bg);
+    color: var(--released-product-text-color);
   }
-}
-
-.product-status-label.released-product {
-  background-color: var(--released-product-bg);
-}
-.product-status-label.announced-product {
-  background-color: var(--announced-product-bg);
-}
-.product-status-label.rumored-product {
-  background-color: var(--rumored-product-bg);
-}
-
-.announced-product {
-  color: var(--announced-product-text-color);
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      background-color: var(--announced-product-bg-hover);
-    }
+  &.announced-product {
+    background-color: var(--announced-product-bg);
+    color: var(--announced-product-text-color);
   }
-}
-
-.rumored-product {
-  color: var(--rumored-product-text-color);
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      background-color: var(--rumored-product-bg-hover);
-    }
+  &.rumored-product {
+    background-color: var(--rumored-product-bg);
+    color: var(--rumored-product-text-color);
   }
 }
 
@@ -749,7 +751,6 @@ body::before {
   flex-direction: column;
   align-items: center;
   max-width: 50%;
-  // margin: 0 auto;
   padding-bottom: 2px;
   overflow: hidden;
   gap: var(--vertical-padding);

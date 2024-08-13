@@ -13,7 +13,7 @@ export function ProductItem({ product, showMonths }) {
     <Link
       to={"/product/" + updatedProduct.fields.slug}
       tabIndex={showMonths ? "0" : "-1"}
-      className={`${updatedProduct.fields.status}-product product-item ${productLine}`}
+      className={`${updatedProduct.fields.status}-product product-item`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
