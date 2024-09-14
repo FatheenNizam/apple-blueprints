@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { formatDistanceToNow, format } from "date-fns";
-import { fetchSiteContentData } from "./fetchSiteContentData";
+import { SiteContentContext } from "./SiteContentContext";
 
 export function Footer({ lastUpdated }) {
+  const siteContentData = useContext(SiteContentContext);
+
   return (
-    <div id="footer">
-      <div id="footer-button-container">
-        <a
-          href="mailto:appleblueprints@gmail.com?subject=Edit request: [Product name]&body=What would you like to change?"
-          target="_blank"
-          className="footer-button"
-          id="suggest-button"
-        >
-          <i className="fas fa-wrench"></i>&nbsp;&nbsp;Suggest edit
-        </a>
-        <a href="https://www.x.com/appleblueprints" target="_blank" className="footer-button" id="twitter-button">
-          <i className="fab fa-x-twitter"></i>&nbsp;&nbsp;Follow
-        </a>
-        <a
-          href="https://www.buymeacoffee.com/appleblueprints"
-          target="_blank"
-          className="footer-button"
-          id="donate-button"
-        >
-          <i className="far fa-grin"></i>&nbsp;&nbsp;Donate
-        </a>
-      </div>
+    <div id="footer" className="section">
+      <nav id="footer-button-container" aria-label="Footer navigation">
+        {siteContentData?.fields.footerItems?.map((item, index) => {
+          const { fields: { text, icon, url } = {} } = item || {};
+
+          return text && icon && url ? (
+            <a
+              key={index}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-button"
+              aria-label={`${text} (opens in a new tab)`}
+            >
+              <i className={icon}></i>&nbsp;&nbsp;{text}
+            </a>
+          ) : null;
+        })}
+      </nav>
 
       {lastUpdated && <LastUpdated lastUpdated={lastUpdated} />}
     </div>
@@ -34,27 +33,40 @@ export function Footer({ lastUpdated }) {
 
 function LastUpdated({ lastUpdated }) {
   const [showRelativeTime, setShowRelativeTime] = useState(true);
-  const relativeTime = formatDistanceToNow(lastUpdated, { addSuffix: true }).replace("about ", "");
+  const relativeTime = formatDistanceToNow(lastUpdated, { addSuffix: true });
   const actualDate = format(new Date(lastUpdated), "MMMM d, yyyy, h:mm a");
 
   const handleClick = () => {
     setShowRelativeTime(!showRelativeTime);
   };
 
-  const [siteContentData, setSiteContentData] = useState(null);
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      handleClick();
+    }
+  };
 
-  useEffect(() => {
-    fetchSiteContentData().then((data) => setSiteContentData(data));
-  }, []);
-
-  console.log({ siteContentData });
+  const siteContentData = useContext(SiteContentContext);
 
   return (
     <div className="footer-text-container">
-      <div className="footer-text disclaimer-text">{siteContentData?.fields.footerText}</div>
-      <div className="footer-text last-updated-text" onClick={handleClick} title="Click to toggle">
-        Last updated: <span className="last-updated-time">{showRelativeTime ? relativeTime : actualDate}</span>
-      </div>
+      <p className="footer-text disclaimer-text" aria-label="Footer text">
+        {siteContentData?.fields.footerText}
+      </p>
+      <button className="footer-text last-updated-text" tabIndex="-1">
+        Last updated{" "}
+        <span
+          className="last-updated-time"
+          onClick={handleClick}
+          onKeyDown={handleKeyPress}
+          title="Click to toggle"
+          role="button"
+          aria-label="Toggle time format"
+          tabIndex="0"
+        >
+          {showRelativeTime ? relativeTime : actualDate}
+        </span>
+      </button>
     </div>
   );
 }

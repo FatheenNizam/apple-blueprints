@@ -1,41 +1,61 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { MonthCard } from "./MonthCard";
 
 export function YearCard({ months, year }) {
   const currentYear = new Date().getFullYear();
   const isPastYear = year < currentYear;
 
+  const [showMonths, setShowMonths] = useState(true);
+  const [isHidden, setIsHidden] = useState(false); 
   const yearLabelRef = useRef(null);
-  const [isScrollingProgrammatically, setIsScrollingProgrammatically] = useState(false);
+  const yearLabelTextRef = useRef(null);
+
+  const handleYearClick = () => {
+    if (showMonths) {
+      setTimeout(() => {
+        setIsHidden(true);
+      }, 200); 
+    } else {
+        setIsHidden(false); 
+    }
+
+    setShowMonths((prevShowMonths) => !prevShowMonths);
+  };
 
   useEffect(() => {
-    let lastTop = 0;
-    let lastScrollPosition = 0;
-    const navbar = document.querySelector("#navbar");
-    const navbarTravel = navbar.clientHeight + 25;
-
-    // Set navbar to visible initially
-    navbar.style.transform = `translateY(0)`;
+    if (!showMonths) {
+      const yearLabelElement = yearLabelRef.current;
+      yearLabelElement.style.position = "static";
+      yearLabelElement.style.border = "none";
+      yearLabelElement.style.backdropFilter = "";
+      yearLabelElement.style.webkitBackdropFilter = "";
+      return;
+    } else {
+      yearLabelRef.current.style.position = "sticky";
+    }
 
     const handleScroll = () => {
-      if (!isScrollingProgrammatically) {
-        const maxScrollPosition =
-          Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.clientHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-          ) - window.innerHeight;
+      const yearLabelElement = yearLabelRef.current;
+      const yearLabelTextElement = yearLabelTextRef.current;
+      const rootElement = document.documentElement;
+      const computedStyle = getComputedStyle(rootElement);
+      const blurValue = computedStyle.getPropertyValue('--blur-value').trim();
 
-        const scrollPosition = window.pageYOffset;
-        const delta = scrollPosition - lastScrollPosition;
-        const newTop = scrollPosition <= 0 ? 0 : Math.max(0, Math.min(navbarTravel, lastTop + delta));
+      const isSticky =
+        yearLabelElement.getBoundingClientRect().top <=
+        parseInt(getComputedStyle(yearLabelElement).getPropertyValue("top"));
 
-        navbar.style.transform = `translateY(-${newTop}px)`;
-
-        lastTop = newTop;
-        lastScrollPosition = scrollPosition;
+      if (isSticky) {
+        yearLabelElement.style.backdropFilter = `saturate(200%) blur(${blurValue})`;
+        yearLabelElement.style.webkitBackdropFilter = `saturate(200%) blur(${blurValue})`;        
+        yearLabelElement.style.border = "1px solid var(--border)";
+        yearLabelTextElement.style.margin =
+          "calc(var(--border-radius) / 2) 0 calc(var(--border-radius) / 2) var(--border-radius)";
+      } else {
+        yearLabelElement.style.backdropFilter = "";
+        yearLabelElement.style.webkitBackdropFilter = "";
+        yearLabelElement.style.border = "";
+        yearLabelTextElement.style.margin = "0 0 0 var(--border-radius)";
       }
     };
 
@@ -44,41 +64,33 @@ export function YearCard({ months, year }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isScrollingProgrammatically]);
-
-  useEffect(() => {
-    if (year === currentYear) {
-      const offset = -140; // Adjust this value as needed
-      const element = yearLabelRef.current;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-
-      setIsScrollingProgrammatically(true);
-      window.scrollTo({
-        top: elementPosition + offset,
-        behavior: "auto", // Ensure no scrolling animation
-      });
-
-      // Disable the programmatic scroll flag after a short delay to avoid conflicts
-      setTimeout(() => {
-        setIsScrollingProgrammatically(false);
-      }, 100); // Adjust the delay as needed
-    }
-  }, [currentYear, year]);
+  }, [showMonths]);
 
   return (
-    <div className="yearCard">
-      <h2 ref={yearLabelRef} className={`year-label ${isPastYear ? "past-date" : ""}`}>
-        {year}
-      </h2>
-      <div className="container">
+    <div className="year-card">
+      <button
+        ref={yearLabelRef}
+        id={year}
+        className="year-label-wrapper"
+        aria-expanded={showMonths}
+        aria-controls={`months-${year}`}
+        aria-label={`Toggle months for ${year}`}
+        onClick={handleYearClick}
+      >
+        <h2 ref={yearLabelTextRef} className={`year-label-text ${isPastYear ? "" : "text-highlight"} `}>
+          {year}&nbsp;&nbsp;
+        </h2>
+        <i
+          className={`${isPastYear ? "" : "text-highlight"} year-label-arrow ${
+            showMonths ? "rotate-90 minimize" : ""
+          } fa-solid fa-chevron-right`}
+        ></i>
+      </button>
+      <div
+        className={`month-card-container ${showMonths ? "expanded" : "collapsed"} ${isHidden ? "hidden" : ""}`}
+      >
         {months.map(({ name, products }) => (
-          <MonthCard
-            key={name ?? "unknown"}
-            month={name}
-            products={products}
-            year={year}
-            isPastYear={isPastYear} // Pass isPastYear to MonthCard
-          />
+          <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} showMonths={showMonths} />
         ))}
       </div>
     </div>

@@ -5,7 +5,7 @@ import { ProductsDataContext } from "./ProductsDataContext";
 import { Modal } from "./Modal";
 import { ProductCard } from "./ProductCard";
 
-export function ProductPage() {
+export function NewsArticle() {
   const productsData = useContext(ProductsDataContext);
 
   const allProducts = productsData?.flatMap((year) => year.months.flatMap((month) => month.products));
@@ -13,17 +13,5 @@ export function ProductPage() {
 
   const product = allProducts?.find((product) => product.fields.slug === slug);
 
-  const closeModal = useCallback(() => {
-    router.navigate("/");
-  });
-
-  return (
-    <Modal onDismiss={closeModal}>
-      {product ? (
-        <ProductCard key={product.sys.id} product={product} onDismiss={closeModal} />
-      ) : (
-        <div id="loading-text">Loading product..</div>
-      )}
-    </Modal>
-  );
+  return <div>News Article</div>;
 }
