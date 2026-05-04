@@ -146,6 +146,10 @@ p {
 
 a {
   color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 ul {
