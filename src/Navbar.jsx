@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { SiteContentContext } from "./SiteContentContext";
 
-
 export function Navbar() {
   const siteContentData = useContext(SiteContentContext);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -51,9 +50,7 @@ export function Navbar() {
 
   return (
     <>
-  
       <nav ref={navbarRef} id="navbar" className="section" role="navigation" aria-label="Main navigation">
-        
         <h1>
           <a
             id="site-title"
@@ -78,9 +75,9 @@ export function Navbar() {
           {/* <a id="search-icon" className="navbar-menu-item" href="#" aria-label="Search">
             <i className="fa-solid fa-magnifying-glass"></i>
           </a> */}
-          <a id="mobile-menu-icon" className="navbar-menu-item" href="#" aria-label="Menu" onClick={toggleDropdown}>
+          {/* <a id="mobile-menu-icon" className="navbar-menu-item" href="#" aria-label="Menu" onClick={toggleDropdown}>
             <i className={`fa-solid ${isDropdownVisible ? "fa-close" : "fa-bars"}`}></i>
-          </a>
+          </a> */}
         </div>
       </nav>
       <div className="navbar-cover"></div>
