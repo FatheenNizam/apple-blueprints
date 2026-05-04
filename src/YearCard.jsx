@@ -6,17 +6,16 @@ export function YearCard({ months, year }) {
   const isPastYear = year < currentYear;
 
   const [showMonths, setShowMonths] = useState(true);
-  const [isHidden, setIsHidden] = useState(false); 
+  const [isHidden, setIsHidden] = useState(false);
+
   const yearLabelRef = useRef(null);
   const yearLabelTextRef = useRef(null);
 
   const handleYearClick = () => {
     if (showMonths) {
-      setTimeout(() => {
-        setIsHidden(true);
-      }, 200); 
+      setIsHidden(true);
     } else {
-        setIsHidden(false); 
+      setIsHidden(false);
     }
 
     setShowMonths((prevShowMonths) => !prevShowMonths);
@@ -26,7 +25,7 @@ export function YearCard({ months, year }) {
     if (!showMonths) {
       const yearLabelElement = yearLabelRef.current;
       yearLabelElement.style.position = "static";
-      yearLabelElement.style.border = "none";
+      yearLabelElement.style.borderColor = "transparent";
       yearLabelElement.style.backdropFilter = "";
       yearLabelElement.style.webkitBackdropFilter = "";
       return;
@@ -36,10 +35,9 @@ export function YearCard({ months, year }) {
 
     const handleScroll = () => {
       const yearLabelElement = yearLabelRef.current;
-      const yearLabelTextElement = yearLabelTextRef.current;
       const rootElement = document.documentElement;
       const computedStyle = getComputedStyle(rootElement);
-      const blurValue = computedStyle.getPropertyValue('--blur-value').trim();
+      const blurValue = computedStyle.getPropertyValue("--blur-value").trim();
 
       const isSticky =
         yearLabelElement.getBoundingClientRect().top <=
@@ -47,15 +45,14 @@ export function YearCard({ months, year }) {
 
       if (isSticky) {
         yearLabelElement.style.backdropFilter = `saturate(200%) blur(${blurValue})`;
-        yearLabelElement.style.webkitBackdropFilter = `saturate(200%) blur(${blurValue})`;        
-        yearLabelElement.style.border = "1px solid var(--border)";
-        yearLabelTextElement.style.margin =
-          "calc(var(--border-radius) / 2) 0 calc(var(--border-radius) / 2) var(--border-radius)";
+        yearLabelElement.style.webkitBackdropFilter = `saturate(200%) blur(${blurValue})`;
+        yearLabelElement.style.borderColor = "var(--border)";
+        yearLabelElement.style.alignSelf = "inherit";
       } else {
         yearLabelElement.style.backdropFilter = "";
         yearLabelElement.style.webkitBackdropFilter = "";
-        yearLabelElement.style.border = "";
-        yearLabelTextElement.style.margin = "0 0 0 var(--border-radius)";
+        yearLabelElement.style.borderColor = "transparent";
+        yearLabelElement.style.alignSelf = "flex-start";
       }
     };
 
@@ -86,9 +83,7 @@ export function YearCard({ months, year }) {
           } fa-solid fa-chevron-right`}
         ></i>
       </button>
-      <div
-        className={`month-card-container ${showMonths ? "expanded" : "collapsed"} ${isHidden ? "hidden" : ""}`}
-      >
+      <div className={`month-card-container ${showMonths ? "expanded" : "collapsed"} ${isHidden ? "hidden" : ""}`}>
         {months.map(({ name, products }) => (
           <MonthCard key={name ?? "unknown"} month={name} products={products} year={year} showMonths={showMonths} />
         ))}

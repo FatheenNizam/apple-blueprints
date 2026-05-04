@@ -106,6 +106,7 @@ export function ProductCard({ product, onDismiss }) {
                 </div>
               </div>
             </div>
+
             <div className="top-section">
               <div className="product-info">
                 <div className="titlebar">
@@ -182,7 +183,12 @@ export function ProductCard({ product, onDismiss }) {
                 >
                   {updatedProduct.fields.sources.map((source) => (
                     <li key={source.fields.url}>
-                      <a href={source.fields.url} target="_blank" rel="noopener noreferrer" className="source-link">
+                      <a
+                        href={source.fields.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hyperlink source-link"
+                      >
                         <span className="source-link-text">{source.fields.title}</span>
                         <i className="fa-solid fa-arrow-up-right-from-square source-link-icon"></i>
                       </a>
@@ -266,7 +272,7 @@ function ProductImage({ image, product }) {
         alt={`The ${updatedProduct.fields.productName} is shown.`}
       />
       <a
-        className="product-image-source-link"
+        className="hyperlink product-image-source-link"
         href={image?.fields.description}
         target="_blank"
         rel="noopener noreferrer"

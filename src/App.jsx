@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { YearCard } from "./YearCard";
 import { ProductsDataContext } from "./ProductsDataContext";
@@ -14,7 +14,7 @@ export function App() {
   const [siteContentData, setSiteContentData] = useState(null);
   const { productsByYear, unknownProducts, lastUpdated } = useMemo(
     () => (productsData ? transformProductsData(productsData) : {}),
-    [productsData]
+    [productsData],
   );
 
   useEffect(() => {
@@ -29,6 +29,12 @@ export function App() {
       <SiteContentContext.Provider value={siteContentData}>
         <div className="app">
           <Navbar />
+          <div class="section search-container">
+            <input type="text" placeholder="Search..." id="search-box"></input>
+            <button type="submit" id="search-button">
+              <span class="material-symbols-outlined">&nbsp;Search</span>
+            </button>
+          </div>
           <div className="section year-list">
             {productsByYear &&
               productsByYear.map(({ yearName, months }) => <YearCard key={yearName} year={yearName} months={months} />)}

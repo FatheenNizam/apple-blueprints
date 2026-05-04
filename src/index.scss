@@ -32,7 +32,7 @@ $tabletBreakpoint: 1023px;
   --text-primary: rgb(29, 29, 31);
   --text-secondary: rgb(97, 97, 97);
   --text-tertiary: rgb(191, 191, 191);
-  --month-card-bg: rgb(255, 255, 255);
+  --card-bg: rgb(255, 255, 255);
   --product-nav-button-bg: rgba(255, 255, 255, 0.8);
   --product-nav-button-bg-hover: rgb(220, 220, 220);
   --product-nav-button-icon-color: rgb(0);
@@ -57,6 +57,7 @@ $tabletBreakpoint: 1023px;
   --underline: rgb(169, 169, 169);
   --text-highlight: var(--apple-system-blue-light);
   --focus-color: rgba(255, 153, 0, 0.8);
+  --hyperlink-hover-bg: rgb(0, 122, 255, 0.1);
   --blur-value: 20px;
   --border-radius: 18px;
   --border-radius-navbar: 12px;
@@ -100,7 +101,7 @@ $tabletBreakpoint: 1023px;
     --text-primary: rgb(245, 245, 247);
     --text-secondary: rgb(158, 158, 158);
     --text-tertiary: rgb(64, 64, 64);
-    --month-card-bg: rgb(30, 30, 30);
+    --card-bg: rgb(30, 30, 30);
     --product-nav-button-bg: rgba(255, 255, 255, 0.2);
     --product-nav-button-bg-hover: rgba(255, 255, 255, 0.3);
     --product-nav-button-icon-color: rgb(255);
@@ -218,12 +219,20 @@ body::before {
   background-color: var(--site-bg);
 }
 
+.search-container {
+  display: flex;
+  justify-content: right;
+  padding-top: 12px;
+}
+
 #site-title {
   color: white;
   font-weight: bold;
   text-decoration: none;
-  &:hover {
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -231,30 +240,22 @@ body::before {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--vertical-padding);
+  gap: calc(var(--vertical-padding) / 4);
   text-wrap: nowrap;
 }
 
 .navbar-menu-item {
   position: relative;
-  padding: 12px 0;
+  padding: 12px;
+  border-radius: var(--border-radius-button);
   color: white;
   text-decoration: none;
   cursor: pointer;
-  &::after {
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    width: 100%;
-    height: 1.5px;
-    transform: scaleX(0);
-    transform-origin: bottom left;
-    background: white;
-    content: "";
-    transition: transform var(--transition-time) ease;
-  }
-  &:hover::after {
-    transform: scaleX(1);
+  transition: background-color var(--transition-time) ease;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
   @media screen and (max-width: $tabletBreakpoint) {
     display: none;
@@ -360,15 +361,15 @@ body::before {
 .year-list {
   display: flex;
   flex-direction: column;
-  padding-top: calc(2 * var(--vertical-padding));
-  padding-bottom: var(--vertical-padding);
-  gap: 12px;
+  padding-top: calc(var(--vertical-padding) * 2);
+  padding-bottom: calc(var(--vertical-padding) * 4);
+  gap: var(--vertical-padding);
 }
 
 .year-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: calc(var(--vertical-padding) / 2);
 }
 
 .year-label-wrapper {
@@ -377,7 +378,19 @@ body::before {
   position: sticky;
   top: var(--vertical-padding);
   align-items: center;
+  align-self: flex-start;
+  padding: 0 20px 0 0;
+  border: 1px solid;
   border-radius: var(--border-radius);
+  border-color: transparent;
+  transition:
+    background-color calc(var(--transition-time) / 2) ease,
+    border-color calc(var(--transition-time) / 2) ease;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--hyperlink-hover-bg);
+    }
+  }
 }
 
 .year-label-text {
@@ -417,22 +430,15 @@ body::before {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: var(--vertical-padding);
   box-sizing: border-box;
-  // max-height: 0;
+  margin-bottom: var(--vertical-padding);
   opacity: 0;
-  transition:
-    opacity 200ms ease-in-out,
-    margin-bottom 200ms ease-in-out;
   @media (max-width: $mobileBreakpoint) {
     grid-template-columns: 1fr;
   }
   &.expanded {
-    // max-height: 0;
-    margin-bottom: 30px;
     opacity: 1;
   }
   &.collapsed {
-    // max-height: 0;
-    margin-bottom: 0;
     opacity: 0;
   }
   &.hidden {
@@ -450,8 +456,10 @@ body::before {
   gap: 6px;
   border: 1px solid var(--border);
   border-radius: var(--border-radius);
-  background-color: var(--month-card-bg);
+  background-color: var(--card-bg);
   box-shadow: var(--box-shadow);
+  -webkit-backdrop-filter: blur(var(--blur-value));
+  backdrop-filter: blur(var(--blur-value));
 
   @media (min-width: 400px) {
     min-width: 256px;
@@ -536,7 +544,7 @@ body::before {
 
 .product-item:hover .product-item-text,
 .source-link:hover .source-link-text,
-.product-image-source-link:hover {
+.product-image-source-link:hover .source-link-text {
   @media (hover: hover) and (pointer: fine) {
     text-decoration: none;
   }
@@ -570,7 +578,7 @@ body::before {
   padding: 18px var(--vertical-padding);
   transform: translate(-50%, -50%);
   border-radius: var(--border-radius-navbar);
-  background-color: var(--month-card-bg);
+  background-color: var(--card-bg);
   box-shadow: var(--box-shadow);
   color: var(--text-primary);
   font-size: 24px;
@@ -624,7 +632,7 @@ body::before {
   width: 100%;
   margin: auto;
   border-radius: var(--border-radius);
-  background-color: var(--month-card-bg);
+  background-color: var(--card-bg);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   box-shadow: var(--box-shadow);
   pointer-events: initial;
@@ -663,8 +671,10 @@ body::before {
   font-size: 28px;
   pointer-events: initial;
   transition: background-color var(--transition-time) ease;
-  &:hover {
-    background-color: var(--product-nav-button-bg-hover);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--product-nav-button-bg-hover);
+    }
   }
 }
 
@@ -750,12 +760,14 @@ body::before {
   position: relative;
   flex-direction: column;
   align-items: center;
-  max-width: 50%;
+  justify-content: center;
+  width: 40%;
+  margin: 0 auto;
   padding-bottom: 2px;
   overflow: hidden;
   gap: var(--vertical-padding);
-  @media (max-width: $mobileBreakpoint) {
-    max-width: 100%;
+  @media (max-width: $tabletBreakpoint) {
+    width: 100%;
   }
 }
 
@@ -774,10 +786,6 @@ body::before {
 .product-image-source-link {
   color: var(--link);
   font-size: 12px;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-color: var(--underline);
-  text-underline-offset: 4px !important;
 }
 
 .top-buttons-container {
@@ -880,17 +888,30 @@ body::before {
   color: var(--link);
   font-weight: 400;
   font-size: 16px;
-  text-decoration: none;
+}
 
-  &:hover {
-    text-decoration: none;
+.hyperlink {
+  padding: 4px 8px;
+  border-radius: var(--border-radius-button);
+  text-decoration: none;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 4px;
+  transition: background-color var(--transition-time) ease;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--hyperlink-hover-bg);
+      text-decoration: none;
+    }
   }
 }
 
 .source-link-text {
   margin-right: 6px;
-  &:hover {
-    text-decoration: none;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -938,6 +959,7 @@ td {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  // margin-top: 64px;
   margin-bottom: var(--vertical-padding);
   padding: 56px 32px;
   gap: 32px;
@@ -995,6 +1017,7 @@ td {
 
 .last-updated-text {
   margin: auto;
+  padding: 0;
   cursor: default;
 }
 
