@@ -18,7 +18,7 @@ export function ProductItem({ product, showMonths }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <span
-        className={`material-symbols-rounded product-item-icon ${
+        className={`material-symbols-outlined product-item-icon ${
           noFillProductLines.has(productLine) ? "material-symbols-rounded-no-fill" : ""
         }`}
       >
