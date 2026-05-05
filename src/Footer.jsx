@@ -51,7 +51,7 @@ function LastUpdated({ lastUpdated }) {
   return (
     <div className="footer-text-container">
       <p className="footer-text disclaimer-text" aria-label="Footer text">
-        {siteContentData?.fields.footerText2} Designed by{" "}
+        {siteContentData?.fields.footerText} Designed by{" "}
         <a href="https://www.fatheennizam.com/" target="_blank" rel="noopener noreferrer">
           Fatheen Nizam
         </a>
