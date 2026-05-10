@@ -527,7 +527,7 @@ body::before {
     }
   }
   &.released-product {
-    color: var(--released-product-text-color);
+    color: var(--apple-system-green-light);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--released-product-bg-hover);
@@ -535,7 +535,7 @@ body::before {
     }
   }
   &.announced-product {
-    color: var(--announced-product-text-color);
+    color: var(--apple-system-orange-light);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--announced-product-bg-hover);
@@ -543,7 +543,7 @@ body::before {
     }
   }
   &.rumored-product {
-    color: var(--rumored-product-text-color);
+    color: var(--apple-system-gray-light);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--rumored-product-bg-hover);
