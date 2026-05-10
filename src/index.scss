@@ -410,7 +410,7 @@ body::before {
   color: var(--text-primary);
   font-weight: bold;
   font-size: 60px;
-  font-size: var(--text-hero);
+  font-size: var(--text-xl);
   letter-spacing: var(--header-letter-spacing);
   transition:
     margin var(--transition-time) ease,
