@@ -802,6 +802,7 @@ body::before {
 .product-image-source-link {
   color: var(--link);
   font-size: 12px;
+  font-size: var(--text-sm);
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: var(--underline);
