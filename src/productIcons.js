@@ -7,7 +7,7 @@ const assignIcons = (iconMap, keys, icon) => {
 };
 
 assignIcons(productIcons, ["iPhone", "iPhone Pro", "iPhone Air", "iPhone e", "iPhone SE"], "mobile_3");
-assignIcons(productIcons, ["MacBook", "MacBook Air", "MacBook Pro"], "laptop_mac");
+assignIcons(productIcons, ["MacBook", "MacBook Air", "MacBook Pro", "MacBook Neo"], "laptop_mac");
 assignIcons(productIcons, ["iPad", "iPad Air", "iPad Pro", "iPad mini"], "tablet");
 assignIcons(productIcons, ["Apple Pencil"], "draw");
 assignIcons(productIcons, ["Magic Keyboard for iPad Pro", "Magic Keyboard"], "keyboard");
