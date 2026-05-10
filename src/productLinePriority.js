@@ -1,6 +1,8 @@
 export const productLinePriority = [
   "iPhone",
+  "iPhone Air",
   "iPhone Pro",
+  "iPhone e",
   "iPhone SE",
   "MacBook",
   "MacBook Air",
