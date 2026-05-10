@@ -84,12 +84,12 @@ $tabletBreakpoint: 1023px;
   --current-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial",
     sans-serif;
   --current-font: "IBM Plex Sans", sans-serif;
-  --text-xxl: 56px;
-  --text-xl: 40px;
-  --text-lg: 28px;
-  --text-base: 16px;
-  --text-sm: 14px;
-  --text-xs: 12px;
+  --text-xxl: 64px;
+  --text-xl: 48px;
+  --text-lg: 32px;
+  --text-base: 18px;
+  --text-sm: 16px;
+  --text-xs: 14px;
 }
 
 @media (max-width: $mobileBreakpoint) {
@@ -99,6 +99,9 @@ $tabletBreakpoint: 1023px;
     --text-xxl: 40px;
     --text-xl: 32px;
     --text-lg: 24px;
+    --text-base: 17px;
+    --text-sm: 15px;
+    --text-xs: 13px;
   }
 }
 
