@@ -19,7 +19,7 @@ assignIcons(productIcons, ["Apple TV 4K", "Apple TV HD"], "tv_remote");
 assignIcons(productIcons, ["HomePod"], "speaker");
 assignIcons(productIcons, ["Accessory"], "stars");
 assignIcons(productIcons, ["Charging"], "charger");
-assignIcons(productIcons, ["AirTag"], "location_on");
+assignIcons(productIcons, ["AirTag"], "nest_tag");
 assignIcons(productIcons, ["Magic Mouse"], "mouse");
 assignIcons(productIcons, ["Magic Trackpad"], "touch_app");
 assignIcons(productIcons, ["Studio Display"], "desktop_windows");
