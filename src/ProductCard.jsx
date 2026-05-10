@@ -261,7 +261,7 @@ function ProductImage({ image, product }) {
         }}
         src={image.fields.file.url + "?fm=webp&h=300"}
         srcSet={`${image.fields.file.url}?fm=webp&h=300 1x, ${image.fields.file.url}?fm=webp&h=600 2x, ${image.fields.file.url}?fm=webp&h=900 3x`}
-        alt={`The ${updatedProduct.fields.productName} is shown.`}
+        alt={`${updatedProduct.fields.productName} product image`}
       />
       <a
         className="product-image-source-link"
