@@ -416,7 +416,7 @@ body::before {
   margin: calc(var(--border-radius) / 2) 0 calc(var(--border-radius) / 2) var(--border-radius);
   color: var(--text-primary);
   font-weight: bold;
-  font-size: var(--text-xl);
+  font-size: var(--text-xxl);
   letter-spacing: var(--header-letter-spacing);
   transition:
     margin var(--transition-time) ease,
