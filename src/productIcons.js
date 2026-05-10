@@ -18,6 +18,7 @@ assignIcons(productIcons, ["Mac mini", "Mac Pro", "Mac Studio"], "storage");
 assignIcons(productIcons, ["Apple TV 4K", "Apple TV HD"], "tv_remote");
 assignIcons(productIcons, ["HomePod"], "speaker");
 assignIcons(productIcons, ["Accessory"], "stars");
+assignIcons(productIcons, ["Charging"], "charger");
 assignIcons(productIcons, ["AirTag"], "location_on");
 assignIcons(productIcons, ["Magic Mouse"], "mouse");
 assignIcons(productIcons, ["Magic Trackpad"], "touch_app");
