@@ -9,13 +9,16 @@ export function getStatusMessage(fields) {
 
   switch (status) {
     case "rumored":
-      return formattedAnnouncedDate ? `Announcement expected on ${formattedAnnouncedDate}` : "";
+      return formattedAnnouncedDate ? `Announcement expected on ${formattedAnnouncedDate}` : "Rumored";
+
     case "announced":
-      return `${formattedAnnouncedDate || ""}${
+      return `Announced ${formattedAnnouncedDate || ""}${
         shortFormattedReleasedDate ? ` (Releases ${shortFormattedReleasedDate})` : ""
       }`;
+
     case "released":
-      return formattedReleasedDate || "";
+      return formattedReleasedDate ? `Released ${formattedReleasedDate}` : "Released";
+
     default:
       return "";
   }
