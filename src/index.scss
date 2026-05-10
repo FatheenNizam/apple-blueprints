@@ -27,17 +27,17 @@ $tabletBreakpoint: 1023px;
 }
 
 :root {
-  --apple-system-blue-light: #007aff;
-  --apple-system-gray-light: #828282;
-  --apple-system-green-light: #248a3d;
-  --apple-system-red-light: #ff3b30;
-  --apple-system-yellow-light: #ffcc00;
-  --apple-system-orange-light: #ff9500;
-  --apple-system-purple-light: #af52de;
-  --apple-system-pink-light: #ff2d55;
-  --apple-system-teal-light: #5ac8fa;
+  --apple-system-blue: #007aff;
+  --apple-system-gray: #828282;
+  --apple-system-green: #248a3d;
+  --apple-system-red: #ff3b30;
+  --apple-system-yellow: #ffcc00;
+  --apple-system-orange: #ff9500;
+  --apple-system-purple: #af52de;
+  --apple-system-pink: #ff2d55;
+  --apple-system-teal: #5ac8fa;
   --site-bg: #fbfbfb;
-  --navbar-bg: var(--apple-system-blue-light);
+  --navbar-bg: var(--apple-system-blue);
   --text-primary: rgb(29, 29, 31);
   --text-secondary: rgb(97, 97, 97);
   --text-tertiary: rgb(191, 191, 191);
@@ -59,15 +59,15 @@ $tabletBreakpoint: 1023px;
   --announced-product-bg-hover: var(--announced-product-bg);
   --rumored-product-bg-hover: var(--rumored-product-bg);
 
-  --link: var(--apple-system-blue-light);
+  --link: var(--apple-system-blue);
   --overlay: rgb(0, 0, 0);
   --footer-button-bg: rgba(0, 0, 0, 0.05);
   --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
-  --footer-button-highlight-hover: var(--apple-system-blue-light);
+  --footer-button-highlight-hover: var(--apple-system-blue);
   --close-button-bg: rgb(232, 232, 238);
   --footer-bg: white;
   --underline: rgb(169, 169, 169);
-  --text-highlight: var(--apple-system-blue-light);
+  --text-highlight: var(--apple-system-blue);
   --focus-color: rgba(255, 153, 0, 0.8);
   --blur-value: 20px;
   --border-radius: 18px;
@@ -110,18 +110,18 @@ $tabletBreakpoint: 1023px;
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --apple-system-blue-dark: #0b84ff;
-    --apple-system-gray-dark: #7f7f82;
-    --apple-system-green-dark: #30d158;
-    --apple-system-red-dark: #ff453a;
-    --apple-system-yellow-dark: #ffd60a;
-    --apple-system-orange-dark: #ff9f0a;
-    --apple-system-purple-dark: #bf5af2;
-    --apple-system-pink-dark: #ff375f;
-    --apple-system-teal-dark: #64d2ff;
+    --apple-system-blue: #0b84ff;
+    --apple-system-gray: #7f7f82;
+    --apple-system-green: #30d158;
+    --apple-system-red: #ff453a;
+    --apple-system-yellow: #ffd60a;
+    --apple-system-orange: #ff9f0a;
+    --apple-system-purple: #bf5af2;
+    --apple-system-pink: #ff375f;
+    --apple-system-teal: #64d2ff;
 
     --site-bg: #0a1016;
-    --navbar-bg: var(--apple-system-blue-dark);
+    --navbar-bg: var(--apple-system-blue);
     --text-primary: rgb(245, 245, 247);
     --text-secondary: rgb(158, 158, 158);
     --text-tertiary: rgb(64, 64, 64);
@@ -129,7 +129,6 @@ $tabletBreakpoint: 1023px;
     --product-nav-button-bg: rgba(255, 255, 255, 0.2);
     --product-nav-button-bg-hover: rgba(255, 255, 255, 0.3);
     --product-nav-button-icon-color: rgb(255);
-
     --border: #1e242c;
     --counter-bg: rgba(255, 255, 255, 0.05);
 
@@ -140,14 +139,14 @@ $tabletBreakpoint: 1023px;
     --rumored-product-bg: #4d565f;
     --rumored-product-text-color: #ffffff;
 
-    --link: var(--apple-system-blue-dark);
+    --link: var(--apple-system-blue);
     --footer-button-bg: rgba(255, 255, 255, 0.05);
     --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
-    --footer-button-highlight-hover: var(--apple-system-blue-dark);
+    --footer-button-highlight-hover: var(--apple-system-blue);
     --close-button-bg: rgb(36, 36, 30);
     --footer-bg: rgb(23, 23, 22);
     --underline: rgb(86, 86, 86);
-    --text-highlight: var(--apple-system-blue-dark);
+    --text-highlight: var(--apple-system-blue);
   }
 }
 
@@ -533,7 +532,7 @@ body::before {
     }
   }
   &.released-product {
-    color: var(--apple-system-green-light);
+    color: var(--apple-system-green);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--released-product-bg-hover);
@@ -541,7 +540,7 @@ body::before {
     }
   }
   &.announced-product {
-    color: var(--apple-system-orange-light);
+    color: var(--apple-system-orange);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--announced-product-bg-hover);
@@ -549,7 +548,7 @@ body::before {
     }
   }
   &.rumored-product {
-    color: var(--apple-system-gray-light);
+    color: var(--apple-system-gray);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--rumored-product-bg-hover);
