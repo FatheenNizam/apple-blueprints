@@ -12,9 +12,7 @@ export function getStatusMessage(fields) {
       return formattedAnnouncedDate ? `Announcement expected on ${formattedAnnouncedDate}` : "Rumored";
 
     case "announced":
-      return `Announced ${formattedAnnouncedDate || ""}${
-        shortFormattedReleasedDate ? ` (Releases ${shortFormattedReleasedDate})` : ""
-      }`;
+      return shortFormattedReleasedDate ? `Announced - Releases ${shortFormattedReleasedDate}` : "Announced";
 
     case "released":
       return formattedReleasedDate ? `Released ${formattedReleasedDate}` : "Released";
