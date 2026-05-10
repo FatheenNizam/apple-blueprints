@@ -412,16 +412,11 @@ body::before {
   margin: calc(var(--border-radius) / 2) 0 calc(var(--border-radius) / 2) var(--border-radius);
   color: var(--text-primary);
   font-weight: bold;
-  font-size: 60px;
   font-size: var(--text-xl);
   letter-spacing: var(--header-letter-spacing);
   transition:
     margin var(--transition-time) ease,
     font-size var(--transition-time) ease;
-  @media (max-width: $mobileBreakpoint) {
-    font-size: 48px;
-    font-size: var(--text-xl);
-  }
 }
 
 .year-label-arrow {
@@ -492,15 +487,9 @@ body::before {
 
 .month-label {
   font-weight: 600;
-  font-size: 36px;
   font-size: var(--text-lg);
   letter-spacing: var(--header-letter-spacing);
   text-transform: lowercase;
-
-  @media (max-width: $mobileBreakpoint) {
-    font-size: 32px;
-    font-size: var(--text-lg);
-  }
 }
 
 .product-list-container {
@@ -517,7 +506,6 @@ body::before {
   gap: 6px;
   translate: -8px 0;
   border-radius: var(--border-radius-button);
-  font-size: 20px;
   font-size: var(--text-base);
   line-height: 1.3;
   font-family: var(--current-font);
@@ -604,7 +592,7 @@ body::before {
   background-color: var(--month-card-bg);
   box-shadow: var(--box-shadow);
   color: var(--text-primary);
-  font-size: 24px;
+  font-size: var(--text-base);
   text-wrap: nowrap;
 }
 
@@ -691,7 +679,7 @@ body::before {
   background-color: var(--product-nav-button-bg);
   box-shadow: var(--box-shadow);
   color: var(--product-nav-button-icon-color);
-  font-size: 28px;
+  font-size: var(--text-base);
   pointer-events: initial;
   transition: background-color var(--transition-time) ease;
   &:hover {
@@ -751,15 +739,10 @@ body::before {
 
 .product-name {
   font-weight: 600;
-  font-size: 36px;
   font-size: var(--text-xl);
   line-height: 1;
   font-family: var(--current-font);
   letter-spacing: var(--product-list-letter-spacing);
-  @media (max-width: $mobileBreakpoint) {
-    font-size: 32px;
-    font-size: var(--text-xl);
-  }
 }
 
 .top-section {
@@ -807,7 +790,6 @@ body::before {
 
 .product-image-source-link {
   color: var(--link);
-  font-size: 12px;
   font-size: var(--text-sm);
   text-decoration: underline;
   text-decoration-style: dotted;
@@ -885,7 +867,6 @@ body::before {
 
 .product-description {
   color: var(--text-primary);
-  font-size: 18px;
   font-size: var(--text-base);
   line-height: 1.5;
   font-family: var(--current-font);
@@ -894,13 +875,11 @@ body::before {
 .product-header {
   margin: 0;
   font-weight: 600;
-  font-size: 24px;
   font-size: var(--text-lg);
   font-family: var(--current-font);
 }
 
 .sources-header {
-  font-size: 18px;
   font-size: var(--text-base);
 }
 
@@ -909,7 +888,6 @@ body::before {
   margin: 10px 0;
   color: var(--text-primary);
   font-weight: 400;
-  font-size: 18px;
   font-size: var(--text-base);
   font-family: var(--current-font);
   list-style-type: inherit;
@@ -918,7 +896,6 @@ body::before {
 .source-link {
   color: var(--link);
   font-weight: 400;
-  font-size: 16px;
   font-size: var(--text-sm);
   text-decoration: none;
 
@@ -1000,7 +977,7 @@ td {
   border: 1px solid var(--border);
   border-radius: var(--border-radius-button);
   color: var(--text-secondary);
-  font-size: 1em;
+  font-size: var(--text-sm);
   text-decoration: none;
   transition:
     background-color var(--transition-time) ease,
@@ -1029,7 +1006,6 @@ td {
 .footer-text {
   border-radius: var(--border-radius);
   color: var(--text-secondary);
-  font-size: 1em;
   font-size: var(--text-sm);
   text-align: center;
 }
