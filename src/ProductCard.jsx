@@ -101,9 +101,7 @@ export function ProductCard({ product, onDismiss }) {
                 className={`product-status-label ${updatedProduct.fields.status}-product`}
                 {...ContentfulLivePreview.getProps({ entryId: product.sys.id, fieldId: "status" })}
               >
-                <div className="product-status-label-text">
-                  {statusLabels[updatedProduct.fields.status]} {getStatusMessage(updatedProduct.fields)}
-                </div>
+                <div className="product-status-label-text">{getStatusMessage(updatedProduct.fields)}</div>
               </div>
             </div>
             <div className="top-section">
