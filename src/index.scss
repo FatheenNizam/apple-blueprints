@@ -55,9 +55,9 @@ $tabletBreakpoint: 1023px;
   --rumored-product-bg: #e9ebed;
   --rumored-product-text-color: #171a1d;
 
-  --released-product-bg-hover: var(--released-product-bg);
-  --announced-product-bg-hover: var(--announced-product-bg);
-  --rumored-product-bg-hover: var(--rumored-product-bg);
+  --released-product-bg-hover: rgba(8, 127, 6, 0.1);
+  --announced-product-bg-hover: rgba(230, 125, 6, 0.1);
+  --rumored-product-bg-hover: rgba(128, 126, 128, 0.1);
 
   --link: var(--apple-system-blue);
   --overlay: rgb(0, 0, 0);
