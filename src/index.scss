@@ -47,15 +47,18 @@ $tabletBreakpoint: 1023px;
   --product-nav-button-icon-color: rgb(0);
   --border: #e9ebed;
   --counter-bg: rgba(0, 0, 0, 0.05);
-  --released-product-text-color: rgb(2, 109, 35);
-  --announced-product-text-color: rgb(177, 45, 0);
-  --rumored-product-text-color: rgb(64, 77, 99);
-  --released-product-bg: rgba(204, 243, 198, 1);
+
+  --released-product-bg: #bef9c6;
+  --released-product-text-color: #0f4a21;
   --announced-product-bg: rgba(253, 229, 192, 1);
+  --announced-product-text-color: rgb(177, 45, 0);
   --rumored-product-bg: rgba(231, 235, 238, 1);
+  --rumored-product-text-color: rgb(64, 77, 99);
+
   --released-product-bg-hover: var(--released-product-bg);
   --announced-product-bg-hover: var(--announced-product-bg);
   --rumored-product-bg-hover: var(--rumored-product-bg);
+
   --link: var(--apple-system-blue-light);
   --overlay: rgb(0, 0, 0);
   --footer-button-bg: rgba(0, 0, 0, 0.05);
