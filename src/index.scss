@@ -132,8 +132,15 @@ $tabletBreakpoint: 1023px;
 
     --border: #1e242c;
     --counter-bg: rgba(255, 255, 255, 0.05);
-    --released-product-text-color: var(--apple-system-green-dark);
-    --announced-product-text-color: var(--apple-system-orange-dark);
+
+    --released-product-bg: #152a19;
+    --released-product-text-color: #93f5a5;
+
+    --announced-product-bg: #f6e0a5;
+    --announced-product-text-color: #603408;
+    --rumored-product-bg: #e9ebed;
+    --rumored-product-text-color: #171a1d;
+
     --link: var(--apple-system-blue-dark);
     --footer-button-bg: rgba(255, 255, 255, 0.05);
     --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
