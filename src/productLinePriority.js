@@ -7,6 +7,7 @@ export const productLinePriority = [
   "MacBook",
   "MacBook Air",
   "MacBook Pro",
+  "MacBook Neo",
   "iPad",
   "iPad Air",
   "iPad Pro",
