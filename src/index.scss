@@ -534,7 +534,7 @@ body::before {
     }
   }
   &.announced-product {
-    color: var(--announced-product-text-color);
+    color: var(--announced-product-bg);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--announced-product-bg-hover);
