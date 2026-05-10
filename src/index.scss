@@ -129,8 +129,10 @@ $tabletBreakpoint: 1023px;
 
     --border: rgb(64, 64, 64);
     --counter-bg: rgba(255, 255, 255, 0.05);
-    --released-product-text-color: var(--apple-system-green-dark);
-    --announced-product-text-color: var(--apple-system-orange-dark);
+    --released-product-text-color: rgb(147, 245, 165);
+    --announced-product-text-color: rgb(96, 52, 8);
+    --released-product-bg: rgb(21, 42, 25);
+    --announced-product-bg: rgb(246, 224, 165);
     --link: var(--apple-system-blue-dark);
     --footer-button-bg: rgba(255, 255, 255, 0.05);
     --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
