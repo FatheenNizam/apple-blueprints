@@ -65,7 +65,7 @@ $tabletBreakpoint: 1023px;
   --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
   --footer-button-highlight-hover: var(--apple-system-blue);
   --close-button-bg: rgb(232, 232, 238);
-  --footer-bg: white;
+  --footer-bg: var(--month-card-bg);
   --underline: rgb(169, 169, 169);
   --text-highlight: var(--apple-system-blue);
   --focus-color: rgba(255, 153, 0, 0.8);
@@ -143,7 +143,6 @@ $tabletBreakpoint: 1023px;
     --footer-button-bg-hover: rgba(0, 122, 255, 0.05);
     --footer-button-highlight-hover: var(--apple-system-blue);
     --close-button-bg: rgb(36, 36, 30);
-    --footer-bg: rgb(23, 23, 22);
     --underline: rgb(86, 86, 86);
     --text-highlight: var(--apple-system-blue);
   }
